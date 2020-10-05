@@ -22,6 +22,7 @@ namespace Summative2DGame
         SolidBrush bulletBrush = new SolidBrush(Color.Yellow);
         SolidBrush alienBrush = new SolidBrush(Color.White);
 
+        //sounds
         SoundPlayer siren = new SoundPlayer(Properties.Resources.waveStart);
         SoundPlayer laser = new SoundPlayer(Properties.Resources.laserShot);
 
@@ -101,7 +102,7 @@ namespace Summative2DGame
             else if (rand == 2) { c = Color.WhiteSmoke; }
             else if (rand == 3) { c = Color.Gray; }
             else if (rand == 4) { c = Color.DimGray; }
-            else if (rand == 5) { c = Color.Maroon; }
+            else if (rand == 5) { c = Color.GhostWhite; }
 
             Alien alienN1 = new Alien(spawnX1, 0, alienSize, c);
             alien1.Add(alienN1);
@@ -256,6 +257,7 @@ namespace Summative2DGame
             }
             else if (gameOver && gameWin == false)
             {
+                siren.Play();
                 outputLabel.Visible = false;
                 gameOverLabel.Visible = true;
                 gameOverLabel.Text = "Game over, returning to main menu.";
@@ -280,7 +282,6 @@ namespace Summative2DGame
             }
             else if (gameOver == false)
             {
-                siren.Play();
                 waveOn = true;
             }
         }
