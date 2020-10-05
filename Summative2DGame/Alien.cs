@@ -29,6 +29,38 @@ namespace Summative2DGame
 
             return alienRec.IntersectsWith(collisRec);
         }
+        public static void AlienBulletCollision()
+        {
+            List<int> bulletRemove = new List<int>();
+            List<int> alienRemove = new List<int>();
+            foreach (Bullet b in GameScreen.bulletList)
+            {
+                foreach (Alien a in GameScreen.alien1)
+                {
+                    if (a.Collision(b))
+                    {
+                        if (!bulletRemove.Contains(GameScreen.bulletList.IndexOf(b)))
+                        {
+                            bulletRemove.Add(GameScreen.bulletList.IndexOf(b));
+                        }
+                        if (!alienRemove.Contains(GameScreen.alien1.IndexOf(a)))
+                        {
+                            alienRemove.Add(GameScreen.alien1.IndexOf(a));
+                        }
+                    }
+                }
+            }
+            bulletRemove.Reverse();
+            alienRemove.Reverse();
+            foreach (int i in bulletRemove)
+            {
+                GameScreen.bulletList.RemoveAt(i);
+            }
+            foreach (int i in alienRemove)
+            {
+                GameScreen.alien1.RemoveAt(i);
+            }
+        }
 
     }
 }

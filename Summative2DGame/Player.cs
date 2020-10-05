@@ -35,9 +35,5 @@ namespace Summative2DGame
                 x -= speed;
             }
         }
-        //public Boolean CollisionWall(int _x)
-        //{
-        //    return;
-        //}
     }
 }

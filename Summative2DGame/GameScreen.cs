@@ -14,8 +14,8 @@ namespace Summative2DGame
 {
     public partial class GameScreen : UserControl
     {
-        List<Alien> alien1 = new List<Alien>();
-        List<Bullet> bulletList = new List<Bullet>();
+        public static List<Alien> alien1 = new List<Alien>();
+        public static List<Bullet> bulletList = new List<Bullet>();
 
         //brushes
         SolidBrush whiteBrush = new SolidBrush(Color.WhiteSmoke);
@@ -35,14 +35,14 @@ namespace Summative2DGame
 
         //player configurations
         int playerSize = 20;
-        int playerSpeed = 15;
+        int playerSpeed = 10;
 
         //bullet configurations
         int bulletSize = 10;
         int bulletSpeed = 15;
 
         //alien configurations;
-        int alienSpeed = 5;
+        int alienSpeed = 4;
         int spawnPoint = 100;
 
         //timer
@@ -98,7 +98,7 @@ namespace Summative2DGame
             int rand = randNum.Next(1, 6);
             Color c = Color.White;
 
-            if (rand == 1) { c = Color.Red; }
+            if (rand == 1) { c = Color.White; }
             else if (rand == 2) { c = Color.WhiteSmoke; }
             else if (rand == 3) { c = Color.Gray; }
             else if (rand == 4) { c = Color.DimGray; }
@@ -115,43 +115,11 @@ namespace Summative2DGame
         public void OnStart()
         {
             outputLabel.Visible = true;
+            gameOver = false;
+            siren.Play();
             MakeAlien();
             hero = new Player(this.Width / 2 - 15, this.Height - 30, playerSize);
         }
-        public void AlienBulletCollision()
-        {
-            List<int> bulletRemove = new List<int>();
-            List<int> alienRemove = new List<int>();
-            foreach (Bullet b in bulletList)
-            {
-                foreach (Alien a in alien1)
-                {
-                    if (a.Collision(b))
-                    {
-                        if (!bulletRemove.Contains(bulletList.IndexOf(b)))
-                        {
-                            bulletRemove.Add(bulletList.IndexOf(b));
-                        }
-                        if (!alienRemove.Contains(alien1.IndexOf(a)))
-                        {
-                            alienRemove.Add(alien1.IndexOf(a));
-                        }
-                    }
-                }
-
-            }
-            bulletRemove.Reverse();
-            alienRemove.Reverse();
-            foreach (int i in bulletRemove)
-            {
-                bulletList.RemoveAt(i);
-            }
-            foreach (int i in alienRemove)
-            {
-                alien1.RemoveAt(i);
-            }
-        }
-
         private void gameTimer_Tick(object sender, EventArgs e)
         {
             //stopping gameplay from starting until wave start message displays
@@ -160,9 +128,10 @@ namespace Summative2DGame
                 timer++;
                 shotCounter++;
 
-                AlienBulletCollision();
+                Alien.AlienBulletCollision();
 
                 outputLabel.Text = "" + counter;
+
                 #region Countdown 
                 if (timer > 50)
                 {
@@ -203,8 +172,9 @@ namespace Summative2DGame
                 #endregion
 
                 #region shooting
-                if (SpaceKeyDown == true)
+                if (SpaceKeyDown == true && shotCounter >10)
                 {
+                    shotCounter = 0;
                     MakeBullet();
                     laser.Play();
                 }
@@ -213,9 +183,9 @@ namespace Summative2DGame
 
                 #endregion
 
-                //#region Game Over
-                //if (alien1[0].y > 467) { GameOver(); }
-                //#endregion
+                #region Game Over
+                if (alien1[0].y > 467) { GameOver(); }
+                #endregion
 
             }
             else
@@ -257,7 +227,6 @@ namespace Summative2DGame
             }
             else if (gameOver && gameWin == false)
             {
-                siren.Play();
                 outputLabel.Visible = false;
                 gameOverLabel.Visible = true;
                 gameOverLabel.Text = "Game over, returning to main menu.";
