@@ -22,7 +22,7 @@ namespace Summative2DGame
         {
             y += speed;
         }
-        public Boolean GroundCollision(Alien a)
+        public Boolean Collision(Bullet a)
         {
             Rectangle alienRec = new Rectangle(a.x, a.y, a.size, a.size);
             Rectangle collisRec = new Rectangle(x, y, width, height);

@@ -9,7 +9,7 @@ namespace Summative2DGame
     public class Player
     {
         public int playerSpeed, playerHealth, x, y, size;
-        Boolean playerDirection;
+        public Boolean playerDirection;
 
         public Player(int _x, int _y, int _size)
         {
@@ -35,5 +35,9 @@ namespace Summative2DGame
                 x -= speed;
             }
         }
+        //public Boolean CollisionWall(int _x)
+        //{
+        //    return;
+        //}
     }
 }

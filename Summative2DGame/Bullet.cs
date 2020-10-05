@@ -20,9 +20,5 @@ namespace Summative2DGame
         {
             y -= speed;
         }
-        public void AlienBulletCollision()
-        { 
-        
-        }
     }
 }

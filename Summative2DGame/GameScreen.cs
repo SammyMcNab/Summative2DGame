@@ -14,15 +14,12 @@ namespace Summative2DGame
 {
     public partial class GameScreen : UserControl
     {
-
         List<Alien> alien1 = new List<Alien>();
         List<Bullet> bulletList = new List<Bullet>();
-        Font waveFont = new Font("MS Gothic", 20);
+
         //brushes
-        SolidBrush maroonBrush = new SolidBrush(Color.Maroon);
-        SolidBrush greenBrush = new SolidBrush(Color.Green);
+        SolidBrush whiteBrush = new SolidBrush(Color.WhiteSmoke);
         SolidBrush bulletBrush = new SolidBrush(Color.Yellow);
-        SolidBrush playerBrush = new SolidBrush(Color.Red);
         SolidBrush alienBrush = new SolidBrush(Color.White);
 
         SoundPlayer siren = new SoundPlayer(Properties.Resources.waveStart);
@@ -30,27 +27,27 @@ namespace Summative2DGame
 
         Boolean waveOn = false;
         Boolean gameOver = false;
-        Boolean leftArrowDown, rightArrowDown, SpaceKeyDown, right, shot;
+        Boolean gameWin = false;
+        Boolean leftArrowDown, rightArrowDown, SpaceKeyDown;
 
         Player hero;
 
         //player configurations
-        int heroSize = 20;
-        int playerSpeed = 20;
+        int playerSize = 20;
+        int playerSpeed = 15;
 
         //bullet configurations
         int bulletSize = 10;
         int bulletSpeed = 15;
 
         //alien configurations;
-        int alienSize;
-        int alienSpeed = 3;
-        int spawnPoint = 260;
+        int alienSpeed = 5;
+        int spawnPoint = 100;
 
         //timer
-        int counter = 90;
+        int counter = 10;
         int timer = 0;
-
+        int shotCounter = 21;
         Random randNum = new Random();
         public GameScreen()
         {
@@ -118,17 +115,41 @@ namespace Summative2DGame
         {
             outputLabel.Visible = true;
             MakeAlien();
-            hero = new Player(this.Width / 2 - 15, this.Height - 30, heroSize);
+            hero = new Player(this.Width / 2 - 15, this.Height - 30, playerSize);
         }
-        //public void AlienBulletCollision()
-        //{
-        //    List<int> bulletRemove = new List<int>();
-        //    List<int> alienRemove = new List<int>();
-        //    foreach (Bullet b in bulletList)
-        //    { 
-        //        foreach (Alien a in alien1) { if (a.Collision(b)) } 
-        //    }
-        //}
+        public void AlienBulletCollision()
+        {
+            List<int> bulletRemove = new List<int>();
+            List<int> alienRemove = new List<int>();
+            foreach (Bullet b in bulletList)
+            {
+                foreach (Alien a in alien1)
+                {
+                    if (a.Collision(b))
+                    {
+                        if (!bulletRemove.Contains(bulletList.IndexOf(b)))
+                        {
+                            bulletRemove.Add(bulletList.IndexOf(b));
+                        }
+                        if (!alienRemove.Contains(alien1.IndexOf(a)))
+                        {
+                            alienRemove.Add(alien1.IndexOf(a));
+                        }
+                    }
+                }
+
+            }
+            bulletRemove.Reverse();
+            alienRemove.Reverse();
+            foreach (int i in bulletRemove)
+            {
+                bulletList.RemoveAt(i);
+            }
+            foreach (int i in alienRemove)
+            {
+                alien1.RemoveAt(i);
+            }
+        }
 
         private void gameTimer_Tick(object sender, EventArgs e)
         {
@@ -136,34 +157,45 @@ namespace Summative2DGame
             if (waveOn)
             {
                 timer++;
+                shotCounter++;
+
+                AlienBulletCollision();
+
+                outputLabel.Text = "" + counter;
                 #region Countdown 
                 if (timer > 50)
                 {
                     counter--;
                     timer = 0;
                 }
-                outputLabel.Text = "" + counter;
 
                 if (counter == 0)
                 {
-                    game_Tick.Enabled = false;
+                    outputLabel.Text = "0";
+                    GameWin();
                 }
-                else if (counter < 60)
-                { spawnPoint = 80; }
+                else if (counter < 40)
+                {
+                    spawnPoint = 60;
+                }
+                else if (counter < 25)
+                {
+                    spawnPoint = 40;
+                }
                 #endregion
 
                 foreach (Alien a in alien1) { a.MoveAlien(alienSpeed); }
 
-                if (alien1[0].y > 482) { alien1.RemoveAt(0); }
-
                 if (alien1[alien1.Count - 1].y > spawnPoint) { MakeAlien(); }
 
+                if (alien1[0].y > 482) { alien1.RemoveAt(0); }
+
                 #region Moving player
-                if (leftArrowDown == true)
+                if (leftArrowDown == true && hero.x > 0)
                 {
                     hero.Move(playerSpeed, "left");
                 }
-                else if (rightArrowDown == true)
+                else if (rightArrowDown == true && hero.x < this.Width - playerSize)
                 {
                     hero.Move(playerSpeed, "right");
                 }
@@ -176,7 +208,7 @@ namespace Summative2DGame
                     laser.Play();
                 }
 
-                foreach (Bullet b in bulletList) { b.MoveBullet(10); }
+                foreach (Bullet b in bulletList) { b.MoveBullet(bulletSpeed); }
 
                 #endregion
 
@@ -190,6 +222,12 @@ namespace Summative2DGame
 
             }
             Refresh();
+        }
+        public void GameWin()
+        {
+            waveOn = false;
+            gameOver = true;
+            gameWin = true;
         }
         public void GameOver()
         {
@@ -207,22 +245,33 @@ namespace Summative2DGame
                     e.Graphics.FillEllipse(alienBrush, a.x, a.y, a.size, a.size);
                 }
                 //draw ground
-                e.Graphics.FillRectangle(greenBrush, 0, this.Height - 15, this.Width, this.Height);
+                e.Graphics.FillRectangle(whiteBrush, 0, this.Height - 15, this.Width, this.Height);
 
                 //drawhero
-                e.Graphics.FillRectangle(playerBrush, hero.x, hero.y, hero.size, hero.size);
+                e.Graphics.FillRectangle(whiteBrush, hero.x, hero.y, hero.size, hero.size);
 
-                if (SpaceKeyDown == true)
-                {
-                    foreach (Bullet b in bulletList)
-                    { e.Graphics.FillEllipse(bulletBrush, b.x, b.y, bulletSize, bulletSize); }
-                }
+                foreach (Bullet b in bulletList)
+                { e.Graphics.FillEllipse(bulletBrush, b.x, b.y, bulletSize, bulletSize); }
+
             }
-            else if (gameOver)
+            else if (gameOver && gameWin == false)
             {
                 outputLabel.Visible = false;
                 gameOverLabel.Visible = true;
                 gameOverLabel.Text = "Game over, returning to main menu.";
+                gameOverLabel.Refresh();
+                Thread.Sleep(4000);
+                Form f = this.FindForm();
+                f.Controls.Remove(this);
+                MainScreen ms = new MainScreen();
+                f.Controls.Add(ms);
+            }
+            else if (gameOver && gameWin)
+            {
+                outputLabel.Visible = false;
+                gameOverLabel.Visible = true;
+                gameOverLabel.Text = "You Win! Returning to main menu";
+                gameOverLabel.Refresh();
                 Thread.Sleep(4000);
                 Form f = this.FindForm();
                 f.Controls.Remove(this);

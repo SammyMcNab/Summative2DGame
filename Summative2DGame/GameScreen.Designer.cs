@@ -48,15 +48,14 @@
             this.outputLabel.Name = "outputLabel";
             this.outputLabel.Size = new System.Drawing.Size(66, 46);
             this.outputLabel.TabIndex = 0;
-            this.outputLabel.Text = "90";
             // 
             // gameOverLabel
             // 
             this.gameOverLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.gameOverLabel.ForeColor = System.Drawing.Color.Red;
-            this.gameOverLabel.Location = new System.Drawing.Point(238, 149);
+            this.gameOverLabel.Location = new System.Drawing.Point(135, 147);
             this.gameOverLabel.Name = "gameOverLabel";
-            this.gameOverLabel.Size = new System.Drawing.Size(422, 64);
+            this.gameOverLabel.Size = new System.Drawing.Size(627, 116);
             this.gameOverLabel.TabIndex = 1;
             this.gameOverLabel.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
