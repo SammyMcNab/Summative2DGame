@@ -29,7 +29,7 @@ namespace Summative2DGame
         Boolean waveOn = false;
         Boolean gameOver = false;
         Boolean gameWin = false;
-        Boolean leftArrowDown, rightArrowDown, SpaceKeyDown;
+        Boolean leftArrowDown, rightArrowDown, SpaceKeyDown, PKeyDown;
 
         Player hero;
 
@@ -49,13 +49,20 @@ namespace Summative2DGame
         int counter = 90;
         int timer = 0;
         int shotCounter = 21;
+        int spawnTimer = 0;
         Random randNum = new Random();
         public GameScreen()
         {
             InitializeComponent();
+            gameOver = false;
             outputLabel.Visible = false;
             gameOverLabel.Visible = false;
             OnStart();
+
+            if (PKeyDown == true && game_Tick.Enabled == false)
+            {
+                game_Tick.Enabled = true;
+            }
         }
         private void GameScreen_PreviewKeyDown(object sender, PreviewKeyDownEventArgs e)
         {
@@ -70,6 +77,9 @@ namespace Summative2DGame
                     break;
                 case Keys.Space:
                     SpaceKeyDown = true;
+                    break;
+                case Keys.P:
+                    PKeyDown = true;
                     break;
             }
         }
@@ -87,6 +97,9 @@ namespace Summative2DGame
                     break;
                 case Keys.Space:
                     SpaceKeyDown = false;
+                    break;
+                case Keys.P:
+                    PKeyDown = false;
                     break;
             }
         }
@@ -127,6 +140,7 @@ namespace Summative2DGame
             {
                 timer++;
                 shotCounter++;
+                spawnTimer++;
 
                 Alien.AlienBulletCollision();
 
@@ -146,19 +160,34 @@ namespace Summative2DGame
                 }
                 else if (counter < 40)
                 {
-                    spawnPoint = 60;
+                    spawnPoint = 15;
                 }
                 else if (counter < 25)
                 {
-                    spawnPoint = 40;
+                    spawnPoint = 10;
+                    playerSpeed = 15;
                 }
                 #endregion
 
-                foreach (Alien a in alien1) { a.MoveAlien(alienSpeed); }
+                #region Move Alien
+                foreach (Alien a in alien1) 
+                { 
+                    a.MoveAlien(alienSpeed); 
+                }
+                #endregion
 
-                if (alien1[alien1.Count - 1].y > spawnPoint) { MakeAlien(); }
-
-                if (alien1[0].y > 482) { alien1.RemoveAt(0); }
+                #region Spawn Alien
+                //if (alien1[alien1.Count - 1].y > spawnPoint) 
+                //{ 
+                //    MakeAlien(); 
+                //}
+                if(spawnTimer > spawnPoint) 
+                { 
+                    MakeAlien(); 
+                    spawnTimer = 0; 
+                }
+                #endregion
+                //if (alien1[0].y > 482) { alien1.RemoveAt(0); }
 
                 #region Moving player
                 if (leftArrowDown == true && hero.x > 0)
@@ -184,8 +213,15 @@ namespace Summative2DGame
                 #endregion
 
                 #region Game Over
-                if (alien1[0].y > 467) { GameOver(); }
+                if (alien1[0].y > 390) { GameOver(); }
                 #endregion
+
+                //#region Pause
+                //if (PKeyDown == true && game_Tick.Enabled == true)
+                //{
+                //    game_Tick.Enabled = false;
+                //}
+                //#endregion
             }
             else
             {
@@ -195,14 +231,33 @@ namespace Summative2DGame
         }
         public void GameWin()
         {
-            waveOn = false;
+            outputLabel.Visible = false;
+            gameOverLabel.Visible = true;
+            gameOverLabel.Text = "You Win! Returning to main menu";
+            gameOverLabel.Refresh();
             gameOver = true;
             gameWin = true;
+            Thread.Sleep(4000);
+            Form f = this.FindForm();
+            f.Controls.Remove(this);
+            MainScreen ms = new MainScreen();
+            f.Controls.Add(ms);
+
         }
         public void GameOver()
         {
-            waveOn = false;
+            outputLabel.Visible = false;
             gameOver = true;
+            gameWin = false;
+            gameOverLabel.Visible = true;
+            gameOverLabel.Text = "Game over, returning to main menu.";
+            gameOverLabel.Refresh();
+            Thread.Sleep(4000);
+            Form f = this.FindForm();
+            f.Controls.Remove(this);
+            MainScreen ms = new MainScreen();
+            f.Controls.Add(ms);
+
         }
         private void GameScreen_Paint(object sender, PaintEventArgs e)
         {
@@ -224,31 +279,8 @@ namespace Summative2DGame
                 { e.Graphics.FillEllipse(bulletBrush, b.x, b.y, bulletSize, bulletSize); }
 
             }
-            else if (gameOver && gameWin == false)
-            {
-                outputLabel.Visible = false;
-                gameOverLabel.Visible = true;
-                gameOverLabel.Text = "Game over, returning to main menu.";
-                gameOverLabel.Refresh();
-                Thread.Sleep(4000);
-                Form f = this.FindForm();
-                f.Controls.Remove(this);
-                MainScreen ms = new MainScreen();
-                f.Controls.Add(ms);
-            }
-            else if (gameOver && gameWin)
-            {
-                outputLabel.Visible = false;
-                gameOverLabel.Visible = true;
-                gameOverLabel.Text = "You Win! Returning to main menu";
-                gameOverLabel.Refresh();
-                Thread.Sleep(4000);
-                Form f = this.FindForm();
-                f.Controls.Remove(this);
-                MainScreen ms = new MainScreen();
-                f.Controls.Add(ms);
-            }
-            else if (gameOver == false)
+
+            else if(gameOver == false)
             {
                 waveOn = true;
             }
