@@ -103,7 +103,7 @@ namespace Summative2DGame
         public void MakeAlien()
         {
             //get colour for box
-            int spawnX1 = randNum.Next(0, this.Width);
+            int spawnX1 = randNum.Next(0, this.Width - 10);
             alienSize = randNum.Next(15, 30);
             int rand = randNum.Next(1, 6);
             Color c = Color.White;
@@ -136,89 +136,90 @@ namespace Summative2DGame
         }
         private void gameTimer_Tick(object sender, EventArgs e)
         {
-                timer++;
-                shotCounter++;
-                spawnTimer++;
+            timer++;
+            shotCounter++;
+            spawnTimer++;
 
-                Alien.AlienBulletCollision();
+            Alien.AlienBulletCollision();
 
-                outputLabel.Text = "" + counter;
+            outputLabel.Text = "" + counter;
 
-                #region Countdown 
-                if (timer > 50)
-                {
-                    counter--;
-                    timer = 0;
-                }
+            #region Countdown 
+            if (timer > 50)
+            {
+                counter--;
+                timer = 0;
+            }
 
-                if (counter == 0)
-                {
-                    outputLabel.Text = "0";
-                    GameWin();
-                }
-                else if (counter < 25)
-                {
-                    spawnPoint = 15;
-                }
-                else if (counter < 15)
-                {
-                    spawnPoint = 10;
-                    playerSpeed = 15;
-                }
-                #endregion
+            if (counter == 0)
+            {
+                outputLabel.Text = "0";
+                GameWin();
+            }
+            else if (counter < 25)
+            {
+                spawnPoint = 15;
+            }
+            else if (counter < 15)
+            {
+                spawnPoint = 10;
+                playerSpeed = 15;
+            }
+            #endregion
 
-                #region Move Alien
-                foreach (Alien a in alien1) 
-                { 
-                    a.MoveAlien(alienSpeed); 
-                }
-                #endregion
+            #region Move Alien
+            foreach (Alien a in alien1)
+            {
+                a.MoveAlien(alienSpeed);
+            }
+            #endregion
 
-                #region Spawn Alien
-                //if (alien1[alien1.Count - 1].y > spawnPoint) 
-                //{ 
-                //    MakeAlien(); 
-                //}
-                if(spawnTimer > spawnPoint) 
-                { 
-                    MakeAlien(); 
-                    spawnTimer = 0; 
-                }
-                #endregion
+            #region Spawn Alien
+            //if (alien1[alien1.Count - 1].y > spawnPoint) 
+            //{ 
+            //    MakeAlien(); 
+            //}
+            if (spawnTimer > spawnPoint)
+            {
+                MakeAlien();
+                spawnTimer = 0;
+            }
+            #endregion
 
-                #region Moving player
-                if (leftArrowDown == true && hero.x > 0)
-                {
-                    hero.Move(playerSpeed, false);
-                }
-                else if (rightArrowDown == true && hero.x < this.Width - playerSize)
-                {
-                    hero.Move(playerSpeed, true);
-                }
-                #endregion
+            #region Moving player
+            if (leftArrowDown == true && hero.x > 0)
+            {
+                hero.Move(playerSpeed, false);
+            }
+            else if (rightArrowDown == true && hero.x < this.Width - playerSize)
+            {
+                hero.Move(playerSpeed, true);
+            }
+            #endregion
 
-                #region shooting
-                if (SpaceKeyDown == true && shotCounter > 4)
-                {
-                    shotCounter = 0;
-                    MakeBullet();
-                    laser.Play();
-                }
+            #region shooting
+            if (SpaceKeyDown == true && shotCounter > 2)
+            {
+                shotCounter = 0;
+                MakeBullet();
+                laser.Play();
+            }
 
-                foreach (Bullet b in bulletList) { b.MoveBullet(bulletSpeed); }
+            foreach (Bullet b in bulletList) { b.MoveBullet(bulletSpeed); }
 
-                #endregion
+            #endregion
 
-                #region Game Over
-                if (alien1[0].y > 470) { GameOver(); }
-                #endregion
+            #region Game Over
+            if (alien1[0].y > 470) { GameOver(); }
+            #endregion
 
-                //#region Pause
-                //if (PKeyDown == true && game_Tick.Enabled == true)
-                //{
-                //    game_Tick.Enabled = false;
-                //}
-                //#endregion
+            #region Pause
+            //if (PKeyDown == true && game_Tick.Enabled == true)
+            //{
+            //    game_Tick.Enabled = false;
+            //}
+            #endregion
+
             Refresh();
         }
         public void GameWin()
@@ -230,7 +231,7 @@ namespace Summative2DGame
             gameOverLabel.Text = "You Win! Returning to main menu";
             gameOverLabel.Refresh();
 
-            Thread.Sleep(4000);
+            Thread.Sleep(2000);
 
             Form f = this.FindForm();
             f.Controls.Remove(this);
@@ -247,7 +248,7 @@ namespace Summative2DGame
             gameOverLabel.Text = "Game over, returning to main menu.";
             gameOverLabel.Refresh();
 
-            Thread.Sleep(4000);
+            Thread.Sleep(2000);
 
             Form f = this.FindForm();
             f.Controls.Remove(this);
@@ -257,20 +258,20 @@ namespace Summative2DGame
         }
         private void GameScreen_Paint(object sender, PaintEventArgs e)
         {
-                //draw alien
-                foreach (Alien a in alien1)
-                {
-                    alienBrush.Color = a.color;
-                    e.Graphics.FillEllipse(alienBrush, a.x, a.y, a.size, a.size);
-                }
-                //draw ground
-                e.Graphics.FillRectangle(whiteBrush, 0, this.Height - 15, this.Width, this.Height);
+            //draw alien
+            foreach (Alien a in alien1)
+            {
+                alienBrush.Color = a.color;
+                e.Graphics.FillEllipse(alienBrush, a.x, a.y, a.size, a.size);
+            }
+            //draw ground
+            e.Graphics.FillRectangle(whiteBrush, 0, this.Height - 15, this.Width, this.Height);
 
-                //drawhero
-                e.Graphics.FillRectangle(whiteBrush, hero.x, hero.y, hero.size, hero.size);
+            //drawhero
+            e.Graphics.FillRectangle(whiteBrush, hero.x, hero.y, hero.size, hero.size);
 
-                foreach (Bullet b in bulletList)
-                { e.Graphics.FillEllipse(bulletBrush, b.x, b.y, bulletSize, bulletSize); }
+            foreach (Bullet b in bulletList)
+            { e.Graphics.FillEllipse(bulletBrush, b.x, b.y, bulletSize, bulletSize); }
 
         }
     }

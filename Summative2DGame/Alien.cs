@@ -25,9 +25,9 @@ namespace Summative2DGame
         public Boolean Collision(Bullet a)
         {
             Rectangle alienRec = new Rectangle(a.x, a.y, a.size, a.size);
-            Rectangle collisRec = new Rectangle(x, y, width, height);
+            Rectangle bullRec = new Rectangle(x, y, width, height);
 
-            return alienRec.IntersectsWith(collisRec);
+            return alienRec.IntersectsWith(bullRec);
         }
         public static void AlienBulletCollision()
         {
