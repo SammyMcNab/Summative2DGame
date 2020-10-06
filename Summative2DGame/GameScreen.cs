@@ -38,8 +38,8 @@ namespace Summative2DGame
         int playerSpeed = 10;
 
         //bullet configurations
-        int bulletSize = 10;
-        int bulletSpeed = 15;
+        int bulletSize = 15;
+        int bulletSpeed = 20;
 
         //alien configurations;
         int alienSpeed = 4;
@@ -108,7 +108,7 @@ namespace Summative2DGame
         {
             //get colour for box
             int spawnX1 = randNum.Next(0, this.Width);
-            alienSize = randNum.Next(10, 20);
+            alienSize = randNum.Next(15, 30);
             int rand = randNum.Next(1, 6);
             Color c = Color.White;
 
@@ -202,7 +202,7 @@ namespace Summative2DGame
                 #endregion
 
                 #region shooting
-                if (SpaceKeyDown == true && shotCounter > 0)
+                if (SpaceKeyDown == true && shotCounter > 6)
                 {
                     shotCounter = 0;
                     MakeBullet();
