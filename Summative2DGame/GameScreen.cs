@@ -47,7 +47,7 @@ namespace Summative2DGame
         int alienSize;
 
         //timer
-        int counter = 90;
+        int counter = 30;
         int timer = 0;
         int shotCounter = 21;
         int spawnTimer = 0;
@@ -128,17 +128,18 @@ namespace Summative2DGame
         }
         public void OnStart()
         {
+            Refresh();
+            alien1.Clear();
+            bulletList.Clear();
             outputLabel.Visible = true;
-            gameOver = false;
+            gameOverLabel.Visible = false;
+            game_Tick.Enabled = true;
             siren.Play();
             MakeAlien();
             hero = new Player(this.Width / 2 - 15, this.Height - 30, playerSize);
         }
         private void gameTimer_Tick(object sender, EventArgs e)
         {
-            //stopping gameplay from starting until wave start message displays
-            if (waveOn)
-            {
                 timer++;
                 shotCounter++;
                 spawnTimer++;
@@ -159,11 +160,11 @@ namespace Summative2DGame
                     outputLabel.Text = "0";
                     GameWin();
                 }
-                else if (counter < 40)
+                else if (counter < 25)
                 {
                     spawnPoint = 15;
                 }
-                else if (counter < 25)
+                else if (counter < 15)
                 {
                     spawnPoint = 10;
                     playerSpeed = 15;
@@ -188,7 +189,6 @@ namespace Summative2DGame
                     spawnTimer = 0; 
                 }
                 #endregion
-                //if (alien1[0].y > 482) { alien1.RemoveAt(0); }
 
                 #region Moving player
                 if (leftArrowDown == true && hero.x > 0)
@@ -214,7 +214,7 @@ namespace Summative2DGame
                 #endregion
 
                 #region Game Over
-                if (alien1[0].y > 390) { GameOver(); }
+                if (alien1[0].y > 467) { GameOver(); }
                 #endregion
 
                 //#region Pause
@@ -223,16 +223,11 @@ namespace Summative2DGame
                 //    game_Tick.Enabled = false;
                 //}
                 //#endregion
-            }
-            else
-            {
-
-            }
             Refresh();
         }
         public void GameWin()
         {
-            gameOver = true;
+            game_Tick.Enabled = false;
 
             outputLabel.Visible = false;
             gameOverLabel.Visible = true;
@@ -250,8 +245,6 @@ namespace Summative2DGame
         public void GameOver()
         {
             game_Tick.Enabled = false;
-            gameOver = true;
-            gameWin = false;
 
             outputLabel.Visible = false;
             gameOverLabel.Visible = true;
@@ -268,8 +261,6 @@ namespace Summative2DGame
         }
         private void GameScreen_Paint(object sender, PaintEventArgs e)
         {
-            if (waveOn)
-            {
                 //draw alien
                 foreach (Alien a in alien1)
                 {
@@ -285,12 +276,6 @@ namespace Summative2DGame
                 foreach (Bullet b in bulletList)
                 { e.Graphics.FillEllipse(bulletBrush, b.x, b.y, bulletSize, bulletSize); }
 
-            }
-
-            else if(gameOver == false)
-            {
-                waveOn = true;
-            }
         }
     }
 }
