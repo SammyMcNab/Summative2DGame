@@ -43,7 +43,8 @@ namespace Summative2DGame
 
         //alien configurations;
         int alienSpeed = 4;
-        int spawnPoint = 100;
+        int spawnPoint = 40;
+        int alienSize;
 
         //timer
         int counter = 90;
@@ -107,7 +108,7 @@ namespace Summative2DGame
         {
             //get colour for box
             int spawnX1 = randNum.Next(0, this.Width);
-            int alienSize = randNum.Next(10, 20);
+            alienSize = randNum.Next(10, 20);
             int rand = randNum.Next(1, 6);
             Color c = Color.White;
 
@@ -231,13 +232,15 @@ namespace Summative2DGame
         }
         public void GameWin()
         {
+            gameOver = true;
+
             outputLabel.Visible = false;
             gameOverLabel.Visible = true;
             gameOverLabel.Text = "You Win! Returning to main menu";
             gameOverLabel.Refresh();
-            gameOver = true;
-            gameWin = true;
+
             Thread.Sleep(4000);
+
             Form f = this.FindForm();
             f.Controls.Remove(this);
             MainScreen ms = new MainScreen();
@@ -246,13 +249,17 @@ namespace Summative2DGame
         }
         public void GameOver()
         {
-            outputLabel.Visible = false;
+            game_Tick.Enabled = false;
             gameOver = true;
             gameWin = false;
+
+            outputLabel.Visible = false;
             gameOverLabel.Visible = true;
             gameOverLabel.Text = "Game over, returning to main menu.";
             gameOverLabel.Refresh();
+
             Thread.Sleep(4000);
+
             Form f = this.FindForm();
             f.Controls.Remove(this);
             MainScreen ms = new MainScreen();
