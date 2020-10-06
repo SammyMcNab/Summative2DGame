@@ -17,22 +17,16 @@ namespace Summative2DGame
             y = _y;
             size = _size;
         }
-        //public void Move(int playerSpeed, Boolean playerDirection)
-        //{
-        //    //true means moving right
-        //    if (playerDirection == true) { x += playerSpeed; }
-        //    else { x -= playerSpeed; }
-        //}
-        public void Move(int speed, string direction)
+        public void Move(int playerSpeed, Boolean playerDirection)
         {
-            //true represents right
-            if (direction == "right")
-            {
-                x += speed;
+            //true means moving right
+            if (playerDirection == true) 
+            { 
+                x += playerSpeed; 
             }
-            else
-            {
-                x -= speed;
+            else 
+            { 
+                x -= playerSpeed; 
             }
         }
     }

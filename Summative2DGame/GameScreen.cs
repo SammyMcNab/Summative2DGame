@@ -46,7 +46,7 @@ namespace Summative2DGame
         int spawnPoint = 100;
 
         //timer
-        int counter = 10;
+        int counter = 90;
         int timer = 0;
         int shotCounter = 21;
         Random randNum = new Random();
@@ -163,16 +163,16 @@ namespace Summative2DGame
                 #region Moving player
                 if (leftArrowDown == true && hero.x > 0)
                 {
-                    hero.Move(playerSpeed, "left");
+                    hero.Move(playerSpeed, false);
                 }
                 else if (rightArrowDown == true && hero.x < this.Width - playerSize)
                 {
-                    hero.Move(playerSpeed, "right");
+                    hero.Move(playerSpeed, true);
                 }
                 #endregion
 
                 #region shooting
-                if (SpaceKeyDown == true && shotCounter >10)
+                if (SpaceKeyDown == true && shotCounter > 0)
                 {
                     shotCounter = 0;
                     MakeBullet();
@@ -186,7 +186,6 @@ namespace Summative2DGame
                 #region Game Over
                 if (alien1[0].y > 467) { GameOver(); }
                 #endregion
-
             }
             else
             {
