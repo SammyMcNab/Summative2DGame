@@ -19,7 +19,7 @@ namespace Summative2DGame
 
         //brushes
         SolidBrush whiteBrush = new SolidBrush(Color.WhiteSmoke);
-        SolidBrush bulletBrush = new SolidBrush(Color.Yellow);
+        SolidBrush bulletBrush = new SolidBrush(Color.OrangeRed);
         SolidBrush alienBrush = new SolidBrush(Color.White);
 
         //sounds
