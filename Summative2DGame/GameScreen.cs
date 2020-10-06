@@ -26,9 +26,6 @@ namespace Summative2DGame
         SoundPlayer siren = new SoundPlayer(Properties.Resources.waveStart);
         SoundPlayer laser = new SoundPlayer(Properties.Resources.laserShot);
 
-        Boolean waveOn = false;
-        Boolean gameOver = false;
-        Boolean gameWin = false;
         Boolean leftArrowDown, rightArrowDown, SpaceKeyDown, PKeyDown;
 
         Player hero;
@@ -55,7 +52,6 @@ namespace Summative2DGame
         public GameScreen()
         {
             InitializeComponent();
-            gameOver = false;
             outputLabel.Visible = false;
             gameOverLabel.Visible = false;
             OnStart();
@@ -202,7 +198,7 @@ namespace Summative2DGame
                 #endregion
 
                 #region shooting
-                if (SpaceKeyDown == true && shotCounter > 6)
+                if (SpaceKeyDown == true && shotCounter > 4)
                 {
                     shotCounter = 0;
                     MakeBullet();
@@ -214,7 +210,7 @@ namespace Summative2DGame
                 #endregion
 
                 #region Game Over
-                if (alien1[0].y > 467) { GameOver(); }
+                if (alien1[0].y > 470) { GameOver(); }
                 #endregion
 
                 //#region Pause
