@@ -120,5 +120,11 @@
   <ItemGroup>
     <None Include="Resources\151022__bubaproducer__laser-shot-silenced.wav" />
   </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\DieSound.wav" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\MenuTheme.wav" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

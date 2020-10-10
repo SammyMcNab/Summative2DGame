@@ -24,43 +24,10 @@ namespace Summative2DGame
         }
         public Boolean Collision(Bullet a)
         {
-            Rectangle alienRec = new Rectangle(a.x, a.y, a.size, a.size);
-            Rectangle bullRec = new Rectangle(x, y, width, height);
+            Rectangle bullRec = new Rectangle(a.x, a.y, a.size, a.size);
+            Rectangle alienRec = new Rectangle(x, y, size, size);
 
-            return alienRec.IntersectsWith(bullRec);
+             return bullRec.IntersectsWith(alienRec);
         }
-        public static void AlienBulletCollision()
-        {
-            List<int> bulletRemove = new List<int>();
-            List<int> alienRemove = new List<int>();
-            foreach (Bullet b in GameScreen.bulletList)
-            {
-                foreach (Alien a in GameScreen.alien1)
-                {
-                    if (a.Collision(b))
-                    {
-                        if (!bulletRemove.Contains(GameScreen.bulletList.IndexOf(b)))
-                        {
-                            bulletRemove.Add(GameScreen.bulletList.IndexOf(b));
-                        }
-                        if (!alienRemove.Contains(GameScreen.alien1.IndexOf(a)))
-                        {
-                            alienRemove.Add(GameScreen.alien1.IndexOf(a));
-                        }
-                    }
-                }
-            }
-            bulletRemove.Reverse();
-            alienRemove.Reverse();
-            foreach (int i in bulletRemove)
-            {
-                GameScreen.bulletList.RemoveAt(i);
-            }
-            foreach (int i in alienRemove)
-            {
-                GameScreen.alien1.RemoveAt(i);
-            }
-        }
-
     }
 }

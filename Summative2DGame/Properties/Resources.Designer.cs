@@ -63,6 +63,15 @@ namespace Summative2DGame.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.IO.UnmanagedMemoryStream similar to System.IO.MemoryStream.
         /// </summary>
+        internal static System.IO.UnmanagedMemoryStream DieSound {
+            get {
+                return ResourceManager.GetStream("DieSound", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.IO.UnmanagedMemoryStream similar to System.IO.MemoryStream.
+        /// </summary>
         internal static System.IO.UnmanagedMemoryStream laserShot {
             get {
                 return ResourceManager.GetStream("laserShot", resourceCulture);
@@ -72,9 +81,9 @@ namespace Summative2DGame.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.IO.UnmanagedMemoryStream similar to System.IO.MemoryStream.
         /// </summary>
-        internal static System.IO.UnmanagedMemoryStream waveStart {
+        internal static System.IO.UnmanagedMemoryStream MenuTheme {
             get {
-                return ResourceManager.GetStream("waveStart", resourceCulture);
+                return ResourceManager.GetStream("MenuTheme", resourceCulture);
             }
         }
     }

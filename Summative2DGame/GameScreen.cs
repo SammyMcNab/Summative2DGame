@@ -23,11 +23,13 @@ namespace Summative2DGame
         SolidBrush alienBrush = new SolidBrush(Color.White);
 
         //sounds
-        SoundPlayer siren = new SoundPlayer(Properties.Resources.waveStart);
         SoundPlayer laser = new SoundPlayer(Properties.Resources.laserShot);
+        SoundPlayer lose = new SoundPlayer(Properties.Resources.DieSound);
 
-        Boolean leftArrowDown, rightArrowDown, SpaceKeyDown, PKeyDown;
+        //key press booleans
+        Boolean leftArrowDown, rightArrowDown, SpaceKeyDown;
 
+        //creating player
         Player hero;
 
         //player configurations
@@ -40,7 +42,7 @@ namespace Summative2DGame
 
         //alien configurations;
         int alienSpeed = 4;
-        int spawnPoint = 40;
+        int spawnPoint = 60;
         int alienSize;
 
         //timer
@@ -56,10 +58,7 @@ namespace Summative2DGame
             gameOverLabel.Visible = false;
             OnStart();
 
-            if (PKeyDown == true && game_Tick.Enabled == false)
-            {
-                game_Tick.Enabled = true;
-            }
+ 
         }
         private void GameScreen_PreviewKeyDown(object sender, PreviewKeyDownEventArgs e)
         {
@@ -74,9 +73,6 @@ namespace Summative2DGame
                     break;
                 case Keys.Space:
                     SpaceKeyDown = true;
-                    break;
-                case Keys.P:
-                    PKeyDown = true;
                     break;
             }
         }
@@ -94,9 +90,6 @@ namespace Summative2DGame
                     break;
                 case Keys.Space:
                     SpaceKeyDown = false;
-                    break;
-                case Keys.P:
-                    PKeyDown = false;
                     break;
             }
         }
@@ -130,7 +123,6 @@ namespace Summative2DGame
             outputLabel.Visible = true;
             gameOverLabel.Visible = false;
             game_Tick.Enabled = true;
-            siren.Play();
             MakeAlien();
             hero = new Player(this.Width / 2 - 15, this.Height - 30, playerSize);
         }
@@ -140,8 +132,9 @@ namespace Summative2DGame
             shotCounter++;
             spawnTimer++;
 
-            Alien.AlienBulletCollision();
+            AlienBulletCollision();
 
+            //countdown display
             outputLabel.Text = "" + counter;
 
             #region Countdown 
@@ -158,11 +151,11 @@ namespace Summative2DGame
             }
             else if (counter < 25)
             {
-                spawnPoint = 15;
+                spawnPoint = 40;
             }
             else if (counter < 15)
             {
-                spawnPoint = 10;
+                spawnPoint = 30;
                 playerSpeed = 15;
             }
             #endregion
@@ -175,10 +168,7 @@ namespace Summative2DGame
             #endregion
 
             #region Spawn Alien
-            //if (alien1[alien1.Count - 1].y > spawnPoint) 
-            //{ 
-            //    MakeAlien(); 
-            //}
+
             if (spawnTimer > spawnPoint)
             {
                 MakeAlien();
@@ -198,26 +188,27 @@ namespace Summative2DGame
             #endregion
 
             #region shooting
-            if (SpaceKeyDown == true && shotCounter > 2)
+            if (SpaceKeyDown == true && shotCounter > 10)
             {
                 shotCounter = 0;
                 MakeBullet();
                 laser.Play();
             }
 
-            foreach (Bullet b in bulletList) { b.MoveBullet(bulletSpeed); }
+            foreach (Bullet b in bulletList) 
+            {
+                b.MoveBullet(bulletSpeed); 
+            }
 
             #endregion
 
             #region Game Over
-            if (alien1[0].y > 470) { GameOver(); }
-            #endregion
+            foreach (Alien a in alien1) 
+            { 
+                if (a.y > 470) 
+                { GameOver(); }
+            } 
 
-            #region Pause
-            //if (PKeyDown == true && game_Tick.Enabled == true)
-            //{
-            //    game_Tick.Enabled = false;
-            //}
             #endregion
 
             Refresh();
@@ -239,16 +230,49 @@ namespace Summative2DGame
             f.Controls.Add(ms);
 
         }
+        public static void AlienBulletCollision()
+        {
+            List<int> bulletRemove = new List<int>();
+            List<int> alienRemove = new List<int>();
+            foreach (Bullet b in bulletList)
+            {
+                foreach (Alien a in alien1)
+                {
+                    if (a.Collision(b))
+                    {
+                        if (!bulletRemove.Contains(bulletList.IndexOf(b)))
+                        {
+                            bulletRemove.Add(bulletList.IndexOf(b));
+                        }
+                        if (!alienRemove.Contains(alien1.IndexOf(a)))
+                        {
+                            alienRemove.Add(alien1.IndexOf(a));
+                        }
+                    }
+                }
+            }
+            bulletRemove.Reverse();
+            alienRemove.Reverse();
+            foreach (int i in bulletRemove)
+            {
+                bulletList.RemoveAt(i);
+            }
+            foreach (int i in alienRemove)
+            {
+                alien1.RemoveAt(i);
+            }
+        }
         public void GameOver()
         {
             game_Tick.Enabled = false;
 
+            lose.Play();
             outputLabel.Visible = false;
             gameOverLabel.Visible = true;
             gameOverLabel.Text = "Game over, returning to main menu.";
             gameOverLabel.Refresh();
 
-            Thread.Sleep(2000);
+            Thread.Sleep(3000);
 
             Form f = this.FindForm();
             f.Controls.Remove(this);

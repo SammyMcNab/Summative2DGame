@@ -7,6 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.Media; 
 
 namespace Summative2DGame
 {
@@ -20,9 +21,13 @@ namespace Summative2DGame
         SolidBrush whiteBrush = new SolidBrush(Color.Snow);
         Random randNum = new Random();
 
+        //sound player for music
+        SoundPlayer theme = new SoundPlayer(Properties.Resources.MenuTheme);
+
         public MainScreen()
         {
             InitializeComponent();
+            theme.PlayLooping();
             MakeStar();
         }
         private void MakeStar()
