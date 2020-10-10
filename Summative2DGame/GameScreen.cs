@@ -34,7 +34,7 @@ namespace Summative2DGame
 
         //player configurations
         int playerSize = 20;
-        int playerSpeed = 10;
+        int playerSpeed = 15;
 
         //bullet configurations
         int bulletSize = 15;
