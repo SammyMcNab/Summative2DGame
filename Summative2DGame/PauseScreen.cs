@@ -12,14 +12,15 @@ namespace Summative2DGame
 {
     public partial class PauseScreen : UserControl
     {
-        Color labelColor = Color.FromArgb(100, Color.Black);
-
+ 
         //pause button boolean
         Boolean PKeyDown;
         public PauseScreen()
         {
-            coverLabel.BackColor = labelColor;
+            coverLabel.BackColor = System.Drawing.Color.FromArgb(160,Color.Black);
             InitializeComponent();
+            if(PKeyDown)
+            { SwitchScreens(); }
         }
 
         private void PauseScreen_PreviewKeyDown(object sender, PreviewKeyDownEventArgs e)
@@ -40,6 +41,13 @@ namespace Summative2DGame
                     PKeyDown = false;
                     break;
             }
+        }
+        public void SwitchScreens()
+        {
+            Form f = this.FindForm();
+            f.Controls.Remove(this);
+            GameScreen gs = new GameScreen();
+            f.Controls.Add(gs);
         }
     }
 }

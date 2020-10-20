@@ -18,7 +18,7 @@ namespace Summative2DGame
         List<ShootingStar> starSide = new List<ShootingStar>();
 
         //brush for asteroid colour
-       SolidBrush whiteBrush = new SolidBrush(Color.Snow);
+        SolidBrush whiteBrush = new SolidBrush(Color.Snow);
         Random randNum = new Random();
 
         //sound player for music

@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Drawing;
+using System.Timers;
 
 namespace Summative2DGame
 {
@@ -11,6 +12,10 @@ namespace Summative2DGame
     {
         public int size, x, y, width, height;
         public Color color;
+        //public static Timer switchTimer;
+
+        //Random rand = new Random();
+
         public Alien(int _x, int _y, int _size, Color _color)
         {
             x = _x;
@@ -21,6 +26,13 @@ namespace Summative2DGame
         public void MoveAlien(int speed)
         {
             y += speed;
+            //int randNum = rand.Next(1, 5);
+            //if(randNum == 1)
+            //{
+            //    switchTimer = new System.Timers.Timer();
+            //    switchTimer.Interval = 2000;
+            //    switchTimer.Enabled = true;
+            //}
         }
         public Boolean Collision(Bullet a)
         {

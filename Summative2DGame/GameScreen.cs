@@ -9,6 +9,7 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Media;
 using System.Threading;
+using System.Timers;
 
 namespace Summative2DGame
 {
@@ -27,7 +28,7 @@ namespace Summative2DGame
         SoundPlayer lose = new SoundPlayer(Properties.Resources.DieSound);
 
         //key press booleans
-        Boolean leftArrowDown, rightArrowDown, SpaceKeyDown;
+        Boolean leftArrowDown, rightArrowDown, SpaceKeyDown, PKeyDown;
 
         //creating player
         Player hero;
@@ -42,8 +43,9 @@ namespace Summative2DGame
 
         //alien configurations;
         int alienSpeed = 4;
-        int spawnPoint = 60;
+        int spawnPoint = 50;
         int alienSize;
+        int patternLength, patternSpeed;
 
         //timer
         int counter = 30;
@@ -74,6 +76,9 @@ namespace Summative2DGame
                 case Keys.Space:
                     SpaceKeyDown = true;
                     break;
+                case Keys.P:
+                    PKeyDown = true;
+                    break;
             }
         }
 
@@ -90,6 +95,9 @@ namespace Summative2DGame
                     break;
                 case Keys.Space:
                     SpaceKeyDown = false;
+                    break;
+                case Keys.P:
+                    PKeyDown = true;
                     break;
             }
         }
@@ -151,11 +159,13 @@ namespace Summative2DGame
             }
             else if (counter < 25)
             {
-                spawnPoint = 40;
+                spawnPoint = 25;
+                alienSpeed = 5;
             }
             else if (counter < 15)
             {
-                spawnPoint = 30;
+                spawnPoint = 15;
+                shotCounter = 15;
                 playerSpeed = 15;
             }
             #endregion
@@ -207,8 +217,15 @@ namespace Summative2DGame
             { 
                 if (a.y > 470) 
                 { GameOver(); }
-            } 
+            }
 
+            #endregion
+
+            #region Pause
+            if(PKeyDown)
+            {
+                Pause();
+            }
             #endregion
 
             Refresh();
@@ -261,6 +278,12 @@ namespace Summative2DGame
             {
                 alien1.RemoveAt(i);
             }
+        }
+        public void Pause()
+        {
+            Form f = this.FindForm();
+            PauseScreen ms = new PauseScreen();
+            f.Controls.Add(ms);
         }
         public void GameOver()
         {
