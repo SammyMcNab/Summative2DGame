@@ -15,6 +15,7 @@ namespace Summative2DGame
 {
     public partial class GameScreen : UserControl
     {
+        //alien list
         public static List<Alien> alien1 = new List<Alien>();
         public static List<Bullet> bulletList = new List<Bullet>();
 
@@ -28,24 +29,15 @@ namespace Summative2DGame
         SoundPlayer lose = new SoundPlayer(Properties.Resources.DieSound);
 
         //key press booleans
-        Boolean leftArrowDown, rightArrowDown, SpaceKeyDown, PKeyDown;
+        Boolean leftArrowDown, rightArrowDown, spaceKeyDown, escKeyDown;
 
         //creating player
         Player hero;
 
-        //player configurations
-        int playerSize = 20;
-        int playerSpeed = 15;
-
-        //bullet configurations
-        int bulletSize = 15;
-        int bulletSpeed = 20;
-
-        //alien configurations;
-        int alienSpeed = 4;
-        int spawnPoint = 50;
+        //initialize alien size int
         int alienSize;
-        int patternLength, patternSpeed;
+
+        int spawnPoint = 50;
 
         //timer
         int counter = 30;
@@ -74,10 +66,11 @@ namespace Summative2DGame
                     rightArrowDown = true;
                     break;
                 case Keys.Space:
-                    SpaceKeyDown = true;
+                    spaceKeyDown = true;
                     break;
-                case Keys.P:
-                    PKeyDown = true;
+                case Keys.Escape:
+                    escKeyDown = true;
+                    Pause();
                     break;
             }
         }
@@ -94,10 +87,10 @@ namespace Summative2DGame
                     rightArrowDown = false;
                     break;
                 case Keys.Space:
-                    SpaceKeyDown = false;
+                    spaceKeyDown = false;
                     break;
                 case Keys.P:
-                    PKeyDown = true;
+                    escKeyDown = false;
                     break;
             }
         }
@@ -115,12 +108,12 @@ namespace Summative2DGame
             else if (rand == 4) { c = Color.DimGray; }
             else if (rand == 5) { c = Color.GhostWhite; }
 
-            Alien alienN1 = new Alien(spawnX1, 0, alienSize, c);
+            Alien alienN1 = new Alien(spawnX1, 0, alienSize, c, Alien.speed);
             alien1.Add(alienN1);
         }
         public void MakeBullet()
         {
-            Bullet bullet = new Bullet(hero.x + 5, hero.y - 10, bulletSize);
+            Bullet bullet = new Bullet(hero.x + 5, hero.y - 10, Bullet.bulletSize, Bullet.bulletSpeed);
             bulletList.Add(bullet);
         }
         public void OnStart()
@@ -130,9 +123,9 @@ namespace Summative2DGame
             bulletList.Clear();
             outputLabel.Visible = true;
             gameOverLabel.Visible = false;
-            game_Tick.Enabled = true;
+            gameTimer.Enabled = true;
             MakeAlien();
-            hero = new Player(this.Width / 2 - 15, this.Height - 30, playerSize);
+            hero = new Player(this.Width / 2 - 15, this.Height - 30, Player.playerSize, Player.playerSpeed);
         }
         private void gameTimer_Tick(object sender, EventArgs e)
         {
@@ -159,21 +152,23 @@ namespace Summative2DGame
             }
             else if (counter < 25)
             {
+                foreach (Alien a in alien1)
+                {
+                    Alien.speed = 5;
+                }
                 spawnPoint = 25;
-                alienSpeed = 5;
             }
             else if (counter < 15)
             {
                 spawnPoint = 15;
                 shotCounter = 15;
-                playerSpeed = 15;
             }
             #endregion
 
             #region Move Alien
             foreach (Alien a in alien1)
             {
-                a.MoveAlien(alienSpeed);
+                a.MoveAlien(Alien.speed);
             }
             #endregion
 
@@ -189,16 +184,16 @@ namespace Summative2DGame
             #region Moving player
             if (leftArrowDown == true && hero.x > 0)
             {
-                hero.Move(playerSpeed, false);
+                hero.Move(hero.speed, false);
             }
-            else if (rightArrowDown == true && hero.x < this.Width - playerSize)
+            else if (rightArrowDown == true && hero.x < this.Width - hero.size)
             {
-                hero.Move(playerSpeed, true);
+                hero.Move(hero.speed, true);
             }
             #endregion
 
             #region shooting
-            if (SpaceKeyDown == true && shotCounter > 10)
+            if (spaceKeyDown == true && shotCounter > 10)
             {
                 shotCounter = 0;
                 MakeBullet();
@@ -207,7 +202,7 @@ namespace Summative2DGame
 
             foreach (Bullet b in bulletList) 
             {
-                b.MoveBullet(bulletSpeed); 
+                b.MoveBullet(b.speed); 
             }
 
             #endregion
@@ -221,18 +216,11 @@ namespace Summative2DGame
 
             #endregion
 
-            #region Pause
-            if(PKeyDown)
-            {
-                Pause();
-            }
-            #endregion
-
             Refresh();
         }
         public void GameWin()
         {
-            game_Tick.Enabled = false;
+            gameTimer.Enabled = false;
 
             outputLabel.Visible = false;
             gameOverLabel.Visible = true;
@@ -281,13 +269,30 @@ namespace Summative2DGame
         }
         public void Pause()
         {
-            Form f = this.FindForm();
-            PauseScreen ms = new PauseScreen();
-            f.Controls.Add(ms);
+            if (gameTimer.Enabled == true)
+            {
+
+                gameTimer.Enabled = false;
+
+                DialogResult dr = PauseForm.Show();
+
+                if (dr == DialogResult.Cancel)
+                {
+                    gameTimer.Enabled = true;
+                }
+                else if (dr == DialogResult.Abort)
+                {
+                    Form form = this.FindForm();
+                    MainScreen ms = new MainScreen();
+
+                    form.Controls.Add(ms);
+                    form.Controls.Remove(this);
+                }
+            }
         }
         public void GameOver()
         {
-            game_Tick.Enabled = false;
+            gameTimer.Enabled = false;
 
             lose.Play();
             outputLabel.Visible = false;
@@ -318,7 +323,7 @@ namespace Summative2DGame
             e.Graphics.FillRectangle(whiteBrush, hero.x, hero.y, hero.size, hero.size);
 
             foreach (Bullet b in bulletList)
-            { e.Graphics.FillEllipse(bulletBrush, b.x, b.y, bulletSize, bulletSize); }
+            { e.Graphics.FillEllipse(bulletBrush, b.x, b.y, b.size, b.size); }
 
         }
     }

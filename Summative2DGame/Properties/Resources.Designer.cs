@@ -86,5 +86,15 @@ namespace Summative2DGame.Properties {
                 return ResourceManager.GetStream("MenuTheme", resourceCulture);
             }
         }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap SpaceBackground {
+            get {
+                object obj = ResourceManager.GetObject("SpaceBackground", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
     }
 }

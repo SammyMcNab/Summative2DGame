@@ -29,16 +29,16 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            this.game_Tick = new System.Windows.Forms.Timer(this.components);
+            this.gameTimer = new System.Windows.Forms.Timer(this.components);
             this.outputLabel = new System.Windows.Forms.Label();
             this.gameOverLabel = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
-            // game_Tick
+            // gameTimer
             // 
-            this.game_Tick.Enabled = true;
-            this.game_Tick.Interval = 20;
-            this.game_Tick.Tick += new System.EventHandler(this.gameTimer_Tick);
+            this.gameTimer.Enabled = true;
+            this.gameTimer.Interval = 20;
+            this.gameTimer.Tick += new System.EventHandler(this.gameTimer_Tick);
             // 
             // outputLabel
             // 
@@ -78,7 +78,7 @@
 
         #endregion
 
-        private System.Windows.Forms.Timer game_Tick;
+        private System.Windows.Forms.Timer gameTimer;
         private System.Windows.Forms.Label outputLabel;
         private System.Windows.Forms.Label gameOverLabel;
     }

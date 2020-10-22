@@ -8,14 +8,21 @@ namespace Summative2DGame
 {
     public class Player
     {
-        public int playerSpeed, playerHealth, x, y, size;
+        public int x, y, size,speed;
         public Boolean playerDirection;
 
-        public Player(int _x, int _y, int _size)
+        //player configurations
+        public static int playerSize = 20;
+        public static int playerSpeed = 15;
+
+
+
+        public Player(int _x, int _y, int _size, int _speed)
         {
             x = _x;
             y = _y;
             size = _size;
+            speed = _speed;
         }
         public void Move(int playerSpeed, Boolean playerDirection)
         {

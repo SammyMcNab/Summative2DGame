@@ -11,28 +11,26 @@ namespace Summative2DGame
     public class Alien
     {
         public int size, x, y, width, height;
+
         public Color color;
-        //public static Timer switchTimer;
 
-        //Random rand = new Random();
+        public static int speed = 4;
 
-        public Alien(int _x, int _y, int _size, Color _color)
+        int alienSize;
+
+
+        public Alien(int _x, int _y, int _size, Color _color, int _speed)
         {
             x = _x;
             y = _y;
             size = _size;
             color = _color;
+            speed = _speed;
         }
         public void MoveAlien(int speed)
         {
             y += speed;
-            //int randNum = rand.Next(1, 5);
-            //if(randNum == 1)
-            //{
-            //    switchTimer = new System.Timers.Timer();
-            //    switchTimer.Interval = 2000;
-            //    switchTimer.Enabled = true;
-            //}
+
         }
         public Boolean Collision(Bullet a)
         {
