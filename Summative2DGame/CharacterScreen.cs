@@ -10,9 +10,9 @@ using System.Windows.Forms;
 
 namespace Summative2DGame
 {
-    public partial class LoadingScreen : UserControl
+    public partial class CharacterScreen : UserControl
     {
-        public LoadingScreen()
+        public CharacterScreen()
         {
             InitializeComponent();
         }

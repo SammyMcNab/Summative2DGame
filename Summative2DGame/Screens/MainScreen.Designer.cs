@@ -33,6 +33,7 @@
             this.playButton = new System.Windows.Forms.Button();
             this.star_Timer = new System.Windows.Forms.Timer(this.components);
             this.exitButton = new System.Windows.Forms.Button();
+            this.helpButton = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // titleLabel
@@ -40,9 +41,9 @@
             this.titleLabel.BackColor = System.Drawing.Color.Transparent;
             this.titleLabel.Font = new System.Drawing.Font("MS PGothic", 48F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.titleLabel.ForeColor = System.Drawing.Color.White;
-            this.titleLabel.Location = new System.Drawing.Point(180, 66);
+            this.titleLabel.Location = new System.Drawing.Point(239, 86);
             this.titleLabel.Name = "titleLabel";
-            this.titleLabel.Size = new System.Drawing.Size(686, 116);
+            this.titleLabel.Size = new System.Drawing.Size(568, 95);
             this.titleLabel.TabIndex = 0;
             this.titleLabel.Text = "Space Invaders";
             // 
@@ -54,13 +55,14 @@
             this.playButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.playButton.Font = new System.Drawing.Font("MS PGothic", 16.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.playButton.ForeColor = System.Drawing.Color.White;
-            this.playButton.Location = new System.Drawing.Point(324, 209);
+            this.playButton.Location = new System.Drawing.Point(377, 259);
             this.playButton.Name = "playButton";
-            this.playButton.Size = new System.Drawing.Size(259, 73);
+            this.playButton.Size = new System.Drawing.Size(281, 85);
             this.playButton.TabIndex = 1;
             this.playButton.Text = "PLAY";
             this.playButton.UseVisualStyleBackColor = false;
             this.playButton.Click += new System.EventHandler(this.playButton_Click);
+            this.playButton.Enter += new System.EventHandler(this.playButton_Enter);
             // 
             // star_Timer
             // 
@@ -75,24 +77,40 @@
             this.exitButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.exitButton.Font = new System.Drawing.Font("MS PGothic", 16.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.exitButton.ForeColor = System.Drawing.Color.White;
-            this.exitButton.Location = new System.Drawing.Point(342, 343);
+            this.exitButton.Location = new System.Drawing.Point(377, 492);
             this.exitButton.Name = "exitButton";
-            this.exitButton.Size = new System.Drawing.Size(225, 68);
+            this.exitButton.Size = new System.Drawing.Size(281, 85);
             this.exitButton.TabIndex = 2;
             this.exitButton.Text = "Exit";
             this.exitButton.UseVisualStyleBackColor = false;
             this.exitButton.Click += new System.EventHandler(this.exitButton_Click);
+            this.exitButton.Enter += new System.EventHandler(this.exitButton_Enter);
+            // 
+            // helpButton
+            // 
+            this.helpButton.FlatAppearance.BorderSize = 4;
+            this.helpButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.helpButton.Font = new System.Drawing.Font("MS PGothic", 16.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.helpButton.ForeColor = System.Drawing.Color.White;
+            this.helpButton.Location = new System.Drawing.Point(377, 373);
+            this.helpButton.Name = "helpButton";
+            this.helpButton.Size = new System.Drawing.Size(281, 85);
+            this.helpButton.TabIndex = 3;
+            this.helpButton.Text = "HELP";
+            this.helpButton.UseVisualStyleBackColor = true;
+            this.helpButton.Enter += new System.EventHandler(this.helpButton_Enter);
             // 
             // MainScreen
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
-            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.AutoScaleDimensions = new System.Drawing.SizeF(120F, 120F);
+            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Dpi;
             this.BackColor = System.Drawing.Color.Black;
+            this.Controls.Add(this.helpButton);
             this.Controls.Add(this.exitButton);
             this.Controls.Add(this.playButton);
             this.Controls.Add(this.titleLabel);
             this.Name = "MainScreen";
-            this.Size = new System.Drawing.Size(912, 482);
+            this.Size = new System.Drawing.Size(1049, 669);
             this.Paint += new System.Windows.Forms.PaintEventHandler(this.MainScreen_Paint);
             this.ResumeLayout(false);
 
@@ -104,5 +122,6 @@
         private System.Windows.Forms.Button playButton;
         private System.Windows.Forms.Timer star_Timer;
         private System.Windows.Forms.Button exitButton;
+        private System.Windows.Forms.Button helpButton;
     }
 }

@@ -108,7 +108,7 @@ namespace Summative2DGame
             else if (rand == 4) { c = Color.DimGray; }
             else if (rand == 5) { c = Color.GhostWhite; }
 
-            Alien alienN1 = new Alien(spawnX1, 0, alienSize, c, Alien.speed);
+            Alien alienN1 = new Alien(spawnX1, 0, alienSize, c, Alien.alienSpeed);
             alien1.Add(alienN1);
         }
         public void MakeBullet()
@@ -154,7 +154,7 @@ namespace Summative2DGame
             {
                 foreach (Alien a in alien1)
                 {
-                    Alien.speed = 5;
+                    a.speed = 5;
                 }
                 spawnPoint = 25;
             }
@@ -168,7 +168,7 @@ namespace Summative2DGame
             #region Move Alien
             foreach (Alien a in alien1)
             {
-                a.MoveAlien(Alien.speed);
+                a.MoveAlien(a.speed);
             }
             #endregion
 

@@ -10,11 +10,11 @@ namespace Summative2DGame
 {
     public class Alien
     {
-        public int size, x, y, width, height;
+        public int size, x, y, width, height, speed;
 
         public Color color;
 
-        public static int speed = 4;
+        public static int alienSpeed = 4;
 
         int alienSize;
 

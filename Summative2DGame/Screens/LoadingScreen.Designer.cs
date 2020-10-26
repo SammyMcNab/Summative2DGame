@@ -1,6 +1,6 @@
 ﻿namespace Summative2DGame
 {
-    partial class LoadingScreen
+    partial class helpScreen
     {
         /// <summary> 
         /// Required designer variable.
@@ -28,8 +28,16 @@
         /// </summary>
         private void InitializeComponent()
         {
-            components = new System.ComponentModel.Container();
+            this.SuspendLayout();
+            // 
+            // helpScreen
+            // 
+            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.Name = "helpScreen";
+            this.Size = new System.Drawing.Size(981, 551);
+            this.ResumeLayout(false);
+
         }
 
         #endregion

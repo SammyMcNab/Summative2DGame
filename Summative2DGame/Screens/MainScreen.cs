@@ -23,7 +23,8 @@ namespace Summative2DGame
 
         //sound player for music
         SoundPlayer theme = new SoundPlayer(Properties.Resources.MenuTheme);
-
+        SoundPlayer buttonSwitch = new SoundPlayer(Properties.Resources.ButtonSwitch);
+        SoundPlayer buttonClick = new SoundPlayer(Properties.Resources.ButtonClick);
         public MainScreen()
         {
             InitializeComponent();
@@ -48,13 +49,13 @@ namespace Summative2DGame
             foreach (ShootingStar s in starTop) { s.MoveStar(15); }
             foreach (ShootingStar s in starSide) { s.MoveStar(15); }
 
-            if (starTop[0].y > 482)
+            if (starTop[0].y > 669)
             {
                 starTop.RemoveAt(0);
                 starSide.RemoveAt(0);
             }
 
-            if (starTop[starTop.Count - 1].y > 90)
+            if (starTop[starTop.Count - 1].y > 80)
             {
                 MakeStar();
             }
@@ -78,14 +79,54 @@ namespace Summative2DGame
 
         private void playButton_Click(object sender, EventArgs e)
         {
+            buttonClick.Play();
             theme.Stop();
             Form f = this.FindForm();
             f.Controls.Remove(this);
             // Create an instance of the LoadingScreen
-            GameScreen gs = new GameScreen();
+            CharacterScreen cs = new CharacterScreen();
             // Add the User Control to the Form 
-            f.Controls.Add(gs);
-            gs.Focus();
+            f.Controls.Add(cs);
+            cs.Focus();
+        }
+
+        private void playButton_Enter(object sender, EventArgs e)
+        {
+            buttonSwitch.Play();
+            playButton.BackColor = Color.White;
+            playButton.ForeColor = Color.Black;
+
+            helpButton.BackColor = Color.Black;
+            helpButton.ForeColor = Color.White;
+
+            exitButton.BackColor = Color.Black;
+            exitButton.ForeColor = Color.White;
+        }
+
+        private void helpButton_Enter(object sender, EventArgs e)
+        {
+            buttonSwitch.Play();
+            playButton.BackColor = Color.Black;
+            playButton.ForeColor = Color.White;
+
+            helpButton.BackColor = Color.White;
+            helpButton.ForeColor = Color.Black;
+
+            exitButton.BackColor = Color.Black;
+            exitButton.ForeColor = Color.White;
+        }
+
+        private void exitButton_Enter(object sender, EventArgs e)
+        {
+            buttonSwitch.Play();
+            playButton.BackColor = Color.Black;
+            playButton.ForeColor = Color.White;
+
+            helpButton.BackColor = Color.Black;
+            helpButton.ForeColor = Color.White;
+
+            exitButton.BackColor = Color.White;
+            exitButton.ForeColor = Color.Black;
         }
     }
 }

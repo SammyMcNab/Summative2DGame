@@ -63,9 +63,97 @@ namespace Summative2DGame.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.IO.UnmanagedMemoryStream similar to System.IO.MemoryStream.
         /// </summary>
+        internal static System.IO.UnmanagedMemoryStream ButtonClick {
+            get {
+                return ResourceManager.GetStream("ButtonClick", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.IO.UnmanagedMemoryStream similar to System.IO.MemoryStream.
+        /// </summary>
+        internal static System.IO.UnmanagedMemoryStream ButtonSwitch {
+            get {
+                return ResourceManager.GetStream("ButtonSwitch", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.IO.UnmanagedMemoryStream similar to System.IO.MemoryStream.
+        /// </summary>
         internal static System.IO.UnmanagedMemoryStream DieSound {
             get {
                 return ResourceManager.GetStream("DieSound", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap GreenJetBoostedAmpedFiring {
+            get {
+                object obj = ResourceManager.GetObject("GreenJetBoostedAmpedFiring", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap GreenJetBoostedNeutral {
+            get {
+                object obj = ResourceManager.GetObject("GreenJetBoostedNeutral", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap GreenJetBoostedNeutralFiring {
+            get {
+                object obj = ResourceManager.GetObject("GreenJetBoostedNeutralFiring", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap GreenJetHoveringAmpedFiring {
+            get {
+                object obj = ResourceManager.GetObject("GreenJetHoveringAmpedFiring", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap GreenJetHoveringFiring {
+            get {
+                object obj = ResourceManager.GetObject("GreenJetHoveringFiring", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap GreenJetHoveringNeutral {
+            get {
+                object obj = ResourceManager.GetObject("GreenJetHoveringNeutral", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap GreenJetNeutral {
+            get {
+                object obj = ResourceManager.GetObject("GreenJetNeutral", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
             }
         }
         
@@ -84,6 +172,15 @@ namespace Summative2DGame.Properties {
         internal static System.IO.UnmanagedMemoryStream MenuTheme {
             get {
                 return ResourceManager.GetStream("MenuTheme", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.IO.UnmanagedMemoryStream similar to System.IO.MemoryStream.
+        /// </summary>
+        internal static System.IO.UnmanagedMemoryStream MonsterGrowl {
+            get {
+                return ResourceManager.GetStream("MonsterGrowl", resourceCulture);
             }
         }
         
