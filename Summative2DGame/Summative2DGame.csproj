@@ -66,12 +66,6 @@
     <Compile Include="Screens\GameScreen.Designer.cs">
       <DependentUpon>GameScreen.cs</DependentUpon>
     </Compile>
-    <Compile Include="Screens\LoadingScreen.cs">
-      <SubType>UserControl</SubType>
-    </Compile>
-    <Compile Include="Screens\LoadingScreen.Designer.cs">
-      <DependentUpon>LoadingScreen.cs</DependentUpon>
-    </Compile>
     <Compile Include="Screens\MainScreen.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -96,9 +90,6 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Screens\GameScreen.resx">
       <DependentUpon>GameScreen.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Screens\LoadingScreen.resx">
-      <DependentUpon>LoadingScreen.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Screens\MainScreen.resx">
       <DependentUpon>MainScreen.cs</DependentUpon>

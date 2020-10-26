@@ -80,7 +80,7 @@
             this.exitButton.Location = new System.Drawing.Point(377, 492);
             this.exitButton.Name = "exitButton";
             this.exitButton.Size = new System.Drawing.Size(281, 85);
-            this.exitButton.TabIndex = 2;
+            this.exitButton.TabIndex = 3;
             this.exitButton.Text = "Exit";
             this.exitButton.UseVisualStyleBackColor = false;
             this.exitButton.Click += new System.EventHandler(this.exitButton_Click);
@@ -95,7 +95,7 @@
             this.helpButton.Location = new System.Drawing.Point(377, 373);
             this.helpButton.Name = "helpButton";
             this.helpButton.Size = new System.Drawing.Size(281, 85);
-            this.helpButton.TabIndex = 3;
+            this.helpButton.TabIndex = 2;
             this.helpButton.Text = "HELP";
             this.helpButton.UseVisualStyleBackColor = true;
             this.helpButton.Enter += new System.EventHandler(this.helpButton_Enter);
@@ -110,7 +110,7 @@
             this.Controls.Add(this.playButton);
             this.Controls.Add(this.titleLabel);
             this.Name = "MainScreen";
-            this.Size = new System.Drawing.Size(1049, 669);
+            this.Size = new System.Drawing.Size(1064, 695);
             this.Paint += new System.Windows.Forms.PaintEventHandler(this.MainScreen_Paint);
             this.ResumeLayout(false);
 

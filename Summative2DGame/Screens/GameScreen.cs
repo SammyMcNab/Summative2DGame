@@ -89,7 +89,7 @@ namespace Summative2DGame
                 case Keys.Space:
                     spaceKeyDown = false;
                     break;
-                case Keys.P:
+                case Keys.Escape:
                     escKeyDown = false;
                     break;
             }

@@ -17,6 +17,8 @@ namespace Summative2DGame
         List<ShootingStar> starTop = new List<ShootingStar>();
         List<ShootingStar> starSide = new List<ShootingStar>();
 
+        Boolean themePlay = true;
+
         //brush for asteroid colour
         SolidBrush whiteBrush = new SolidBrush(Color.Snow);
         Random randNum = new Random();
@@ -28,7 +30,10 @@ namespace Summative2DGame
         public MainScreen()
         {
             InitializeComponent();
-            theme.PlayLooping();
+                if(themePlay)
+            { 
+                theme.PlayLooping(); 
+            }
             MakeStar();
         }
         private void MakeStar()
