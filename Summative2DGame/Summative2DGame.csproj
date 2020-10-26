@@ -157,13 +157,13 @@
     <None Include="Resources\GreenJetHoveringNeutral.png" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Resources\GreenJetNeutral.png" />
-  </ItemGroup>
-  <ItemGroup>
     <None Include="Resources\ButtonSwitch.wav" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\ButtonClick.wav" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\GreenJetNeutral-1.png %281%29.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

@@ -150,9 +150,9 @@ namespace Summative2DGame.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap GreenJetNeutral {
+        internal static System.Drawing.Bitmap GreenJetNeutral_1_png__1_ {
             get {
-                object obj = ResourceManager.GetObject("GreenJetNeutral", resourceCulture);
+                object obj = ResourceManager.GetObject("GreenJetNeutral_1_png__1_", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
