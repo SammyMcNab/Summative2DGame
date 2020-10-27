@@ -47,7 +47,8 @@
             this.greenButton.TabIndex = 1;
             this.greenButton.Text = "GREEN MACHINE";
             this.greenButton.UseVisualStyleBackColor = true;
-            this.greenButton.Click += new System.EventHandler(this.button1_Click);
+            this.greenButton.Click += new System.EventHandler(this.greenButton_Click);
+            this.greenButton.Enter += new System.EventHandler(this.greenButton_Enter);
             // 
             // playButton
             // 
@@ -58,6 +59,8 @@
             this.playButton.TabIndex = 3;
             this.playButton.Text = "READY";
             this.playButton.UseVisualStyleBackColor = true;
+            this.playButton.Click += new System.EventHandler(this.playButton_Click);
+            this.playButton.Enter += new System.EventHandler(this.playButton_Enter);
             // 
             // purpleButton
             // 
@@ -68,6 +71,8 @@
             this.purpleButton.TabIndex = 2;
             this.purpleButton.Text = "PAIN AND LOVE";
             this.purpleButton.UseVisualStyleBackColor = true;
+            this.purpleButton.Click += new System.EventHandler(this.purpleButton_Click);
+            this.purpleButton.Enter += new System.EventHandler(this.purpleButton_Enter);
             // 
             // pictureBox2
             // 
