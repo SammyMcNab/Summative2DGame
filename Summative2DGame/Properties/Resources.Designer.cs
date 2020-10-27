@@ -150,9 +150,9 @@ namespace Summative2DGame.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap GreenJetNeutral_1_png__1_ {
+        internal static System.Drawing.Bitmap GreenJetNeutral {
             get {
-                object obj = ResourceManager.GetObject("GreenJetNeutral_1_png__1_", resourceCulture);
+                object obj = ResourceManager.GetObject("GreenJetNeutral", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -181,6 +181,46 @@ namespace Summative2DGame.Properties {
         internal static System.IO.UnmanagedMemoryStream MonsterGrowl {
             get {
                 return ResourceManager.GetStream("MonsterGrowl", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap PurpleJetBoostedAmpedFiring {
+            get {
+                object obj = ResourceManager.GetObject("PurpleJetBoostedAmpedFiring", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap PurpleJetBoostedFiring {
+            get {
+                object obj = ResourceManager.GetObject("PurpleJetBoostedFiring", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap PurpleJetBoostedNeutral {
+            get {
+                object obj = ResourceManager.GetObject("PurpleJetBoostedNeutral", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap PurpleJetNeutral {
+            get {
+                object obj = ResourceManager.GetObject("PurpleJetNeutral", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
             }
         }
         

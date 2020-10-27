@@ -145,8 +145,8 @@
   <data name="GreenJetHoveringNeutral" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\GreenJetHoveringNeutral.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="GreenJetNeutral_1_png__1_" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\GreenJetNeutral-1.png (1).png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="GreenJetNeutral" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\GreenJetNeutral.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="laserShot" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\151022__bubaproducer__laser-shot-silenced.wav;System.IO.MemoryStream, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
@@ -156,6 +156,18 @@
   </data>
   <data name="MonsterGrowl" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\MonsterGrowl.wav;System.IO.MemoryStream, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="PurpleJetBoostedAmpedFiring" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\PurpleJetBoostedAmpedFiring.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="PurpleJetBoostedFiring" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\PurpleJetBoostedFiring.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="PurpleJetBoostedNeutral" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\PurpleJetBoostedNeutral.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="PurpleJetNeutral" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\PurpleJetNeutral.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="SpaceBackground" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\SpaceBackground.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>

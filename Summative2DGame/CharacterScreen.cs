@@ -16,5 +16,18 @@ namespace Summative2DGame
         {
             InitializeComponent();
         }
+
+        private void playButton_Click(object sender, EventArgs e)
+        {
+
+        }
+        private void greenButton_Click(object sender, EventArgs e)
+        {
+
+        }
+        private void purpleButton_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }

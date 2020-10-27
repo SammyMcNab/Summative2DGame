@@ -139,31 +139,43 @@
     <None Include="Resources\SpaceBackground.png" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Resources\GreenJetHoveringFiring.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\GreenJetHoveringAmpedFiring.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\GreenJetBoostedAmpedFiring.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\GreenJetBoostedNeutralFiring.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\GreenJetBoostedNeutral.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\GreenJetHoveringNeutral.png" />
-  </ItemGroup>
-  <ItemGroup>
     <None Include="Resources\ButtonSwitch.wav" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\ButtonClick.wav" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Resources\GreenJetNeutral-1.png %281%29.png" />
+    <None Include="Resources\GreenJetHoveringNeutral.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\GreenJetBoostedNeutral.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\GreenJetBoostedNeutralFiring.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\GreenJetBoostedAmpedFiring.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\GreenJetHoveringAmpedFiring.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\GreenJetHoveringFiring.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\PurpleJetBoostedNeutral.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\PurpleJetBoostedFiring.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\PurpleJetBoostedAmpedFiring.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\GreenJetNeutral.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\PurpleJetNeutral.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

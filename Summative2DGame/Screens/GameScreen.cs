@@ -27,6 +27,7 @@ namespace Summative2DGame
         //sounds
         SoundPlayer laser = new SoundPlayer(Properties.Resources.laserShot);
         SoundPlayer lose = new SoundPlayer(Properties.Resources.DieSound);
+        SoundPlayer buttonClick = new SoundPlayer(Properties.Resources.ButtonClick);
 
         //key press booleans
         Boolean leftArrowDown, rightArrowDown, spaceKeyDown, escKeyDown;
@@ -47,6 +48,7 @@ namespace Summative2DGame
         Random randNum = new Random();
         public GameScreen()
         {
+            buttonClick.Play();
             InitializeComponent();
             outputLabel.Visible = false;
             gameOverLabel.Visible = false;
@@ -323,7 +325,9 @@ namespace Summative2DGame
             e.Graphics.FillRectangle(whiteBrush, hero.x, hero.y, hero.size, hero.size);
 
             foreach (Bullet b in bulletList)
-            { e.Graphics.FillEllipse(bulletBrush, b.x, b.y, b.size, b.size); }
+            { 
+                e.Graphics.FillEllipse(bulletBrush, b.x, b.y, b.size, b.size); 
+            }
 
         }
     }

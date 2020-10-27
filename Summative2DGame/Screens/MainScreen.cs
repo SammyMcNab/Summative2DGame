@@ -7,7 +7,8 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-using System.Media; 
+using System.Media;
+using System.Threading;
 
 namespace Summative2DGame
 {
@@ -26,7 +27,6 @@ namespace Summative2DGame
         //sound player for music
         SoundPlayer theme = new SoundPlayer(Properties.Resources.MenuTheme);
         SoundPlayer buttonSwitch = new SoundPlayer(Properties.Resources.ButtonSwitch);
-        SoundPlayer buttonClick = new SoundPlayer(Properties.Resources.ButtonClick);
         public MainScreen()
         {
             InitializeComponent();
@@ -84,15 +84,22 @@ namespace Summative2DGame
 
         private void playButton_Click(object sender, EventArgs e)
         {
-            buttonClick.Play();
             theme.Stop();
+            //Form f = this.FindForm();
+            //f.Controls.Remove(this);
+
+            //CharacterScreen cs = new CharacterScreen();
+
+            //f.Controls.Add(cs);
+            //cs.Focus();
+
             Form f = this.FindForm();
             f.Controls.Remove(this);
-            // Create an instance of the LoadingScreen
-            CharacterScreen cs = new CharacterScreen();
-            // Add the User Control to the Form 
-            f.Controls.Add(cs);
-            cs.Focus();
+
+            GameScreen gs = new GameScreen();
+
+            f.Controls.Add(gs);
+            gs.Focus();
         }
 
         private void playButton_Enter(object sender, EventArgs e)
