@@ -140,5 +140,10 @@ namespace Summative2DGame
             exitButton.BackColor = Color.White;
             exitButton.ForeColor = Color.Black;
         }
+
+        private void helpButton_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }
