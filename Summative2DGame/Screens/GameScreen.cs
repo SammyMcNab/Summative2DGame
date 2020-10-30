@@ -30,7 +30,7 @@ namespace Summative2DGame
         SoundPlayer buttonClick = new SoundPlayer(Properties.Resources.ButtonClick);
 
         //key press booleans
-        Boolean leftArrowDown, rightArrowDown, spaceKeyDown, escKeyDown;
+        Boolean leftArrowDown, rightArrowDown, downArrowDown, upArrowDown, spaceKeyDown, escKeyDown;
 
         //creating player
         Player hero;
@@ -54,7 +54,7 @@ namespace Summative2DGame
             gameOverLabel.Visible = false;
             OnStart();
 
- 
+
         }
         private void GameScreen_PreviewKeyDown(object sender, PreviewKeyDownEventArgs e)
         {
@@ -66,6 +66,12 @@ namespace Summative2DGame
                     break;
                 case Keys.Right:
                     rightArrowDown = true;
+                    break;
+                case Keys.Up:
+                    upArrowDown = true;
+                    break;
+                case Keys.Down:
+                    downArrowDown = true;
                     break;
                 case Keys.Space:
                     spaceKeyDown = true;
@@ -87,6 +93,12 @@ namespace Summative2DGame
                     break;
                 case Keys.Right:
                     rightArrowDown = false;
+                    break;
+                case Keys.Up:
+                    upArrowDown = false;
+                    break;
+                case Keys.Down:
+                    downArrowDown = false;
                     break;
                 case Keys.Space:
                     spaceKeyDown = false;
@@ -202,17 +214,17 @@ namespace Summative2DGame
                 laser.Play();
             }
 
-            foreach (Bullet b in bulletList) 
+            foreach (Bullet b in bulletList)
             {
-                b.MoveBullet(b.speed); 
+                b.MoveBullet(b.speed);
             }
 
             #endregion
 
             #region Game Over
-            foreach (Alien a in alien1) 
-            { 
-                if (a.y > 470) 
+            foreach (Alien a in alien1)
+            {
+                if (a.y > 470)
                 { GameOver(); }
             }
 
@@ -325,8 +337,8 @@ namespace Summative2DGame
             e.Graphics.FillRectangle(whiteBrush, hero.x, hero.y, hero.size, hero.size);
 
             foreach (Bullet b in bulletList)
-            { 
-                e.Graphics.FillEllipse(bulletBrush, b.x, b.y, b.size, b.size); 
+            {
+                e.Graphics.FillEllipse(bulletBrush, b.x, b.y, b.size, b.size);
             }
 
         }

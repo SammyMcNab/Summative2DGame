@@ -18,6 +18,8 @@ namespace Summative2DGame
 
         int alienSize;
 
+        Image image;
+
 
         public Alien(int _x, int _y, int _size, Color _color, int _speed)
         {
@@ -27,10 +29,17 @@ namespace Summative2DGame
             color = _color;
             speed = _speed;
         }
+        //public Alien( int _x, int _y, int _width, int _height, Image _image)
+        //{
+        //    x = _x;
+        //    y = _y;
+        //    width = _width;
+        //    height = _height;
+        //    image = _image;
+        //}
         public void MoveAlien(int speed)
         {
             y += speed;
-
         }
         public Boolean Collision(Bullet a)
         {
