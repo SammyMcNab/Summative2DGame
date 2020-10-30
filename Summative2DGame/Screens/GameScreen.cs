@@ -54,7 +54,6 @@ namespace Summative2DGame
             gameOverLabel.Visible = false;
             OnStart();
 
-
         }
         private void GameScreen_PreviewKeyDown(object sender, PreviewKeyDownEventArgs e)
         {
