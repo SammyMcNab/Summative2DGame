@@ -38,9 +38,10 @@
             this.continueButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.continueButton.Font = new System.Drawing.Font("MS PGothic", 16.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.continueButton.ForeColor = System.Drawing.Color.White;
-            this.continueButton.Location = new System.Drawing.Point(393, 260);
+            this.continueButton.Location = new System.Drawing.Point(295, 211);
+            this.continueButton.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.continueButton.Name = "continueButton";
-            this.continueButton.Size = new System.Drawing.Size(205, 71);
+            this.continueButton.Size = new System.Drawing.Size(154, 58);
             this.continueButton.TabIndex = 0;
             this.continueButton.Text = "CONTINUE";
             this.continueButton.UseVisualStyleBackColor = false;
@@ -52,9 +53,10 @@
             this.exitButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.exitButton.Font = new System.Drawing.Font("MS PGothic", 16.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.exitButton.ForeColor = System.Drawing.Color.White;
-            this.exitButton.Location = new System.Drawing.Point(12, 260);
+            this.exitButton.Location = new System.Drawing.Point(9, 211);
+            this.exitButton.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.exitButton.Name = "exitButton";
-            this.exitButton.Size = new System.Drawing.Size(205, 71);
+            this.exitButton.Size = new System.Drawing.Size(154, 58);
             this.exitButton.TabIndex = 1;
             this.exitButton.Text = "EXIT";
             this.exitButton.UseVisualStyleBackColor = false;
@@ -62,13 +64,14 @@
             // 
             // PauseForm
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
-            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.AutoScaleDimensions = new System.Drawing.SizeF(96F, 96F);
+            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Dpi;
             this.BackColor = System.Drawing.Color.Black;
             this.BackgroundImage = global::Summative2DGame.Properties.Resources.SpaceBackground;
-            this.ClientSize = new System.Drawing.Size(618, 343);
+            this.ClientSize = new System.Drawing.Size(464, 279);
             this.Controls.Add(this.exitButton);
             this.Controls.Add(this.continueButton);
+            this.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.Name = "PauseForm";
             this.Text = "PauseForm";
             this.ResumeLayout(false);

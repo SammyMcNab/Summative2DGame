@@ -88,7 +88,7 @@
             // 
             this.pictureBox1.BackgroundImage = global::Summative2DGame.Properties.Resources.PurpleJetNeutral;
             this.pictureBox1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.pictureBox1.Location = new System.Drawing.Point(119, 209);
+            this.pictureBox1.Location = new System.Drawing.Point(112, 209);
             this.pictureBox1.Name = "pictureBox1";
             this.pictureBox1.Size = new System.Drawing.Size(253, 344);
             this.pictureBox1.TabIndex = 1;
@@ -106,8 +106,8 @@
             // 
             // CharacterScreen
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
-            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.AutoScaleDimensions = new System.Drawing.SizeF(96F, 96F);
+            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Dpi;
             this.BackColor = System.Drawing.Color.Black;
             this.Controls.Add(this.messageLabel);
             this.Controls.Add(this.purpleButton);
