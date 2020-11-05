@@ -57,7 +57,7 @@
             this.playButton.Font = new System.Drawing.Font("MS PGothic", 16.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.playButton.ForeColor = System.Drawing.Color.White;
             this.playButton.Location = new System.Drawing.Point(302, 207);
-            this.playButton.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.playButton.Margin = new System.Windows.Forms.Padding(2);
             this.playButton.Name = "playButton";
             this.playButton.Size = new System.Drawing.Size(225, 68);
             this.playButton.TabIndex = 1;
@@ -80,11 +80,11 @@
             this.exitButton.Font = new System.Drawing.Font("MS PGothic", 16.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.exitButton.ForeColor = System.Drawing.Color.White;
             this.exitButton.Location = new System.Drawing.Point(302, 394);
-            this.exitButton.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.exitButton.Margin = new System.Windows.Forms.Padding(2);
             this.exitButton.Name = "exitButton";
             this.exitButton.Size = new System.Drawing.Size(225, 68);
             this.exitButton.TabIndex = 3;
-            this.exitButton.Text = "Exit";
+            this.exitButton.Text = "EXIT";
             this.exitButton.UseVisualStyleBackColor = false;
             this.exitButton.Click += new System.EventHandler(this.exitButton_Click);
             this.exitButton.Enter += new System.EventHandler(this.exitButton_Enter);
@@ -96,7 +96,7 @@
             this.helpButton.Font = new System.Drawing.Font("MS PGothic", 16.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.helpButton.ForeColor = System.Drawing.Color.White;
             this.helpButton.Location = new System.Drawing.Point(302, 298);
-            this.helpButton.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.helpButton.Margin = new System.Windows.Forms.Padding(2);
             this.helpButton.Name = "helpButton";
             this.helpButton.Size = new System.Drawing.Size(225, 68);
             this.helpButton.TabIndex = 2;
@@ -114,7 +114,7 @@
             this.Controls.Add(this.exitButton);
             this.Controls.Add(this.playButton);
             this.Controls.Add(this.titleLabel);
-            this.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.Margin = new System.Windows.Forms.Padding(2);
             this.Name = "MainScreen";
             this.Size = new System.Drawing.Size(851, 556);
             this.Paint += new System.Windows.Forms.PaintEventHandler(this.MainScreen_Paint);

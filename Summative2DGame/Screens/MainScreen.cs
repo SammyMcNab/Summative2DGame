@@ -85,21 +85,21 @@ namespace Summative2DGame
         private void playButton_Click(object sender, EventArgs e)
         {
             theme.Stop();
-            //Form f = this.FindForm();
-            //f.Controls.Remove(this);
-
-            //CharacterScreen cs = new CharacterScreen();
-
-            //f.Controls.Add(cs);
-            //cs.Focus();
-
             Form f = this.FindForm();
             f.Controls.Remove(this);
 
-            GameScreen gs = new GameScreen();
+            CharacterScreen cs = new CharacterScreen();
 
-            f.Controls.Add(gs);
-            gs.Focus();
+            f.Controls.Add(cs);
+            cs.Focus();
+
+            //Form f = this.FindForm();
+            //f.Controls.Remove(this);
+
+            //GameScreen gs = new GameScreen();
+
+            //f.Controls.Add(gs);
+            //gs.Focus();
         }
 
         private void playButton_Enter(object sender, EventArgs e)
