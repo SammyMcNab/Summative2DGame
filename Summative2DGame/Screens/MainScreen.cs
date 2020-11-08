@@ -18,7 +18,8 @@ namespace Summative2DGame
         List<ShootingStar> starTop = new List<ShootingStar>();
         List<ShootingStar> starSide = new List<ShootingStar>();
 
-        Boolean themePlay = true;
+        //boolean for theme music 
+        //Boolean themePlay = true;
 
         //brush for asteroid colour
         SolidBrush whiteBrush = new SolidBrush(Color.Snow);
@@ -27,20 +28,18 @@ namespace Summative2DGame
         //sound player for music
         SoundPlayer theme = new SoundPlayer(Properties.Resources.MenuTheme);
         SoundPlayer buttonSwitch = new SoundPlayer(Properties.Resources.ButtonSwitch);
+
         public MainScreen()
         {
             InitializeComponent();
-                if(themePlay)
-            { 
-                theme.PlayLooping(); 
-            }
+            theme.PlayLooping();
             MakeStar();
         }
         private void MakeStar()
         {
             int topX = randNum.Next(this.Width / 2 - 250, this.Width);
-            int rightY = randNum.Next(0, this.Height / 2 + 40);
-            int starSize = randNum.Next(5,10);
+            int rightY = randNum.Next(0, this.Height - 70);
+            int starSize = randNum.Next(5, 10);
 
             ShootingStar topStar = new ShootingStar(topX, 0, starSize);
             starTop.Add(topStar);
@@ -54,7 +53,7 @@ namespace Summative2DGame
             foreach (ShootingStar s in starTop) { s.MoveStar(15); }
             foreach (ShootingStar s in starSide) { s.MoveStar(15); }
 
-            if (starTop[0].y > 669)
+            if (starTop[0].y > this.Height)
             {
                 starTop.RemoveAt(0);
                 starSide.RemoveAt(0);
@@ -65,6 +64,10 @@ namespace Summative2DGame
                 MakeStar();
             }
 
+            if (starSide[starSide.Count - 1].y > 80)
+            {
+                MakeStar();
+            }
             Refresh();
         }
 

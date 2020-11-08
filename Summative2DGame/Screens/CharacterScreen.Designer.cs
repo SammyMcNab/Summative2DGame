@@ -40,8 +40,8 @@
             // 
             // greenButton
             // 
-            this.greenButton.Font = new System.Drawing.Font("MS Gothic", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.greenButton.Location = new System.Drawing.Point(514, 135);
+            this.greenButton.Font = new System.Drawing.Font("MS Gothic", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.greenButton.Location = new System.Drawing.Point(508, 135);
             this.greenButton.Name = "greenButton";
             this.greenButton.Size = new System.Drawing.Size(209, 54);
             this.greenButton.TabIndex = 1;
@@ -56,7 +56,7 @@
             this.playButton.Location = new System.Drawing.Point(681, 0);
             this.playButton.Name = "playButton";
             this.playButton.Size = new System.Drawing.Size(170, 71);
-            this.playButton.TabIndex = 3;
+            this.playButton.TabIndex = 2;
             this.playButton.Text = "READY";
             this.playButton.UseVisualStyleBackColor = true;
             this.playButton.Click += new System.EventHandler(this.playButton_Click);
@@ -64,11 +64,11 @@
             // 
             // purpleButton
             // 
-            this.purpleButton.Font = new System.Drawing.Font("MS Gothic", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.purpleButton.Font = new System.Drawing.Font("MS Gothic", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.purpleButton.Location = new System.Drawing.Point(136, 135);
             this.purpleButton.Name = "purpleButton";
             this.purpleButton.Size = new System.Drawing.Size(209, 54);
-            this.purpleButton.TabIndex = 2;
+            this.purpleButton.TabIndex = 0;
             this.purpleButton.Text = "PAIN AND LOVE";
             this.purpleButton.UseVisualStyleBackColor = true;
             this.purpleButton.Click += new System.EventHandler(this.purpleButton_Click);
@@ -98,7 +98,7 @@
             // 
             this.messageLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 27.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.messageLabel.ForeColor = System.Drawing.Color.White;
-            this.messageLabel.Location = new System.Drawing.Point(59, 0);
+            this.messageLabel.Location = new System.Drawing.Point(105, 0);
             this.messageLabel.Name = "messageLabel";
             this.messageLabel.Size = new System.Drawing.Size(396, 49);
             this.messageLabel.TabIndex = 4;
