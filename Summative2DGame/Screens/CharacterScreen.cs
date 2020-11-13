@@ -21,16 +21,42 @@ namespace Summative2DGame
         private void purpleButton_Click(object sender, EventArgs e)
         {
             shipSelect = 1;
+
+            purpleButton.BackColor = Color.Red;
+
+            if (greenButton.BackColor != Color.Black)
+            {
+                greenButton.BackColor = Color.Black;
+            }
         }
 
         private void greenButton_Click(object sender, EventArgs e)
         {
             shipSelect = 2;
+
+            greenButton.BackColor = Color.Red;
+
+            if (purpleButton.BackColor != Color.Black)
+            {
+                purpleButton.BackColor = Color.Black;
+            }
+            else { }
+
         }
 
         private void playButton_Click(object sender, EventArgs e)
         {
+            if(shipSelect > 0)
+            {
+                Form f = this.FindForm();
+                f.Controls.Remove(this);
 
+                GameScreen gs = new GameScreen();
+
+                f.Controls.Add(gs);
+                gs.Focus();
+            }
+            else { }
         }
 
         private void purpleButton_Enter(object sender, EventArgs e)

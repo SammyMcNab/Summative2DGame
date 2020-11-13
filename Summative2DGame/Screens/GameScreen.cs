@@ -17,7 +17,11 @@ namespace Summative2DGame
     {
         //alien list
         public static List<Alien> alien1 = new List<Alien>();
+        public static List<Alien> leftAlien = new List<Alien>();
+        public static List<Alien> rightAlien = new List<Alien>();
+
         public static List<Bullet> bulletList = new List<Bullet>();
+        public static List<Bullet> ampedBullet = new List<Bullet>();
 
         //brushes
         SolidBrush whiteBrush = new SolidBrush(Color.WhiteSmoke);
@@ -37,6 +41,8 @@ namespace Summative2DGame
 
         //initialize alien size int
         int alienSize;
+        int alienWidth = 10;
+        int alienLength = 30;
 
         int spawnPoint = 50;
 
@@ -123,6 +129,10 @@ namespace Summative2DGame
 
             Alien alienN1 = new Alien(spawnX1, 0, alienSize, c, Alien.alienSpeed);
             alien1.Add(alienN1);
+        }
+        public void MakeAlien2()
+        {
+
         }
         public void MakeBullet()
         {

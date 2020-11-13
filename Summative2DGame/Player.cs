@@ -11,7 +11,7 @@ namespace Summative2DGame
         public int x, y, size, speed, startY, startX;
         public Boolean playerDirection;
 
-        public Image image;
+        public Image shipImage;
         //player configurations
         public static int playerSize = 20;
         public static int playerSpeed = 15;
@@ -31,7 +31,7 @@ namespace Summative2DGame
         //    y = _y;
         //    startX = _x;
         //    startY = _y;
-        //    image = _image
+        //    shipImage = _image
         //}
         public void Move(int playerSpeed, Boolean playerDirection)
         {
