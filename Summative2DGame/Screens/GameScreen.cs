@@ -21,6 +21,10 @@ namespace Summative2DGame
         public static List<Alien> rightAlien = new List<Alien>();
 
         public static List<Bullet> bulletList = new List<Bullet>();
+        public static List<Bullet> leftBulletList1 = new List<Bullet>();
+        public static List<Bullet> leftBulletList2 = new List<Bullet>();
+        public static List<Bullet> rightBulletList1 = new List<Bullet>();
+        public static List<Bullet> rightBulletList2 = new List<Bullet>();
         public static List<Bullet> ampedBullet = new List<Bullet>();
 
         //brushes
@@ -132,7 +136,7 @@ namespace Summative2DGame
         }
         public void MakeAlien2()
         {
-
+            
         }
         public void MakeBullet()
         {
@@ -289,6 +293,10 @@ namespace Summative2DGame
             {
                 alien1.RemoveAt(i);
             }
+        }
+        public void CurveDown()
+        {
+
         }
         public void Pause()
         {

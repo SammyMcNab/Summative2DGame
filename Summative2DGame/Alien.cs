@@ -16,8 +16,6 @@ namespace Summative2DGame
 
         public static int alienSpeed = 4;
 
-        int alienSize;
-
         Image image;
 
 
@@ -40,6 +38,14 @@ namespace Summative2DGame
         public void MoveAlien(int speed)
         {
             y += speed;
+        }
+        public void MoveAlienLeft(int speed)
+        {
+            x -= speed;
+        }
+        public void MoveAlienRight(int speed)
+        {
+            x += speed;
         }
         public Boolean Collision(Bullet a)
         {
