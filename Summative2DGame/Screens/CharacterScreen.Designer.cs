@@ -41,9 +41,10 @@
             // greenButton
             // 
             this.greenButton.Font = new System.Drawing.Font("MS Gothic", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.greenButton.Location = new System.Drawing.Point(508, 135);
+            this.greenButton.Location = new System.Drawing.Point(635, 169);
+            this.greenButton.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.greenButton.Name = "greenButton";
-            this.greenButton.Size = new System.Drawing.Size(209, 54);
+            this.greenButton.Size = new System.Drawing.Size(261, 68);
             this.greenButton.TabIndex = 1;
             this.greenButton.Text = "GREEN MACHINE";
             this.greenButton.UseVisualStyleBackColor = true;
@@ -53,9 +54,10 @@
             // playButton
             // 
             this.playButton.Font = new System.Drawing.Font("MS Gothic", 21.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.playButton.Location = new System.Drawing.Point(681, 0);
+            this.playButton.Location = new System.Drawing.Point(851, 0);
+            this.playButton.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.playButton.Name = "playButton";
-            this.playButton.Size = new System.Drawing.Size(170, 71);
+            this.playButton.Size = new System.Drawing.Size(212, 89);
             this.playButton.TabIndex = 2;
             this.playButton.Text = "READY";
             this.playButton.UseVisualStyleBackColor = true;
@@ -65,9 +67,10 @@
             // purpleButton
             // 
             this.purpleButton.Font = new System.Drawing.Font("MS Gothic", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.purpleButton.Location = new System.Drawing.Point(136, 135);
+            this.purpleButton.Location = new System.Drawing.Point(170, 169);
+            this.purpleButton.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.purpleButton.Name = "purpleButton";
-            this.purpleButton.Size = new System.Drawing.Size(209, 54);
+            this.purpleButton.Size = new System.Drawing.Size(261, 68);
             this.purpleButton.TabIndex = 0;
             this.purpleButton.Text = "PAIN AND LOVE";
             this.purpleButton.UseVisualStyleBackColor = true;
@@ -78,9 +81,10 @@
             // 
             this.pictureBox2.BackgroundImage = global::Summative2DGame.Properties.Resources.GreenJetNeutral;
             this.pictureBox2.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.pictureBox2.Location = new System.Drawing.Point(490, 209);
+            this.pictureBox2.Location = new System.Drawing.Point(612, 261);
+            this.pictureBox2.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.pictureBox2.Name = "pictureBox2";
-            this.pictureBox2.Size = new System.Drawing.Size(253, 344);
+            this.pictureBox2.Size = new System.Drawing.Size(316, 430);
             this.pictureBox2.TabIndex = 2;
             this.pictureBox2.TabStop = false;
             // 
@@ -88,9 +92,10 @@
             // 
             this.pictureBox1.BackgroundImage = global::Summative2DGame.Properties.Resources.PurpleJetNeutral;
             this.pictureBox1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.pictureBox1.Location = new System.Drawing.Point(112, 209);
+            this.pictureBox1.Location = new System.Drawing.Point(140, 261);
+            this.pictureBox1.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(253, 344);
+            this.pictureBox1.Size = new System.Drawing.Size(316, 430);
             this.pictureBox1.TabIndex = 1;
             this.pictureBox1.TabStop = false;
             // 
@@ -98,15 +103,16 @@
             // 
             this.messageLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 27.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.messageLabel.ForeColor = System.Drawing.Color.White;
-            this.messageLabel.Location = new System.Drawing.Point(105, 0);
+            this.messageLabel.Location = new System.Drawing.Point(131, 0);
+            this.messageLabel.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.messageLabel.Name = "messageLabel";
-            this.messageLabel.Size = new System.Drawing.Size(396, 49);
+            this.messageLabel.Size = new System.Drawing.Size(517, 61);
             this.messageLabel.TabIndex = 4;
             this.messageLabel.Text = "CHOOSE YOUR RIDE";
             // 
             // CharacterScreen
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(96F, 96F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(120F, 120F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Dpi;
             this.BackColor = System.Drawing.Color.Black;
             this.Controls.Add(this.messageLabel);
@@ -115,8 +121,9 @@
             this.Controls.Add(this.pictureBox2);
             this.Controls.Add(this.pictureBox1);
             this.Controls.Add(this.greenButton);
+            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.Name = "CharacterScreen";
-            this.Size = new System.Drawing.Size(851, 556);
+            this.Size = new System.Drawing.Size(1064, 695);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.ResumeLayout(false);
