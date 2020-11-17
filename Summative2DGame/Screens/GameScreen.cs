@@ -21,6 +21,7 @@ namespace Summative2DGame
         public static List<Alien> leftAlien = new List<Alien>();
         public static List<Alien> midAlien = new List<Alien>();
         public static List<Alien> rightAlien = new List<Alien>();
+        public static List<Alien> topRow = new List<Alien>();
 
         public static List<Bullet> bulletList = new List<Bullet>();
         public static List<Bullet> leftBulletList1 = new List<Bullet>();
@@ -51,6 +52,8 @@ namespace Summative2DGame
         int alienSize;
         int alienWidth = 10;
         int alienLength = 30;
+
+        int powerUp;
 
         int spawnPoint = 50;
 
@@ -158,9 +161,15 @@ namespace Summative2DGame
             MakeAlien();
             if (CharacterScreen.shipSelect == 1)
             {
-                shipImage = Properties.Resources.PurpleJetNeutral
+                shipImage = Properties.Resources.PurpleJetNeutral;
+                powerUp = 1;
             }
-            hero = new Player(this.Width / 2 - 15, this.Height - 30, Player.playerWidth, Player.playerHeight, );
+            else
+            {
+                shipImage = Properties.Resources.GreenJetHoveringNeutral;
+                powerUp = 2;
+            }
+            hero = new Player(this.Width / 2 - 15, this.Height - 30, Player.playerWidth, Player.playerHeight, shipImage);
         }
         private void gameTimer_Tick(object sender, EventArgs e)
         {
@@ -219,11 +228,19 @@ namespace Summative2DGame
             #region Moving player
             if (leftArrowDown == true && hero.x > 0)
             {
-                hero.Move(hero.speed, false);
+                hero.Move("left");
             }
-            else if (rightArrowDown == true && hero.x < this.Width - hero.size)
+            else if (rightArrowDown == true && hero.x < this.Width - hero.width)
             {
-                hero.Move(hero.speed, true);
+                hero.Move("right");
+            }
+            else if (upArrowDown == true && hero.y > 0)
+            {
+                hero.Move("up");
+            }
+            else if (downArrowDown == true && hero.y > this.Height + hero.height)
+            {
+                hero.Move("down");
             }
             #endregion
 
@@ -235,6 +252,7 @@ namespace Summative2DGame
                 laser.Play();
             }
 
+            //move bullet up 
             foreach (Bullet b in bulletList)
             {
                 b.MoveBullet(b.speed);
@@ -359,7 +377,7 @@ namespace Summative2DGame
             e.Graphics.FillRectangle(whiteBrush, 0, this.Height - 15, this.Width, this.Height);
 
             //drawhero
-            e.Graphics.FillRectangle(whiteBrush, hero.x, hero.y, hero.size, hero.size);
+            e.Graphics.DrawImage(hero.image, hero.x, hero.y, hero.width, hero.height);
 
             foreach (Bullet b in bulletList)
             {

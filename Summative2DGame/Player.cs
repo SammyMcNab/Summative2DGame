@@ -11,7 +11,7 @@ namespace Summative2DGame
         public int x, y, width, height, speed, startY, startX;
         public Boolean playerDirection;
 
-        public Image shipImage;
+        public Image image;
         //player configurations
         public static int playerWidth = 40;
         public static int playerHeight = 100;
@@ -23,40 +23,28 @@ namespace Summative2DGame
             y = _y;
             width = _width;
             height = _height;
-            shipImage = _image;
+            image = _image;
             startX = _x;
             startY = _y;
         }
-        public void Move(int playerSpeed, Boolean playerDirection)
+        public void Move(string direction)
         {
-            //true means moving right
-            if (playerDirection == true)
+            switch (direction)
             {
-                x += playerSpeed;
-            }
-            else
-            {
-                x -= playerSpeed;
+                case "up":
+                    y -= playerSpeed;
+                    break;
+                case "down":
+                    y += playerSpeed;
+                    break;
+                case "right":
+                    x += playerSpeed;
+                    break;
+                case "left":
+                    x -= playerSpeed;
+                    break;
             }
         }
-        //public void Move(string direction)
-        //{
-        //    switch (direction)
-        //    {
-        //        case "up":
-        //            y -= playerSpeed;
-        //            break;
-        //        case "down":
-        //            y += playerSpeed;
-        //            break;
-        //        case "right":
-        //            x += playerSpeed;
-        //            break;
-        //        case "left":
-        //            x -= playerSpeed;
-        //            break;
-        //    }
-        //}
         public void Power(string power)
         {
             switch (power)
