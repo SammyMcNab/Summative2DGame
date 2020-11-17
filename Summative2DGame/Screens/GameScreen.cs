@@ -128,17 +128,8 @@ namespace Summative2DGame
         {
             //get colour for box
             int spawnX1 = randNum.Next(0, this.Width - 10);
-            alienSize = randNum.Next(15, 30);
-            int rand = randNum.Next(1, 6);
-            Color c = Color.White;
-
-            if (rand == 1) { c = Color.White; }
-            else if (rand == 2) { c = Color.WhiteSmoke; }
-            else if (rand == 3) { c = Color.Gray; }
-            else if (rand == 4) { c = Color.DimGray; }
-            else if (rand == 5) { c = Color.GhostWhite; }
-
-            Alien alienN1 = new Alien(spawnX1, 0, alienSize, c, Alien.alienSpeed);
+        
+            Alien alienN1 = new Alien(spawnX1, 0, Alien.alienWidth, Alien.alienHeight, Properties.Resources.Monster);
             alien1.Add(alienN1);
         }
         public void AlienSideSpawn()
