@@ -10,6 +10,7 @@ using System.Windows.Forms;
 using System.Media;
 using System.Threading;
 using System.Timers;
+using System.IO;
 
 namespace Summative2DGame
 {
@@ -18,6 +19,7 @@ namespace Summative2DGame
         //alien list
         public static List<Alien> alien1 = new List<Alien>();
         public static List<Alien> leftAlien = new List<Alien>();
+        public static List<Alien> midAlien = new List<Alien>();
         public static List<Alien> rightAlien = new List<Alien>();
 
         public static List<Bullet> bulletList = new List<Bullet>();
@@ -25,7 +27,7 @@ namespace Summative2DGame
         public static List<Bullet> leftBulletList2 = new List<Bullet>();
         public static List<Bullet> rightBulletList1 = new List<Bullet>();
         public static List<Bullet> rightBulletList2 = new List<Bullet>();
-        public static List<Bullet> ampedBullet = new List<Bullet>();
+        public static List<Bullet> beamBullet = new List<Bullet>();
 
         //brushes
         SolidBrush whiteBrush = new SolidBrush(Color.WhiteSmoke);
@@ -42,6 +44,8 @@ namespace Summative2DGame
 
         //creating player
         Player hero;
+
+        Image shipImage;
 
         //initialize alien size int
         int alienSize;
@@ -134,9 +138,9 @@ namespace Summative2DGame
             Alien alienN1 = new Alien(spawnX1, 0, alienSize, c, Alien.alienSpeed);
             alien1.Add(alienN1);
         }
-        public void MakeAlien2()
+        public void AlienSideSpawn()
         {
-            
+
         }
         public void MakeBullet()
         {
@@ -152,7 +156,11 @@ namespace Summative2DGame
             gameOverLabel.Visible = false;
             gameTimer.Enabled = true;
             MakeAlien();
-            hero = new Player(this.Width / 2 - 15, this.Height - 30, Player.playerSize, Player.playerSpeed);
+            if (CharacterScreen.shipSelect == 1)
+            {
+                shipImage = Properties.Resources.PurpleJetNeutral
+            }
+            hero = new Player(this.Width / 2 - 15, this.Height - 30, Player.playerWidth, Player.playerHeight, );
         }
         private void gameTimer_Tick(object sender, EventArgs e)
         {

@@ -8,31 +8,25 @@ namespace Summative2DGame
 {
     public class Player
     {
-        public int x, y, size, speed, startY, startX;
+        public int x, y, width, height, speed, startY, startX;
         public Boolean playerDirection;
 
         public Image shipImage;
         //player configurations
-        public static int playerSize = 20;
+        public static int playerWidth = 40;
+        public static int playerHeight = 100;
         public static int playerSpeed = 15;
 
-
-
-        public Player(int _x, int _y, int _size, int _speed)
+        public Player(int _x, int _y, int _width, int _height,  Image _image)
         {
             x = _x;
             y = _y;
-            size = _size;
-            speed = _speed;
+            width = _width;
+            height = _height;
+            shipImage = _image;
+            startX = _x;
+            startY = _y;
         }
-        //public Ship(int _x, int _y, Image _image)
-        //{
-        //    x = _x;
-        //    y = _y;
-        //    startX = _x;
-        //    startY = _y;
-        //    shipImage = _image
-        //}
         public void Move(int playerSpeed, Boolean playerDirection)
         {
             //true means moving right
