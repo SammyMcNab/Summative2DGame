@@ -12,6 +12,7 @@ namespace Summative2DGame
         public Boolean playerDirection;
 
         public Image image;
+
         //player configurations
         public static int playerWidth = 40;
         public static int playerHeight = 100;

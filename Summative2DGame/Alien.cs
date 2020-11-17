@@ -10,31 +10,23 @@ namespace Summative2DGame
 {
     public class Alien
     {
-        public int size, x, y, width, height, speed;
-
-        public Color color;
-
-        public static int alienSpeed = 4;
+        public int size, x, y, width, height;
 
         Image image;
 
+        //alien configuration
+        public static int alienWidth = 40;
+        public static int alienHeight = 100;
+        public static int alienSpeed = 15;
 
-        public Alien(int _x, int _y, int _size, Color _color, int _speed)
+        public Alien(int _x, int _y, int _width, int _height, Image _image)
         {
             x = _x;
             y = _y;
-            size = _size;
-            color = _color;
-            speed = _speed;
+            width = _width;
+            height = _height;
+            image = _image;
         }
-        //public Alien( int _x, int _y, int _width, int _height, Image _image)
-        //{
-        //    x = _x;
-        //    y = _y;
-        //    width = _width;
-        //    height = _height;
-        //    image = _image;
-        //}
         public void MoveAlien(int speed)
         {
             y += speed;
