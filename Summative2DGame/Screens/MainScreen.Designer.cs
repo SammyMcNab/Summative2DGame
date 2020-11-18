@@ -41,10 +41,10 @@
             this.titleLabel.BackColor = System.Drawing.Color.Transparent;
             this.titleLabel.Font = new System.Drawing.Font("MS PGothic", 48F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.titleLabel.ForeColor = System.Drawing.Color.White;
-            this.titleLabel.Location = new System.Drawing.Point(191, 69);
+            this.titleLabel.Location = new System.Drawing.Point(239, 86);
             this.titleLabel.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.titleLabel.Name = "titleLabel";
-            this.titleLabel.Size = new System.Drawing.Size(454, 76);
+            this.titleLabel.Size = new System.Drawing.Size(568, 95);
             this.titleLabel.TabIndex = 0;
             this.titleLabel.Text = "Space Invaders";
             // 
@@ -56,10 +56,10 @@
             this.playButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.playButton.Font = new System.Drawing.Font("MS PGothic", 16.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.playButton.ForeColor = System.Drawing.Color.White;
-            this.playButton.Location = new System.Drawing.Point(302, 207);
+            this.playButton.Location = new System.Drawing.Point(378, 259);
             this.playButton.Margin = new System.Windows.Forms.Padding(2);
             this.playButton.Name = "playButton";
-            this.playButton.Size = new System.Drawing.Size(225, 68);
+            this.playButton.Size = new System.Drawing.Size(281, 85);
             this.playButton.TabIndex = 1;
             this.playButton.Text = "PLAY";
             this.playButton.UseVisualStyleBackColor = false;
@@ -79,10 +79,10 @@
             this.exitButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.exitButton.Font = new System.Drawing.Font("MS PGothic", 16.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.exitButton.ForeColor = System.Drawing.Color.White;
-            this.exitButton.Location = new System.Drawing.Point(302, 394);
+            this.exitButton.Location = new System.Drawing.Point(378, 492);
             this.exitButton.Margin = new System.Windows.Forms.Padding(2);
             this.exitButton.Name = "exitButton";
-            this.exitButton.Size = new System.Drawing.Size(225, 68);
+            this.exitButton.Size = new System.Drawing.Size(281, 85);
             this.exitButton.TabIndex = 3;
             this.exitButton.Text = "EXIT";
             this.exitButton.UseVisualStyleBackColor = false;
@@ -95,10 +95,10 @@
             this.helpButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.helpButton.Font = new System.Drawing.Font("MS PGothic", 16.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.helpButton.ForeColor = System.Drawing.Color.White;
-            this.helpButton.Location = new System.Drawing.Point(302, 298);
+            this.helpButton.Location = new System.Drawing.Point(378, 372);
             this.helpButton.Margin = new System.Windows.Forms.Padding(2);
             this.helpButton.Name = "helpButton";
-            this.helpButton.Size = new System.Drawing.Size(225, 68);
+            this.helpButton.Size = new System.Drawing.Size(281, 85);
             this.helpButton.TabIndex = 2;
             this.helpButton.Text = "HELP";
             this.helpButton.UseVisualStyleBackColor = true;
@@ -107,7 +107,7 @@
             // 
             // MainScreen
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(96F, 96F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(120F, 120F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Dpi;
             this.BackColor = System.Drawing.Color.Black;
             this.Controls.Add(this.helpButton);
@@ -116,7 +116,8 @@
             this.Controls.Add(this.titleLabel);
             this.Margin = new System.Windows.Forms.Padding(2);
             this.Name = "MainScreen";
-            this.Size = new System.Drawing.Size(851, 556);
+            this.Size = new System.Drawing.Size(1064, 695);
+            this.Load += new System.EventHandler(this.MainScreen_Load);
             this.Paint += new System.Windows.Forms.PaintEventHandler(this.MainScreen_Paint);
             this.ResumeLayout(false);
 

@@ -23,7 +23,7 @@ namespace Summative2DGame
         }
         public void Move(string direction)
         {
-            int playerSpeed = 8;
+            int playerSpeed = 12;
             switch (direction)
             {
                 case "up":

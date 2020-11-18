@@ -140,5 +140,11 @@ namespace Summative2DGame
         {
 
         }
+
+        private void MainScreen_Load(object sender, EventArgs e)
+        {
+            Form form = this.FindForm();
+            this.Location = new Point((form.Width - this.Width) / 2, (form.Height - this.Height) / 2);
+        }
     }
 }

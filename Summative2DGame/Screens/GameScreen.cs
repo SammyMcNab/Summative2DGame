@@ -141,10 +141,11 @@ namespace Summative2DGame
         }
         public void AlienSideSpawn()
         {
-
             int spawnY1 = randNum.Next(5, this.Height - 380);
+            int spawnY2 = randNum.Next(5, this.Height - 380);
 
             Alien row1 = new Alien(0, spawnY1, alienWidth, alienHeight, alienImage);
+            Alien row2 = new Alien(this.Width, spawnY2, alienWidth, alienHeight, alienImage);
         }
         public void MakeBullet()
         {
@@ -226,7 +227,7 @@ namespace Summative2DGame
             {
                 hero.Move("up");
             }
-            if (downArrowDown == true && hero.y < this.Height - 200)
+            if (downArrowDown == true && hero.y < this.Height - 240)
             {
                 hero.Move("down");
             }
@@ -368,7 +369,7 @@ namespace Summative2DGame
             }
 
             //draw UI line
-            e.Graphics.FillRectangle(starBrush, 0, this.Height - 80, this.Width, 12);
+            e.Graphics.FillRectangle(starBrush, 0, this.Height - 120, this.Width, 12);
 
             //drawhero
             e.Graphics.DrawImage(hero.image, hero.x, hero.y, hero.width, hero.height);
