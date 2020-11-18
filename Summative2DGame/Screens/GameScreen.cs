@@ -172,7 +172,7 @@ namespace Summative2DGame
                 shipImage = Properties.Resources.GreenJetHoveringNeutral;
                 powerUp = 2;
             }
-            hero = new Player(this.Width / 2 - 15, this.Height - 30, playerWidth, playerHeight, shipImage);
+            hero = new Player(this.Width / 2 - 15, this.Height - playerHeight, playerWidth, playerHeight, shipImage);
         }
         private void gameTimer_Tick(object sender, EventArgs e)
         {

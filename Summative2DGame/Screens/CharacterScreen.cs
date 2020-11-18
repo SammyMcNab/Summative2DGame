@@ -21,32 +21,18 @@ namespace Summative2DGame
         private void purpleButton_Click(object sender, EventArgs e)
         {
             shipSelect = 1;
-
             purpleButton.BackColor = Color.Red;
-
-            if (greenButton.BackColor != Color.Black)
-            {
-                greenButton.BackColor = Color.Black;
-            }
         }
 
         private void greenButton_Click(object sender, EventArgs e)
         {
             shipSelect = 2;
-
             greenButton.BackColor = Color.Red;
-
-            if (purpleButton.BackColor != Color.Black)
-            {
-                purpleButton.BackColor = Color.Black;
-            }
-            else { }
-
         }
 
         private void playButton_Click(object sender, EventArgs e)
         {
-            if(shipSelect > 0)
+            if (shipSelect > 0)
             {
                 Form f = this.FindForm();
                 f.Controls.Remove(this);
@@ -61,24 +47,48 @@ namespace Summative2DGame
 
         private void purpleButton_Enter(object sender, EventArgs e)
         {
-            greenButton.BackColor = Color.Black;
-            greenButton.ForeColor = Color.White;
-
-            purpleButton.BackColor = Color.White;
-            purpleButton.ForeColor = Color.Black;
-
+            if (shipSelect == 2)
+            {
+                greenButton.BackColor = Color.Red;
+            }
+            else
+            {
+                greenButton.BackColor = Color.Black;
+                greenButton.ForeColor = Color.White;
+            }
+            if (shipSelect == 1)
+            {
+                purpleButton.BackColor = Color.Red;
+            }
+            else
+            {
+                purpleButton.BackColor = Color.White;
+                purpleButton.ForeColor = Color.Black;
+            }
             playButton.BackColor = Color.Black;
             playButton.ForeColor = Color.White;
         }
 
         private void greenButton_Enter(object sender, EventArgs e)
         {
-            greenButton.BackColor = Color.White;
-            greenButton.ForeColor = Color.Black;
-
-            purpleButton.BackColor = Color.Black;
-            purpleButton.ForeColor = Color.White;
-
+            if (shipSelect == 2)
+            {
+                greenButton.BackColor = Color.Red;
+            }
+            else
+            {
+                greenButton.BackColor = Color.Black;
+                greenButton.ForeColor = Color.White;
+            }
+            if (shipSelect == 1)
+            {
+                purpleButton.BackColor = Color.Red;
+            }
+            else
+            {
+                purpleButton.BackColor = Color.White;
+                purpleButton.ForeColor = Color.Black;
+            }
             playButton.BackColor = Color.Black;
             playButton.ForeColor = Color.White;
 
@@ -86,12 +96,24 @@ namespace Summative2DGame
 
         private void playButton_Enter(object sender, EventArgs e)
         {
-            playButton.BackColor = Color.White;
-            playButton.ForeColor = Color.Black;
-
-            purpleButton.BackColor = Color.Black;
-            purpleButton.ForeColor = Color.White;
-
+            if (shipSelect == 2)
+            {
+                greenButton.BackColor = Color.Red;
+            }
+            else
+            {
+                greenButton.BackColor = Color.Black;
+                greenButton.ForeColor = Color.White;
+            }
+            if (shipSelect == 1)
+            {
+                purpleButton.BackColor = Color.Red;
+            }
+            else
+            {
+                purpleButton.BackColor = Color.White;
+                purpleButton.ForeColor = Color.Black;
+            }
             greenButton.BackColor = Color.Black;
             greenButton.ForeColor = Color.White;
         }
