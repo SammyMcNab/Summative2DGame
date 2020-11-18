@@ -43,6 +43,10 @@ namespace Summative2DGame
         //creating player
         Player hero;
 
+        //creating powerUp
+        static PowerUp power;
+        int powerCount = 0;
+
         static Rectangle shipRec;
 
         //All images used in game
@@ -57,13 +61,13 @@ namespace Summative2DGame
         static int playerWidth, playerHeight, playerHealth;
 
         //bullet specs
-        int bulletWidth, bulletHeight, bulletSpeed;
+        static int bulletWidth, bulletHeight, bulletSpeed;
 
 
         int powerUp;
         int powerSpawnX;
 
-        Boolean powerActive = false;
+        static Boolean powerActive = false;
 
         //timer
 
@@ -167,6 +171,8 @@ namespace Summative2DGame
 
             alienImage = Properties.Resources.Monster;
 
+            MakePowerUp();
+
             if (CharacterScreen.shipSelect == 1)
             {
                 shipImage = Properties.Resources.PurpleJetNeutral;
@@ -187,6 +193,22 @@ namespace Summative2DGame
             shotCounter++;
 
             RegBulletCollision();
+
+            PowerUpCollision();
+
+            ShipCollision();
+
+            if (powerActive == false && powerCount < 1)
+            {
+                MakePowerUp();
+                powerCount = 1;
+            }
+
+            if (power.y < 400)
+            {
+                power.MovePower(4);
+            }
+
 
             killLabel.Text = "KILLS: " + killCount;
 
@@ -246,7 +268,7 @@ namespace Summative2DGame
             else { }
             #endregion
 
-            //move player bullet up depending on which bullets are being fired
+            //move player bullet 
             if (powerActive == true && powerUp == 1)
             {
                 foreach (Bullet b in leftBulletList1)
@@ -313,6 +335,11 @@ namespace Summative2DGame
         {
             Rectangle laserRec = new Rectangle(hero.x + 22, 0, bulletWidth, hero.y - 10);
         }
+        public void MakePowerUp()
+        {
+            powerSpawnX = randNum.Next(300, 360);
+            power = new PowerUp(powerSpawnX, 0, 15);
+        }
         public void MakeMultiBullet()
         {
 
@@ -320,6 +347,14 @@ namespace Summative2DGame
         public static void LaserBeamCollision()
         {
 
+        }
+        public static void PowerUpCollision()
+        {
+            Rectangle powerRec = new Rectangle(power.x, power.y, bulletWidth, bulletWidth);
+            if(powerRec.IntersectsWith(shipRec))
+            {
+                powerActive = true;
+            }
         }
         public static void MultiGunCollision()
         {
@@ -357,10 +392,10 @@ namespace Summative2DGame
         }
         public static void ShipCollision()
         {
-            foreach (Bullet b in alienBullet)
+            foreach (Alien a in topSide)
             {
-                Rectangle bullRec = new Rectangle(b.x, b.y, b.width, b.height);
-                if (bullRec.IntersectsWith(shipRec))
+                Rectangle alienRec = new Rectangle(a.x, a.y, a.width, a.height);
+                if (alienRec.IntersectsWith(shipRec))
                 {
                     hit.Play();
                     playerHealth--;
@@ -405,7 +440,7 @@ namespace Summative2DGame
         {
             spawnX = randNum.Next(50, 600);
             //add box
-            Alien newAlien = new Alien(spawnX, 0, alienWidth, alienHeight, alienImage, alienHealth);
+            Alien newAlien = new Alien(spawnX, 0 - alienHeight, alienWidth, alienHeight, alienImage, alienHealth);
             topSide.Add(newAlien);
         }
         public void Pause()
@@ -494,12 +529,14 @@ namespace Summative2DGame
                 {
                     e.Graphics.DrawImage(b.image, b.x, b.y, b.width, b.height);
                 }
+
+                e.Graphics.FillRectangle(starBrush, powerSpawnX, power.y, 15, 15);
             }
-            else if (powerUp == 1)
+            else if (powerUp == 1 && powerActive)
             {
                 e.Graphics.DrawImage(laserImage, hero.x + 22, 0, bulletWidth, hero.y - 10);
             }
-            else if (powerUp == 2)
+            else if (powerUp == 2 && powerActive)
             {
                 //draw quad gun
             }
