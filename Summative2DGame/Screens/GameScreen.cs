@@ -189,6 +189,8 @@ namespace Summative2DGame
         }
         private void gameTimer_Tick(object sender, EventArgs e)
         {
+            Rectangle shipRec = new Rectangle(hero.x, hero.y, hero.width, hero.height); 
+
             shotCounter++;
             spawnTimer++;
 
@@ -234,7 +236,6 @@ namespace Summative2DGame
             {
                 shotCounter = 0;
                 MakeBullet();
-                laser.Play();
             }
 
             //move bullet up 
@@ -247,6 +248,10 @@ namespace Summative2DGame
 
             #region Game Over
             //change to if hero gets hit 3 times
+            if(playerHealth < 1)
+            {
+                GameOver();
+            }
             #endregion
 
             Refresh();
@@ -340,7 +345,7 @@ namespace Summative2DGame
             gameTimer.Enabled = false;
 
             lose.Play();
-            //outputLabel.Visible = false;
+
             gameOverLabel.Visible = true;
             gameOverLabel.Text = "Game over, returning to main menu.";
             gameOverLabel.Refresh();
