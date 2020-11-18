@@ -226,7 +226,7 @@ namespace Summative2DGame
             {
                 hero.Move("up");
             }
-            if (downArrowDown == true && hero.y < this.Height + hero.height)
+            if (downArrowDown == true && hero.y < this.Height - hero.height)
             {
                 hero.Move("down");
             }
@@ -367,7 +367,8 @@ namespace Summative2DGame
                 e.Graphics.DrawImage(a.image, a.x, a.y, a.width, a.height);
             }
 
-            e.Graphics.FillRectangle(starBrush, 0, this.Height - 20, this.Width, this.Height);
+            //draw UI line
+            //e.Graphics.FillRectangle(starBrush, 0, this.Height - 80, this.Width, this.Height);
 
             //drawhero
             e.Graphics.DrawImage(hero.image, hero.x, hero.y, hero.width, hero.height);
