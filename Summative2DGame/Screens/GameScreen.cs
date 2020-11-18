@@ -226,7 +226,7 @@ namespace Summative2DGame
             {
                 hero.Move("up");
             }
-            if (downArrowDown == true && hero.y < this.Height - 90)
+            if (downArrowDown == true && hero.y < this.Height - 200)
             {
                 hero.Move("down");
             }

@@ -34,14 +34,12 @@ namespace Summative2DGame
         {
             if (shipSelect > 0)
             {
-
                 GameScreen gs = new GameScreen();
                 Form form = this.FindForm();
 
                 form.Controls.Add(gs);
                 gs.Location = new Point((form.Width - gs.Width) / 2, (form.Height - gs.Height) / 2);
                 form.Controls.Remove(this);
-
                 gs.Focus();
             }
             else { }
