@@ -187,7 +187,7 @@ namespace Summative2DGame
         }
         private void gameTimer_Tick(object sender, EventArgs e)
         {
-            Rectangle shipRec = new Rectangle(hero.x, hero.y, hero.width, hero.height);
+            shipRec = new Rectangle(hero.x, hero.y, hero.width, hero.height);
 
             counter++;
             shotCounter++;
@@ -306,8 +306,9 @@ namespace Summative2DGame
 
             #region Game Over
             //change to if hero gets hit 3 times
-            if (playerHealth < 1)
+            if (playerHealth < 1 && healthImage == Properties.Resources.HealthNone)
             {
+                Refresh();
                 GameOver();
             }
             #endregion
@@ -392,14 +393,24 @@ namespace Summative2DGame
         }
         public static void ShipCollision()
         {
+            List<int> alienRemove = new List<int>();
             foreach (Alien a in topSide)
             {
                 Rectangle alienRec = new Rectangle(a.x, a.y, a.width, a.height);
-                if (alienRec.IntersectsWith(shipRec))
+                 if (alienRec.IntersectsWith(shipRec))
                 {
                     hit.Play();
                     playerHealth--;
+                    if (!alienRemove.Contains(topSide.IndexOf(a)))
+                    {
+                        alienRemove.Add(topSide.IndexOf(a));
+                    }
                 }
+            }
+            alienRemove.Reverse();
+            foreach (int i in alienRemove)
+            {
+                topSide.RemoveAt(i);
             }
         }
         public static void RegBulletCollision()
@@ -532,14 +543,14 @@ namespace Summative2DGame
 
                 e.Graphics.FillRectangle(starBrush, powerSpawnX, power.y, 15, 15);
             }
-            else if (powerUp == 1 && powerActive)
-            {
-                e.Graphics.DrawImage(laserImage, hero.x + 22, 0, bulletWidth, hero.y - 10);
-            }
-            else if (powerUp == 2 && powerActive)
-            {
-                //draw quad gun
-            }
+            //else if (powerUp == 1 && powerActive)
+            //{
+            //    e.Graphics.DrawImage(laserImage, hero.x + 22, 0, bulletWidth, hero.y - 10);
+            //}
+            //else if (powerUp == 2 && powerActive)
+            //{
+            //    //draw quad gun
+            //}
         }
     }
 }
