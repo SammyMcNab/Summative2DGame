@@ -46,12 +46,14 @@ namespace Summative2DGame
         //creating player
         Player hero;
 
-        Image shipImage;
+        Image shipImage, alienImage;
 
-        //initialize alien size int
-        int alienSize;
-        int alienWidth = 10;
-        int alienLength = 30;
+        //alien specs
+        int alienWidth, alienHeight, alienSpeed;
+
+        //player specs
+        int playerWidth, playerHeight, playerSpeed;
+
 
         int powerUp;
 
@@ -67,7 +69,7 @@ namespace Summative2DGame
         {
             buttonClick.Play();
             InitializeComponent();
-            outputLabel.Visible = false;
+            //outputLabel.Visible = false;
             gameOverLabel.Visible = false;
             OnStart();
 
@@ -128,8 +130,8 @@ namespace Summative2DGame
         {
             //get colour for box
             int spawnX1 = randNum.Next(0, this.Width - 10);
-        
-            Alien alienN1 = new Alien(spawnX1, 0, Alien.alienWidth, Alien.alienHeight, Properties.Resources.Monster);
+
+            Alien alienN1 = new Alien(spawnX1, 0, alienWidth, alienHeight, Properties.Resources.Monster);
             alien1.Add(alienN1);
         }
         public void AlienSideSpawn()
@@ -146,10 +148,20 @@ namespace Summative2DGame
             Refresh();
             alien1.Clear();
             bulletList.Clear();
-            outputLabel.Visible = true;
+
+            alienWidth = 60;
+            alienHeight = 100;
+            alienSpeed = 15;
+
+            playerWidth = 60;
+            playerHeight = 100;
+            playerSpeed = 25;
+
             gameOverLabel.Visible = false;
             gameTimer.Enabled = true;
-            MakeAlien();
+
+            alienImage = Properties.Resources.Monster;
+
             if (CharacterScreen.shipSelect == 1)
             {
                 shipImage = Properties.Resources.PurpleJetNeutral;
@@ -160,7 +172,7 @@ namespace Summative2DGame
                 shipImage = Properties.Resources.GreenJetHoveringNeutral;
                 powerUp = 2;
             }
-            hero = new Player(this.Width / 2 - 15, this.Height - 30, Player.playerWidth, Player.playerHeight, shipImage);
+            hero = new Player(this.Width / 2 - 15, this.Height - 30, playerWidth, playerHeight, shipImage);
         }
         private void gameTimer_Tick(object sender, EventArgs e)
         {
@@ -170,40 +182,10 @@ namespace Summative2DGame
 
             AlienBulletCollision();
 
-            //countdown display
-            outputLabel.Text = "" + counter;
-
-            #region Countdown 
-            if (timer > 50)
-            {
-                counter--;
-                timer = 0;
-            }
-
-            if (counter == 0)
-            {
-                outputLabel.Text = "0";
-                GameWin();
-            }
-            else if (counter < 25)
-            {
-                foreach (Alien a in alien1)
-                {
-                    a.speed = 5;
-                }
-                spawnPoint = 25;
-            }
-            else if (counter < 15)
-            {
-                spawnPoint = 15;
-                shotCounter = 15;
-            }
-            #endregion
-
             #region Move Alien
             foreach (Alien a in alien1)
             {
-                a.MoveAlien(a.speed);
+                a.MoveAlien(alienSpeed);
             }
             #endregion
 
@@ -211,7 +193,7 @@ namespace Summative2DGame
 
             if (spawnTimer > spawnPoint)
             {
-                MakeAlien();
+                //MakeAlien();
                 spawnTimer = 0;
             }
             #endregion
@@ -221,15 +203,15 @@ namespace Summative2DGame
             {
                 hero.Move("left");
             }
-            else if (rightArrowDown == true && hero.x < this.Width - hero.width)
+            if (rightArrowDown == true && hero.x < this.Width - hero.width)
             {
                 hero.Move("right");
             }
-            else if (upArrowDown == true && hero.y > 0)
+            if (upArrowDown == true && hero.y > 0)
             {
                 hero.Move("up");
             }
-            else if (downArrowDown == true && hero.y > this.Height + hero.height)
+            if (downArrowDown == true && hero.y < this.Height + hero.height)
             {
                 hero.Move("down");
             }
@@ -266,7 +248,7 @@ namespace Summative2DGame
         {
             gameTimer.Enabled = false;
 
-            outputLabel.Visible = false;
+            //outputLabel.Visible = false;
             gameOverLabel.Visible = true;
             gameOverLabel.Text = "You Win! Returning to main menu";
             gameOverLabel.Refresh();
@@ -343,7 +325,7 @@ namespace Summative2DGame
             gameTimer.Enabled = false;
 
             lose.Play();
-            outputLabel.Visible = false;
+            //outputLabel.Visible = false;
             gameOverLabel.Visible = true;
             gameOverLabel.Text = "Game over, returning to main menu.";
             gameOverLabel.Refresh();
@@ -361,8 +343,7 @@ namespace Summative2DGame
             //draw alien
             foreach (Alien a in alien1)
             {
-                alienBrush.Color = a.color;
-                e.Graphics.FillEllipse(alienBrush, a.x, a.y, a.size, a.size);
+                e.Graphics.DrawImage(a.image, a.x, a.y, a.width, a.height);
             }
             //draw ground
             e.Graphics.FillRectangle(whiteBrush, 0, this.Height - 15, this.Width, this.Height);

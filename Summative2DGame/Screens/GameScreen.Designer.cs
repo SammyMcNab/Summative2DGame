@@ -30,7 +30,6 @@
         {
             this.components = new System.ComponentModel.Container();
             this.gameTimer = new System.Windows.Forms.Timer(this.components);
-            this.outputLabel = new System.Windows.Forms.Label();
             this.gameOverLabel = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
@@ -40,38 +39,27 @@
             this.gameTimer.Interval = 20;
             this.gameTimer.Tick += new System.EventHandler(this.gameTimer_Tick);
             // 
-            // outputLabel
-            // 
-            this.outputLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 19.8F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.outputLabel.ForeColor = System.Drawing.Color.Red;
-            this.outputLabel.Location = new System.Drawing.Point(334, 0);
-            this.outputLabel.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
-            this.outputLabel.Name = "outputLabel";
-            this.outputLabel.Size = new System.Drawing.Size(53, 37);
-            this.outputLabel.TabIndex = 0;
-            // 
             // gameOverLabel
             // 
             this.gameOverLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.gameOverLabel.ForeColor = System.Drawing.Color.Red;
-            this.gameOverLabel.Location = new System.Drawing.Point(108, 118);
+            this.gameOverLabel.Location = new System.Drawing.Point(33, 195);
             this.gameOverLabel.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.gameOverLabel.Name = "gameOverLabel";
-            this.gameOverLabel.Size = new System.Drawing.Size(502, 93);
+            this.gameOverLabel.Size = new System.Drawing.Size(628, 116);
             this.gameOverLabel.TabIndex = 1;
             this.gameOverLabel.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // GameScreen
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(96F, 96F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(120F, 120F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Dpi;
             this.BackColor = System.Drawing.Color.Black;
             this.Controls.Add(this.gameOverLabel);
-            this.Controls.Add(this.outputLabel);
             this.DoubleBuffered = true;
-            this.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.Margin = new System.Windows.Forms.Padding(2);
             this.Name = "GameScreen";
-            this.Size = new System.Drawing.Size(851, 556);
+            this.Size = new System.Drawing.Size(900, 908);
             this.Paint += new System.Windows.Forms.PaintEventHandler(this.GameScreen_Paint);
             this.KeyUp += new System.Windows.Forms.KeyEventHandler(this.GameScreen_KeyUp);
             this.PreviewKeyDown += new System.Windows.Forms.PreviewKeyDownEventHandler(this.GameScreen_PreviewKeyDown);
@@ -82,7 +70,6 @@
         #endregion
 
         private System.Windows.Forms.Timer gameTimer;
-        private System.Windows.Forms.Label outputLabel;
         private System.Windows.Forms.Label gameOverLabel;
     }
 }

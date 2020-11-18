@@ -12,12 +12,7 @@ namespace Summative2DGame
     {
         public int size, x, y, width, height;
 
-        Image image;
-
-        //alien configuration
-        public static int alienWidth = 40;
-        public static int alienHeight = 100;
-        public static int alienSpeed = 15;
+        public Image image;
 
         public Alien(int _x, int _y, int _width, int _height, Image _image)
         {

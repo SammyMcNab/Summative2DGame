@@ -8,15 +8,10 @@ namespace Summative2DGame
 {
     public class Player
     {
-        public int x, y, width, height, speed, startY, startX;
+        public int x, y, width, height;
         public Boolean playerDirection;
 
         public Image image;
-
-        //player configurations
-        public static int playerWidth = 40;
-        public static int playerHeight = 100;
-        public static int playerSpeed = 15;
 
         public Player(int _x, int _y, int _width, int _height,  Image _image)
         {
@@ -25,11 +20,10 @@ namespace Summative2DGame
             width = _width;
             height = _height;
             image = _image;
-            startX = _x;
-            startY = _y;
         }
         public void Move(string direction)
         {
+            int playerSpeed = 8;
             switch (direction)
             {
                 case "up":
