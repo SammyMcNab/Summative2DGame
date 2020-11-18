@@ -29,8 +29,17 @@ namespace Summative2DGame
         /// </summary>
         private void InitializeComponent()
         {
-            components = new System.ComponentModel.Container();
-            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.SuspendLayout();
+            // 
+            // HelpScreen
+            // 
+            this.AutoScaleDimensions = new System.Drawing.SizeF(120F, 120F);
+            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Dpi;
+            this.BackColor = System.Drawing.Color.Black;
+            this.Name = "HelpScreen";
+            this.Size = new System.Drawing.Size(1064, 695);
+            this.ResumeLayout(false);
+
         }
 
         #endregion
