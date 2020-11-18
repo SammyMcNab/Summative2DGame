@@ -53,7 +53,7 @@ namespace Summative2DGame
         Image shipImage, alienImage, bulletImage, healthImage;
 
         //alien specs
-        int alienWidth, alienHeight, alienSpeed;
+        int alienWidth, alienHeight, alienSpeed, spawnX1, spawnX2, spawnX3, spawnY1, spawnY2;
 
         //player specs
         int playerWidth, playerHeight, playerHealth;
@@ -137,9 +137,10 @@ namespace Summative2DGame
         }
         public void MakeAlien()
         {
-            //get colour for box
-            int spawnX1 = randNum.Next(0, this.Width - 10);
-
+            for (int i = 0; i < 1; i++)
+            {
+                int spawnX1 = randNum.Next(0, this.Width - 10);
+            }
             Alien alienN1 = new Alien(spawnX1, 0, alienWidth, alienHeight, alienImage);
             alien1.Add(alienN1);
         }
@@ -244,11 +245,11 @@ namespace Summative2DGame
                 MakeBullet();
             }
 
-            else if (spaceKeyDown == true && powerUp == 1 && powerActive )
+            else if (spaceKeyDown == true && powerUp == 1 && powerActive)
             {
                 MakeLaser();
             }
-            else if(spaceKeyDown == true && powerUp == 2 && powerActive)
+            else if (spaceKeyDown == true && powerUp == 2 && powerActive)
             {
                 MakeMultiBullet();
             }
