@@ -49,6 +49,8 @@ namespace Summative2DGame
         //creating player
         Player hero;
 
+        //used for creating patterns
+        int x, y;
 
         static Rectangle shipRec;
 
@@ -207,6 +209,7 @@ namespace Summative2DGame
 
             RegBulletCollision();
 
+            killLabel.Text = "KILLS: " + killCount;
 
             #region Move Alien
             foreach (Alien a in alien1)
@@ -214,7 +217,7 @@ namespace Summative2DGame
                 a.MoveAlien(alienSpeed);
             }
 
-            foreach(Alien a in leftAlien)
+            foreach (Alien a in leftAlien)
             {
                 a.MoveAlien(alienSpeed);
             }
@@ -420,9 +423,19 @@ namespace Summative2DGame
                 alien1.RemoveAt(i);
             }
         }
-        public void SideAlien()
+        public void LeftSideAlien()
         {
-
+            x = 0;
+            y = this.Height / 2 - 60;
+            Alien row1 = new Alien(x, y, alienWidth, alienHeight, alienImage);
+            rowONE.Add(row1);
+        }
+        public void RightSideAlien()
+        {
+            x = this.Width;
+            y = this.Height / 2 - 120;
+            Alien row2 = new Alien(x, y, alienWidth, alienHeight, alienImage);
+            rowTWO.Add(row2);
         }
         public void Pause()
         {
