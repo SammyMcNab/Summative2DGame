@@ -21,19 +21,22 @@ namespace Summative2DGame
         public static List<Alien> leftAlien = new List<Alien>();
         public static List<Alien> midAlien = new List<Alien>();
         public static List<Alien> rightAlien = new List<Alien>();
-        public static List<Alien> topRow = new List<Alien>();
+        public static List<Alien> rowONE = new List<Alien>();
+        public static List<Alien> rowTWO = new List<Alien>();
 
+
+        //All bullets 
         public static List<Bullet> bulletList = new List<Bullet>();
         public static List<Bullet> leftBulletList1 = new List<Bullet>();
         public static List<Bullet> leftBulletList2 = new List<Bullet>();
         public static List<Bullet> rightBulletList1 = new List<Bullet>();
         public static List<Bullet> rightBulletList2 = new List<Bullet>();
         public static List<Bullet> beamBullet = new List<Bullet>();
+        public static List<Bullet> alienBullet = new List<Bullet>();
 
         //brushes
-        SolidBrush whiteBrush = new SolidBrush(Color.WhiteSmoke);
-        SolidBrush bulletBrush = new SolidBrush(Color.OrangeRed);
-        SolidBrush alienBrush = new SolidBrush(Color.White);
+        SolidBrush blackBrush = new SolidBrush(Color.Black);
+        SolidBrush starBrush = new SolidBrush(Color.White);
 
         //sounds
         SoundPlayer laser = new SoundPlayer(Properties.Resources.laserShot);
@@ -46,13 +49,16 @@ namespace Summative2DGame
         //creating player
         Player hero;
 
-        Image shipImage, alienImage;
+        Image shipImage, alienImage, bulletImage;
 
         //alien specs
         int alienWidth, alienHeight, alienSpeed;
 
         //player specs
         int playerWidth, playerHeight, playerHealth;
+
+        //bullet specs
+        int bulletWidth, bulletHeight, bulletSpeed;
 
 
         int powerUp;
@@ -61,7 +67,6 @@ namespace Summative2DGame
 
         //timer
         int counter = 30;
-        int timer = 0;
         int shotCounter = 21;
         int spawnTimer = 0;
         Random randNum = new Random();
@@ -131,16 +136,19 @@ namespace Summative2DGame
             //get colour for box
             int spawnX1 = randNum.Next(0, this.Width - 10);
 
-            Alien alienN1 = new Alien(spawnX1, 0, alienWidth, alienHeight, Properties.Resources.Monster);
+            Alien alienN1 = new Alien(spawnX1, 0, alienWidth, alienHeight, alienImage);
             alien1.Add(alienN1);
         }
         public void AlienSideSpawn()
         {
 
+            int spawnY1 = randNum.Next(5, this.Height - 380);
+
+            Alien row1 = new Alien(0, spawnY1, alienWidth, alienHeight, alienImage);
         }
         public void MakeBullet()
         {
-            Bullet bullet = new Bullet(hero.x + 5, hero.y - 10, Bullet.bulletSize, Bullet.bulletSpeed);
+            Bullet bullet = new Bullet(hero.x + 30, hero.y - 10, bulletWidth, bulletHeight, bulletImage);
             bulletList.Add(bullet);
         }
         public void OnStart()
@@ -151,10 +159,16 @@ namespace Summative2DGame
 
             alienWidth = 60;
             alienHeight = 100;
-            alienSpeed = 15;
+            alienSpeed = 12;
 
             playerWidth = 80;
             playerHeight = 120;
+
+            bulletWidth = 15;
+            bulletHeight = 15;
+            bulletSpeed = 20;
+
+            bulletImage = Properties.Resources.BasicBullet;
 
             gameOverLabel.Visible = false;
             gameTimer.Enabled = true;
@@ -175,7 +189,6 @@ namespace Summative2DGame
         }
         private void gameTimer_Tick(object sender, EventArgs e)
         {
-            timer++;
             shotCounter++;
             spawnTimer++;
 
@@ -227,7 +240,7 @@ namespace Summative2DGame
             //move bullet up 
             foreach (Bullet b in bulletList)
             {
-                b.MoveBullet(b.speed);
+                b.MoveBullet(bulletSpeed);
             }
 
             #endregion
@@ -347,15 +360,13 @@ namespace Summative2DGame
             {
                 e.Graphics.DrawImage(a.image, a.x, a.y, a.width, a.height);
             }
-            //draw ground
-            e.Graphics.FillRectangle(whiteBrush, 0, this.Height - 15, this.Width, this.Height);
 
             //drawhero
             e.Graphics.DrawImage(hero.image, hero.x, hero.y, hero.width, hero.height);
 
             foreach (Bullet b in bulletList)
             {
-                e.Graphics.FillEllipse(bulletBrush, b.x, b.y, b.size, b.size);
+                e.Graphics.DrawImage(b.image, b.x, b.y, b.width, b.height);
             }
 
         }

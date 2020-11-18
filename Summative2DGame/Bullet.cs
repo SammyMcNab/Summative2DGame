@@ -9,27 +9,24 @@ namespace Summative2DGame
 {
     public class Bullet
     {
-        public int speed, size, width, height, x, y;
-        public static int bulletSize = 15;
-        public static int bulletSpeed = 20;
-        public Bullet(int _x, int _y, int _size, int _speed)
+        public int width, height, x, y;
+
+        public Image image;
+        public Bullet(int _x, int _y, int _width, int _height, Image _image )
         {
             x = _x;
             y = _y;
-            size = _size;
-            speed = _speed;
+            width = _width;
+            height = _height;
+            image = _image;
         }
-        //public Bullet(int _x, int _y, int _width, int _height, int _speed)
-        //{
-        //    x = _x;
-        //    y = _y;
-        //    width = _width;
-        //    height = _height;
-        //    speed = _speed;
-        //}
         public void MoveBullet(int speed)
         {
             y -= speed;
+        }
+        public void HomingBullet(int x, int y)
+        {
+
         }
     }
 }

@@ -10,7 +10,7 @@ namespace Summative2DGame
 {
     public class Alien
     {
-        public int size, x, y, width, height;
+        public int x, y, width, height;
 
         public Image image;
 
@@ -36,8 +36,8 @@ namespace Summative2DGame
         }
         public Boolean Collision(Bullet a)
         {
-            Rectangle bullRec = new Rectangle(a.x, a.y, a.size, a.size);
-            Rectangle alienRec = new Rectangle(x, y, size, size);
+            Rectangle bullRec = new Rectangle(a.x, a.y, a.width, a.height);
+            Rectangle alienRec = new Rectangle(x, y, width, height);
 
              return bullRec.IntersectsWith(alienRec);
         }
