@@ -74,7 +74,7 @@ namespace Summative2DGame
         static int killCount = 0;
         int counter = 0;
         int shotCounter = 21;
-        int shotLimit = 4;
+        int shotLimit = 8;
         Random randNum = new Random();
         public GameScreen()
         {
@@ -210,7 +210,7 @@ namespace Summative2DGame
             }
 
 
-            killLabel.Text = "KILLS: " + killCount;
+            killLabel.Text = "KILLS: " + killCount + "/45";
 
             if (topSide.Count > 0)
             {
@@ -219,7 +219,7 @@ namespace Summative2DGame
                     topSide.RemoveAt(0);
                 }
             }
-            if (counter % 13 == 0)
+            if (counter % 8 == 0)
             {
                 if (topSide.Count < 18)
                 {
@@ -449,7 +449,7 @@ namespace Summative2DGame
         }
         public void SpawnTop()
         {
-            spawnX = randNum.Next(50, 600);
+            spawnX = randNum.Next(50, 800);
             //add box
             Alien newAlien = new Alien(spawnX, 0 - alienHeight, alienWidth, alienHeight, alienImage, alienHealth);
             topSide.Add(newAlien);
