@@ -17,11 +17,9 @@ namespace Summative2DGame
     public partial class GameScreen : UserControl
     {
         //alien list
-        public static List<Alien> alien1 = new List<Alien>();
-        public static List<Alien> leftAlien = new List<Alien>();
-        public static List<Alien> rightAlien = new List<Alien>();
-        public static List<Alien> rowONE = new List<Alien>();
-        public static List<Alien> rowTWO = new List<Alien>();
+        public static List<Alien> topSide = new List<Alien>();
+        public static List<Alien> leftSide = new List<Alien>();
+        public static List<Alien> rightSide = new List<Alien>();
 
 
         //All bullets 
@@ -152,7 +150,7 @@ namespace Summative2DGame
                 spawnX3 = randNum.Next(0, this.Width - 10);
             }
             Alien alienN1 = new Alien(spawnX1, 0, alienWidth, alienHeight, alienImage);
-            alien1.Add(alienN1);
+            topSide.Add(alienN1);
         }
         public void AlienSideSpawn()
         {
@@ -166,8 +164,15 @@ namespace Summative2DGame
         public void OnStart()
         {
             Refresh();
-            alien1.Clear();
+            topSide.Clear();
+            leftSide.Clear();
+            rightSide.Clear();
             bulletList.Clear();
+            leftBulletList1.Clear();
+            leftBulletList2.Clear();
+            rightBulletList1.Clear();
+            rightBulletList1.Clear();
+            beamBullet.Clear();
 
             alienWidth = 60;
             alienHeight = 100;
@@ -211,26 +216,21 @@ namespace Summative2DGame
 
             killLabel.Text = "KILLS: " + killCount;
 
+            SpawnTop();
+            //LeftSideAlien();
+            //RightSideAlien();
+
             #region Move Alien
-            foreach (Alien a in alien1)
+            foreach (Alien a in topSide)
             {
                 a.MoveAlien(alienSpeed);
             }
 
-            foreach (Alien a in leftAlien)
-            {
-                a.MoveAlien(alienSpeed);
-            }
-
-            foreach (Alien a in rightAlien)
-            {
-                a.MoveAlien(alienSpeed);
-            }
-            foreach (Alien a in rowONE)
+            foreach (Alien a in leftSide)
             {
                 a.MoveAlienRight(alienSpeed);
             }
-            foreach (Alien a in rowTWO)
+            foreach (Alien a in rightSide)
             {
                 a.MoveAlienLeft(alienSpeed);
             }
@@ -352,7 +352,7 @@ namespace Summative2DGame
             List<int> alienRemove = new List<int>();
             foreach (Bullet b in leftBulletList1)
             {
-                foreach (Alien a in alien1)
+                foreach (Alien a in topSide)
                 {
                     if (a.Collision(b))
                     {
@@ -360,9 +360,9 @@ namespace Summative2DGame
                         {
                             bulletRemove.Add(bulletList.IndexOf(b));
                         }
-                        if (!alienRemove.Contains(alien1.IndexOf(a)))
+                        if (!alienRemove.Contains(topSide.IndexOf(a)))
                         {
-                            alienRemove.Add(alien1.IndexOf(a));
+                            alienRemove.Add(topSide.IndexOf(a));
                         }
                     }
                 }
@@ -375,7 +375,7 @@ namespace Summative2DGame
             }
             foreach (int i in alienRemove)
             {
-                alien1.RemoveAt(i);
+                topSide.RemoveAt(i);
             }
 
         }
@@ -397,7 +397,7 @@ namespace Summative2DGame
             List<int> alienRemove = new List<int>();
             foreach (Bullet b in bulletList)
             {
-                foreach (Alien a in alien1)
+                foreach (Alien a in topSide)
                 {
                     if (a.Collision(b))
                     {
@@ -405,9 +405,9 @@ namespace Summative2DGame
                         {
                             bulletRemove.Add(bulletList.IndexOf(b));
                         }
-                        if (!alienRemove.Contains(alien1.IndexOf(a)))
+                        if (!alienRemove.Contains(topSide.IndexOf(a)))
                         {
-                            alienRemove.Add(alien1.IndexOf(a));
+                            alienRemove.Add(topSide.IndexOf(a));
                         }
                     }
                 }
@@ -420,7 +420,7 @@ namespace Summative2DGame
             }
             foreach (int i in alienRemove)
             {
-                alien1.RemoveAt(i);
+                topSide.RemoveAt(i);
             }
         }
         public void LeftSideAlien()
@@ -428,14 +428,14 @@ namespace Summative2DGame
             x = 0;
             y = this.Height / 2 - 60;
             Alien row1 = new Alien(x, y, alienWidth, alienHeight, alienImage);
-            rowONE.Add(row1);
+            leftSide.Add(row1);
         }
         public void RightSideAlien()
         {
             x = this.Width;
             y = this.Height / 2 - 120;
             Alien row2 = new Alien(x, y, alienWidth, alienHeight, alienImage);
-            rowTWO.Add(row2);
+            rightSide.Add(row2);
         }
         public void Pause()
         {
@@ -481,11 +481,18 @@ namespace Summative2DGame
         private void GameScreen_Paint(object sender, PaintEventArgs e)
         {
             //draw alien
-            foreach (Alien a in alien1)
+            foreach (Alien a in topSide)
             {
                 e.Graphics.DrawImage(a.image, a.x, a.y, a.width, a.height);
             }
-
+            foreach (Alien a in leftSide)
+            {
+                e.Graphics.DrawImage(a.image, a.x, a.y, a.width, a.height);
+            }
+            foreach (Alien a in rightSide)
+            {
+                e.Graphics.DrawImage(a.image, a.x, a.y, a.width, a.height);
+            }
             //draw UI line
             e.Graphics.FillRectangle(starBrush, 0, this.Height - 160, this.Width, 12);
 
@@ -517,6 +524,38 @@ namespace Summative2DGame
             foreach (Bullet b in bulletList)
             {
                 e.Graphics.DrawImage(b.image, b.x, b.y, b.width, b.height);
+            }
+        }
+        public void SpawnTop()
+        {
+            if (topSide.Count() > 4)
+            {
+                x = topSide[topSide.Count() - 5].x;
+            }
+
+            if (x <= randNum.Next(2, 200) && counter % 4 == 0)
+            {
+
+                x += randNum.Next(10, 16);
+                y = 0;
+                for (int i = 0; i < 5; i++)
+                {
+                    Alien newAlien = new Alien(x, y, alienWidth, alienHeight, alienImage);
+                    topSide.Add(newAlien);
+                    x += 150;
+                }
+            }
+            else if (x < randNum.Next(this.Width - 200, this.Width - 1) && counter % 4 == 0)
+            {
+
+                x -= randNum.Next(10, 16);
+                y = 0;
+                for (int i = 0; i < 5; i++)
+                {
+                    Alien newAlien = new Alien(x, y, alienWidth, alienHeight, alienImage);
+                    topSide.Add(newAlien);
+                    x += 150;
+                }
             }
         }
     }
