@@ -19,7 +19,6 @@ namespace Summative2DGame
         //alien list
         public static List<Alien> alien1 = new List<Alien>();
         public static List<Alien> leftAlien = new List<Alien>();
-        public static List<Alien> midAlien = new List<Alien>();
         public static List<Alien> rightAlien = new List<Alien>();
         public static List<Alien> rowONE = new List<Alien>();
         public static List<Alien> rowTWO = new List<Alien>();
@@ -40,7 +39,7 @@ namespace Summative2DGame
         SolidBrush healthBrush = new SolidBrush(Color.Lime);
 
         //sounds
-        SoundPlayer laser = new SoundPlayer(Properties.Resources.laserShot);
+        static SoundPlayer hit = new SoundPlayer(Properties.Resources.laserShot);
         SoundPlayer lose = new SoundPlayer(Properties.Resources.DieSound);
         SoundPlayer buttonClick = new SoundPlayer(Properties.Resources.ButtonClick);
 
@@ -50,25 +49,32 @@ namespace Summative2DGame
         //creating player
         Player hero;
 
-        Image shipImage, alienImage, bulletImage, healthImage;
+
+        static Rectangle shipRec;
+
+        //All images used in game
+        Image shipImage, alienImage, bulletImage, healthImage, laserImage;
 
         //alien specs
         int alienWidth, alienHeight, alienSpeed, spawnX1, spawnX2, spawnX3, spawnY1, spawnY2;
 
         //player specs
-        int playerWidth, playerHeight, playerHealth;
+        static int playerWidth, playerHeight, playerHealth;
 
         //bullet specs
         int bulletWidth, bulletHeight, bulletSpeed;
 
 
         int powerUp;
+        int powerSpawn;
 
         Boolean powerActive = false;
 
         int spawnPoint = 50;
 
         //timer
+
+        int killCount = 0;
         int counter = 30;
         int shotCounter = 21;
         int shotLimit = 10;
@@ -148,11 +154,7 @@ namespace Summative2DGame
         }
         public void AlienSideSpawn()
         {
-            spawnY1 = randNum.Next(5, this.Height - 380);
-            spawnY2 = randNum.Next(5, this.Height - 380);
 
-            Alien row1 = new Alien(0, spawnY1, alienWidth, alienHeight, alienImage);
-            Alien row2 = new Alien(this.Width, spawnY2, alienWidth, alienHeight, alienImage);
         }
         public void MakeBullet()
         {
@@ -205,23 +207,33 @@ namespace Summative2DGame
 
             RegBulletCollision();
 
+
             #region Move Alien
             foreach (Alien a in alien1)
             {
                 a.MoveAlien(alienSpeed);
             }
-            #endregion
 
-            #region Spawn Alien
-
-            if (spawnTimer > spawnPoint)
+            foreach(Alien a in leftAlien)
             {
-                //MakeAlien();
-                spawnTimer = 0;
+                a.MoveAlien(alienSpeed);
+            }
+
+            foreach (Alien a in rightAlien)
+            {
+                a.MoveAlien(alienSpeed);
+            }
+            foreach (Alien a in rowONE)
+            {
+                a.MoveAlienRight(alienSpeed);
+            }
+            foreach (Alien a in rowTWO)
+            {
+                a.MoveAlienLeft(alienSpeed);
             }
             #endregion
 
-            #region Moving player
+            #region Moving player and shooting
             if (leftArrowDown == true && hero.x > 0)
             {
                 hero.Move("left");
@@ -254,13 +266,42 @@ namespace Summative2DGame
             }
             else { }
             #endregion
-            //move bullet up 
-            foreach (Bullet b in bulletList)
+
+            //move player bullet up depending on which bullets are being fired
+            if (powerActive == true && powerUp == 1)
             {
-                b.MoveBullet(bulletSpeed);
+                foreach (Bullet b in leftBulletList1)
+                {
+                    b.MoveBullet(bulletSpeed);
+                }
+                foreach (Bullet b in leftBulletList2)
+                {
+                    b.MoveBullet(bulletSpeed);
+                }
+                foreach (Bullet b in rightBulletList1)
+                {
+                    b.MoveBullet(bulletSpeed);
+                }
+                foreach (Bullet b in rightBulletList2)
+                {
+                    b.MoveBullet(bulletSpeed);
+                }
+            }
+            else
+            {
+                foreach (Bullet b in bulletList)
+                {
+                    b.MoveBullet(bulletSpeed);
+                }
             }
 
 
+            #region Game Win
+            if (killCount > 60)
+            {
+                GameWin();
+            }
+            #endregion
 
             #region Game Over
             //change to if hero gets hit 3 times
@@ -304,6 +345,48 @@ namespace Summative2DGame
         public static void MultiGunCollision()
         {
 
+            List<int> bulletRemove = new List<int>();
+            List<int> alienRemove = new List<int>();
+            foreach (Bullet b in leftBulletList1)
+            {
+                foreach (Alien a in alien1)
+                {
+                    if (a.Collision(b))
+                    {
+                        if (!bulletRemove.Contains(bulletList.IndexOf(b)))
+                        {
+                            bulletRemove.Add(bulletList.IndexOf(b));
+                        }
+                        if (!alienRemove.Contains(alien1.IndexOf(a)))
+                        {
+                            alienRemove.Add(alien1.IndexOf(a));
+                        }
+                    }
+                }
+            }
+            bulletRemove.Reverse();
+            alienRemove.Reverse();
+            foreach (int i in bulletRemove)
+            {
+                bulletList.RemoveAt(i);
+            }
+            foreach (int i in alienRemove)
+            {
+                alien1.RemoveAt(i);
+            }
+
+        }
+        public static void ShipCollision()
+        {
+            foreach (Bullet b in alienBullet)
+            {
+                Rectangle bullRec = new Rectangle(b.x, b.y, b.width, b.height);
+                if (bullRec.IntersectsWith(shipRec))
+                {
+                    hit.Play();
+                    playerHealth--;
+                }
+            }
         }
         public static void RegBulletCollision()
         {

@@ -9,9 +9,20 @@ namespace Summative2DGame
 {
     public class PowerUp
     {
+        public int x, y, size;
+
+        Image image;
+
         public PowerUp(int _x, int _y, int _size, Image _image)
         {
-
+            x = _x;
+            y = _y;
+            size = _size;
+            image = _image;
+        }
+        public void MovePower(int speed)
+        {
+            y += speed;
         }
     }
 }
