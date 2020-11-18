@@ -64,11 +64,14 @@ namespace Summative2DGame
 
         int powerUp;
 
+        Boolean powerActive = false;
+
         int spawnPoint = 50;
 
         //timer
         int counter = 30;
         int shotCounter = 21;
+        int shotLimit = 10;
         int spawnTimer = 0;
         Random randNum = new Random();
         public GameScreen()
@@ -235,12 +238,20 @@ namespace Summative2DGame
             #endregion
 
             #region shooting
-            if (spaceKeyDown == true && shotCounter > 10)
+            if (spaceKeyDown == true && shotCounter > shotLimit)
             {
                 shotCounter = 0;
                 MakeBullet();
             }
 
+            else if (spaceKeyDown == true && powerUp == 1 && powerActive )
+            {
+                MakeLaser();
+            }
+            else if(spaceKeyDown == true && powerUp == 2 && powerActive)
+            {
+                MakeMultiBullet();
+            }
             //move bullet up 
             foreach (Bullet b in bulletList)
             {
