@@ -18,6 +18,7 @@ namespace Summative2DGame
     {
         //alien list
         public static List<Alien> topSide = new List<Alien>();
+        public static List<Alien> topSide2 = new List<Alien>();
         public static List<Alien> leftSide = new List<Alien>();
         public static List<Alien> rightSide = new List<Alien>();
 
@@ -49,8 +50,6 @@ namespace Summative2DGame
 
         //used for creating patterns
         int x, y;
-        int patternLength = 10;
-        int patternSpeed = 7;
 
         static Rectangle shipRec;
 
@@ -58,7 +57,7 @@ namespace Summative2DGame
         Image shipImage, alienImage, bulletImage, healthImage, laserImage;
 
         //alien specs
-        int alienWidth, alienHeight, alienSpeed, spawnX1, spawnY1, spawnY2;
+        int alienWidth, alienHeight, alienSpeed, spawnX, spawnY1, spawnY2;
 
         //player specs
         static int playerWidth, playerHeight, playerHealth;
@@ -72,12 +71,10 @@ namespace Summative2DGame
 
         Boolean powerActive = false;
 
-        int spawnPoint = 50;
-
         //timer
 
-        int killCount = 0;
-        int counter = 30;
+        static int killCount = 0;
+        int counter = 0;
         int shotCounter = 21;
         int shotLimit = 10;
         int spawnTimer = 0;
@@ -200,6 +197,7 @@ namespace Summative2DGame
         {
             Rectangle shipRec = new Rectangle(hero.x, hero.y, hero.width, hero.height);
 
+            counter++;
             shotCounter++;
             spawnTimer++;
 
@@ -207,10 +205,20 @@ namespace Summative2DGame
 
             killLabel.Text = "KILLS: " + killCount;
 
-            SpawnTop();
-            //LeftSideAlien();
-            //RightSideAlien();
-
+            if (topSide.Count > 0)
+            {
+                if (topSide[0].y > this.Height - 140)
+                {
+                    topSide.RemoveAt(0);
+                }
+            }
+            if (counter % 30 == 0)
+            {
+                if (topSide.Count < 18)
+                {
+                    SpawnTop();
+                }
+            }
             #region Move Alien
             foreach (Alien a in topSide)
             {
@@ -392,6 +400,7 @@ namespace Summative2DGame
                 {
                     if (a.Collision(b))
                     {
+                        killCount++;
                         if (!bulletRemove.Contains(bulletList.IndexOf(b)))
                         {
                             bulletRemove.Add(bulletList.IndexOf(b));
@@ -416,32 +425,10 @@ namespace Summative2DGame
         }
         public void SpawnTop()
         {
-            patternLength--;
-
-            if (patternLength == 0)
-            {
-                moveRight = !moveRight;
-
-                patternLength = randNum.Next(3, 9);
-                patternSpeed = randNum.Next(2, 25);
-            }
-
-            if (moveRight)
-            {
-                leftX += patternSpeed;
-            }
-            else
-            {
-                leftX -= patternSpeed;
-            }
-
-
+            spawnX = randNum.Next(50, 600);
             //add box
-            Box newBox = new Box(leftX, 0, 20, c);
-            left.Add(newBox);
-
-            Box newBox2 = new Box(leftX + gap, 0, 20, c);
-            right.Add(newBox2);
+            Alien newAlien = new Alien(spawnX, 0, alienWidth, alienHeight, alienImage);
+            topSide.Add(newAlien);
         }
         public void LeftSideAlien()
         {
@@ -513,6 +500,10 @@ namespace Summative2DGame
             {
                 e.Graphics.DrawImage(a.image, a.x, a.y, a.width, a.height);
             }
+
+            //fills in UI
+            e.Graphics.FillRectangle(blackBrush, 0, this.Height - 160, this.Width, this.Height);
+
             //draw UI line
             e.Graphics.FillRectangle(starBrush, 0, this.Height - 160, this.Width, 12);
 
