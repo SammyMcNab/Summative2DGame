@@ -13,12 +13,11 @@ namespace Summative2DGame
 
         Image image;
 
-        public PowerUp(int _x, int _y, int _size, Image _image)
+        public PowerUp(int _x, int _y, int _size)
         {
             x = _x;
             y = _y;
             size = _size;
-            image = _image;
         }
         public void MovePower(int speed)
         {

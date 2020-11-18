@@ -43,9 +43,6 @@ namespace Summative2DGame
         //creating player
         Player hero;
 
-        //used for creating patterns
-        int x, y;
-
         static Rectangle shipRec;
 
         //All images used in game
@@ -64,7 +61,7 @@ namespace Summative2DGame
 
 
         int powerUp;
-        int powerSpawn;
+        int powerSpawnX;
 
         Boolean powerActive = false;
 
@@ -73,8 +70,7 @@ namespace Summative2DGame
         static int killCount = 0;
         int counter = 0;
         int shotCounter = 21;
-        int shotLimit = 10;
-        int spawnTimer = 0;
+        int shotLimit = 4;
         Random randNum = new Random();
         public GameScreen()
         {
@@ -150,11 +146,11 @@ namespace Summative2DGame
             leftBulletList1.Clear();
             leftBulletList2.Clear();
             rightBulletList1.Clear();
-            rightBulletList1.Clear();  
+            rightBulletList1.Clear();
 
             alienWidth = 60;
             alienHeight = 100;
-            alienSpeed = 12;
+            alienSpeed = 8;
 
             playerWidth = 60;
             playerHeight = 80;
@@ -189,7 +185,6 @@ namespace Summative2DGame
 
             counter++;
             shotCounter++;
-            spawnTimer++;
 
             RegBulletCollision();
 
@@ -202,7 +197,7 @@ namespace Summative2DGame
                     topSide.RemoveAt(0);
                 }
             }
-            if (counter % 30 == 0)
+            if (counter % 15 == 0)
             {
                 if (topSide.Count < 18)
                 {
@@ -316,7 +311,7 @@ namespace Summative2DGame
         }
         public void MakeLaser()
         {
-
+            Rectangle laserRec = new Rectangle(hero.x + 22, 0, bulletWidth, hero.y - 10);
         }
         public void MakeMultiBullet()
         {
@@ -382,14 +377,15 @@ namespace Summative2DGame
                 {
                     if (a.Collision(b))
                     {
-                        killCount++;
+                        a.health--;
                         if (!bulletRemove.Contains(bulletList.IndexOf(b)))
                         {
                             bulletRemove.Add(bulletList.IndexOf(b));
                         }
-                        if (!alienRemove.Contains(topSide.IndexOf(a)))
+                        if (!alienRemove.Contains(topSide.IndexOf(a)) && a.health < 1)
                         {
                             alienRemove.Add(topSide.IndexOf(a));
+                            killCount++;
                         }
                     }
                 }
@@ -409,7 +405,7 @@ namespace Summative2DGame
         {
             spawnX = randNum.Next(50, 600);
             //add box
-            Alien newAlien = new Alien(spawnX, 0, alienWidth, alienHeight, alienImage);
+            Alien newAlien = new Alien(spawnX, 0, alienWidth, alienHeight, alienImage, alienHealth);
             topSide.Add(newAlien);
         }
         public void Pause()
@@ -491,10 +487,21 @@ namespace Summative2DGame
             //drawhero
             e.Graphics.DrawImage(hero.image, hero.x, hero.y, hero.width, hero.height);
 
-            //draw bullet
-            foreach (Bullet b in bulletList)
+            if (powerActive == false)
             {
-                e.Graphics.DrawImage(b.image, b.x, b.y, b.width, b.height);
+                //draw bullet
+                foreach (Bullet b in bulletList)
+                {
+                    e.Graphics.DrawImage(b.image, b.x, b.y, b.width, b.height);
+                }
+            }
+            else if (powerUp == 1)
+            {
+                e.Graphics.DrawImage(laserImage, hero.x + 22, 0, bulletWidth, hero.y - 10);
+            }
+            else if (powerUp == 2)
+            {
+                //draw quad gun
             }
         }
     }
