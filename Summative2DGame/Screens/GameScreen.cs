@@ -163,6 +163,7 @@ namespace Summative2DGame
 
             playerWidth = 80;
             playerHeight = 120;
+            playerHealth = 3;
 
             bulletWidth = 15;
             bulletHeight = 15;
@@ -189,7 +190,7 @@ namespace Summative2DGame
         }
         private void gameTimer_Tick(object sender, EventArgs e)
         {
-            Rectangle shipRec = new Rectangle(hero.x, hero.y, hero.width, hero.height); 
+            Rectangle shipRec = new Rectangle(hero.x, hero.y, hero.width, hero.height);
 
             shotCounter++;
             spawnTimer++;
@@ -248,7 +249,7 @@ namespace Summative2DGame
 
             #region Game Over
             //change to if hero gets hit 3 times
-            if(playerHealth < 1)
+            if (playerHealth < 1)
             {
                 GameOver();
             }
@@ -365,6 +366,8 @@ namespace Summative2DGame
             {
                 e.Graphics.DrawImage(a.image, a.x, a.y, a.width, a.height);
             }
+
+            e.Graphics.FillRectangle(starBrush, 0, this.Height - 20, this.Width, this.Height);
 
             //drawhero
             e.Graphics.DrawImage(hero.image, hero.x, hero.y, hero.width, hero.height);
