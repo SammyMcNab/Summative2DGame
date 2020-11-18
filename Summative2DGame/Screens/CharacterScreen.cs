@@ -21,25 +21,27 @@ namespace Summative2DGame
         private void purpleButton_Click(object sender, EventArgs e)
         {
             shipSelect = 1;
-            purpleButton.BackColor = Color.Red;
+            highlightLabel.Location = new Point(102, 261);
         }
 
         private void greenButton_Click(object sender, EventArgs e)
         {
             shipSelect = 2;
-            greenButton.BackColor = Color.Red;
+            highlightLabel.Location = new Point(587, 261);
         }
 
         private void playButton_Click(object sender, EventArgs e)
         {
             if (shipSelect > 0)
             {
-                Form f = this.FindForm();
-                f.Controls.Remove(this);
 
                 GameScreen gs = new GameScreen();
+                Form form = this.FindForm();
 
-                f.Controls.Add(gs);
+                form.Controls.Add(gs);
+                gs.Location = new Point((form.Width - gs.Width) / 2, (form.Height - gs.Height) / 2);
+                form.Controls.Remove(this);
+
                 gs.Focus();
             }
             else { }
@@ -62,11 +64,11 @@ namespace Summative2DGame
         {
 
 
-            greenButton.BackColor = Color.Black;
-            greenButton.ForeColor = Color.White;
+            greenButton.BackColor = Color.White;
+            greenButton.ForeColor = Color.Black;
 
-            purpleButton.BackColor = Color.White;
-            purpleButton.ForeColor = Color.Black;
+            purpleButton.BackColor = Color.Black;
+            purpleButton.ForeColor = Color.White;
 
             playButton.BackColor = Color.Black;
             playButton.ForeColor = Color.White;
@@ -79,11 +81,11 @@ namespace Summative2DGame
             greenButton.BackColor = Color.Black;
             greenButton.ForeColor = Color.White;
 
-            purpleButton.BackColor = Color.White;
-            purpleButton.ForeColor = Color.Black;
+            purpleButton.BackColor = Color.Black;
+            purpleButton.ForeColor = Color.White;
 
-            greenButton.BackColor = Color.Black;
-            greenButton.ForeColor = Color.White;
+            playButton.BackColor = Color.White;
+            playButton.ForeColor = Color.Black;
         }
     }
 }

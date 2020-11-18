@@ -61,6 +61,16 @@ namespace Summative2DGame.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap BasicBullet {
+            get {
+                object obj = ResourceManager.GetObject("BasicBullet", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized resource of type System.IO.UnmanagedMemoryStream similar to System.IO.MemoryStream.
         /// </summary>
         internal static System.IO.UnmanagedMemoryStream ButtonClick {
@@ -153,6 +163,16 @@ namespace Summative2DGame.Properties {
         internal static System.Drawing.Bitmap GreenJetNeutral {
             get {
                 object obj = ResourceManager.GetObject("GreenJetNeutral", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap LaserBeam {
+            get {
+                object obj = ResourceManager.GetObject("LaserBeam", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }

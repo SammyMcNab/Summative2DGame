@@ -92,7 +92,7 @@ namespace Summative2DGame
             f.Controls.Remove(this);
 
             CharacterScreen cs = new CharacterScreen();
-
+            cs.Location = new Point((f.Width - cs.Width) / 2, (f.Height - cs.Height) / 2);
             f.Controls.Add(cs);
             cs.Focus();
         }

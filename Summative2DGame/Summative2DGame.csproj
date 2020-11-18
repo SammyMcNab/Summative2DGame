@@ -51,6 +51,12 @@
   <ItemGroup>
     <Compile Include="Alien.cs" />
     <Compile Include="Bullet.cs" />
+    <Compile Include="Screens\HelpScreen.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Screens\HelpScreen.Designer.cs">
+      <DependentUpon>HelpScreen.cs</DependentUpon>
+    </Compile>
     <Compile Include="Screens\CharacterScreen.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -185,6 +191,12 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\Monster.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\BasicBullet.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\LaserBeam.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

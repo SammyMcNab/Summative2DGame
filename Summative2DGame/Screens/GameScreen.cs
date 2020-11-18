@@ -52,7 +52,7 @@ namespace Summative2DGame
         int alienWidth, alienHeight, alienSpeed;
 
         //player specs
-        int playerWidth, playerHeight, playerSpeed;
+        int playerWidth, playerHeight, playerHealth;
 
 
         int powerUp;
@@ -153,9 +153,8 @@ namespace Summative2DGame
             alienHeight = 100;
             alienSpeed = 15;
 
-            playerWidth = 60;
-            playerHeight = 100;
-            playerSpeed = 25;
+            playerWidth = 80;
+            playerHeight = 120;
 
             gameOverLabel.Visible = false;
             gameTimer.Enabled = true;
@@ -172,7 +171,7 @@ namespace Summative2DGame
                 shipImage = Properties.Resources.GreenJetHoveringNeutral;
                 powerUp = 2;
             }
-            hero = new Player(this.Width / 2 - 15, this.Height - playerHeight, playerWidth, playerHeight, shipImage);
+            hero = new Player(this.Width / 2 - 15, this.Height - 360, playerWidth, playerHeight, shipImage);
         }
         private void gameTimer_Tick(object sender, EventArgs e)
         {
@@ -180,7 +179,7 @@ namespace Summative2DGame
             shotCounter++;
             spawnTimer++;
 
-            AlienBulletCollision();
+            RegBulletCollision();
 
             #region Move Alien
             foreach (Alien a in alien1)
@@ -234,12 +233,7 @@ namespace Summative2DGame
             #endregion
 
             #region Game Over
-            foreach (Alien a in alien1)
-            {
-                if (a.y > 470)
-                { GameOver(); }
-            }
-
+            //change to if hero gets hit 3 times
             #endregion
 
             Refresh();
@@ -261,7 +255,15 @@ namespace Summative2DGame
             f.Controls.Add(ms);
 
         }
-        public static void AlienBulletCollision()
+        public static void LaserBeamCollision()
+        {
+
+        }
+        public static void MultiGunCollision()
+        {
+
+        }
+        public static void RegBulletCollision()
         {
             List<int> bulletRemove = new List<int>();
             List<int> alienRemove = new List<int>();
@@ -293,7 +295,7 @@ namespace Summative2DGame
                 alien1.RemoveAt(i);
             }
         }
-        public void CurveDown()
+        public void SideAlien()
         {
 
         }

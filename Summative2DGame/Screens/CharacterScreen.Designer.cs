@@ -34,7 +34,7 @@
             this.messageLabel = new System.Windows.Forms.Label();
             this.pictureBox2 = new System.Windows.Forms.PictureBox();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
-            this.label1 = new System.Windows.Forms.Label();
+            this.highlightLabel = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
@@ -111,20 +111,20 @@
             this.pictureBox1.TabIndex = 1;
             this.pictureBox1.TabStop = false;
             // 
-            // label1
+            // highlightLabel
             // 
-            this.label1.BackColor = System.Drawing.Color.White;
-            this.label1.Location = new System.Drawing.Point(102, 261);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(18, 430);
-            this.label1.TabIndex = 5;
+            this.highlightLabel.BackColor = System.Drawing.Color.White;
+            this.highlightLabel.Location = new System.Drawing.Point(587, 261);
+            this.highlightLabel.Name = "highlightLabel";
+            this.highlightLabel.Size = new System.Drawing.Size(18, 430);
+            this.highlightLabel.TabIndex = 5;
             // 
             // CharacterScreen
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(120F, 120F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Dpi;
             this.BackColor = System.Drawing.Color.Black;
-            this.Controls.Add(this.label1);
+            this.Controls.Add(this.highlightLabel);
             this.Controls.Add(this.messageLabel);
             this.Controls.Add(this.purpleButton);
             this.Controls.Add(this.playButton);
@@ -148,6 +148,6 @@
         private System.Windows.Forms.Button playButton;
         private System.Windows.Forms.Button purpleButton;
         private System.Windows.Forms.Label messageLabel;
-        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.Label highlightLabel;
     }
 }
