@@ -139,15 +139,17 @@ namespace Summative2DGame
         {
             for (int i = 0; i < 1; i++)
             {
-                int spawnX1 = randNum.Next(0, this.Width - 10);
+                spawnX1 = randNum.Next(0, this.Width - 10);
+                spawnX2 = randNum.Next(0, this.Width - 10);
+                spawnX3 = randNum.Next(0, this.Width - 10);
             }
             Alien alienN1 = new Alien(spawnX1, 0, alienWidth, alienHeight, alienImage);
             alien1.Add(alienN1);
         }
         public void AlienSideSpawn()
         {
-            int spawnY1 = randNum.Next(5, this.Height - 380);
-            int spawnY2 = randNum.Next(5, this.Height - 380);
+            spawnY1 = randNum.Next(5, this.Height - 380);
+            spawnY2 = randNum.Next(5, this.Height - 380);
 
             Alien row1 = new Alien(0, spawnY1, alienWidth, alienHeight, alienImage);
             Alien row2 = new Alien(this.Width, spawnY2, alienWidth, alienHeight, alienImage);
@@ -224,10 +226,6 @@ namespace Summative2DGame
             {
                 hero.Move("left");
             }
-            if (rightArrowDown == true && hero.x < this.Width - hero.width)
-            {
-                hero.Move("right");
-            }
             if (upArrowDown == true && hero.y > 0)
             {
                 hero.Move("up");
@@ -236,10 +234,11 @@ namespace Summative2DGame
             {
                 hero.Move("down");
             }
-            #endregion
-
-            #region shooting
-            if (spaceKeyDown == true && shotCounter > shotLimit)
+            if (rightArrowDown == true && hero.x < this.Width - hero.width)
+            {
+                hero.Move("right");
+            }
+            if (spaceKeyDown == true && shotCounter > shotLimit && powerActive == false)
             {
                 shotCounter = 0;
                 MakeBullet();
@@ -253,13 +252,15 @@ namespace Summative2DGame
             {
                 MakeMultiBullet();
             }
+            else { }
+            #endregion
             //move bullet up 
             foreach (Bullet b in bulletList)
             {
                 b.MoveBullet(bulletSpeed);
             }
 
-            #endregion
+
 
             #region Game Over
             //change to if hero gets hit 3 times
