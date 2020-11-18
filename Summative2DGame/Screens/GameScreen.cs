@@ -149,7 +149,7 @@ namespace Summative2DGame
         }
         public void MakeBullet()
         {
-            Bullet bullet = new Bullet(hero.x + 30, hero.y - 10, bulletWidth, bulletHeight, bulletImage);
+            Bullet bullet = new Bullet(hero.x + 22, hero.y - 10, bulletWidth, bulletHeight, bulletImage);
             bulletList.Add(bullet);
         }
         public void OnStart()
@@ -162,8 +162,8 @@ namespace Summative2DGame
             alienHeight = 100;
             alienSpeed = 12;
 
-            playerWidth = 80;
-            playerHeight = 120;
+            playerWidth = 60;
+            playerHeight = 80;
             playerHealth = 3;
 
             bulletWidth = 15;
@@ -227,7 +227,7 @@ namespace Summative2DGame
             {
                 hero.Move("up");
             }
-            if (downArrowDown == true && hero.y < this.Height - 240)
+            if (downArrowDown == true && hero.y + playerHeight < this.Height - 130)
             {
                 hero.Move("down");
             }

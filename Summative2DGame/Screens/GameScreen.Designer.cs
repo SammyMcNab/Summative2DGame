@@ -31,6 +31,7 @@
             this.components = new System.ComponentModel.Container();
             this.gameTimer = new System.Windows.Forms.Timer(this.components);
             this.gameOverLabel = new System.Windows.Forms.Label();
+            this.killLabel = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // gameTimer
@@ -50,11 +51,22 @@
             this.gameOverLabel.TabIndex = 1;
             this.gameOverLabel.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
+            // killLabel
+            // 
+            this.killLabel.Font = new System.Drawing.Font("MS PGothic", 25.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.killLabel.ForeColor = System.Drawing.Color.Red;
+            this.killLabel.Location = new System.Drawing.Point(31, 815);
+            this.killLabel.Name = "killLabel";
+            this.killLabel.Size = new System.Drawing.Size(273, 44);
+            this.killLabel.TabIndex = 2;
+            this.killLabel.Text = "KILLS:";
+            // 
             // GameScreen
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(120F, 120F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Dpi;
             this.BackColor = System.Drawing.Color.Black;
+            this.Controls.Add(this.killLabel);
             this.Controls.Add(this.gameOverLabel);
             this.DoubleBuffered = true;
             this.Margin = new System.Windows.Forms.Padding(2);
@@ -71,5 +83,6 @@
 
         private System.Windows.Forms.Timer gameTimer;
         private System.Windows.Forms.Label gameOverLabel;
+        private System.Windows.Forms.Label killLabel;
     }
 }

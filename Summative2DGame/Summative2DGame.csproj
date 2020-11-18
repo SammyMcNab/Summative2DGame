@@ -201,5 +201,17 @@
   <ItemGroup>
     <None Include="Resources\LaserBeam.png" />
   </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\HealthFull.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\HealthHalf.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\HealthLow.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\HealthNone.png" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
