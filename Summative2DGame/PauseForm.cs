@@ -38,5 +38,23 @@ namespace Summative2DGame
             buttonResult = DialogResult.Abort;
             pauseForm.Close();
         }
+
+        private void exitButton_Enter(object sender, EventArgs e)
+        {
+            exitButton.BackColor = Color.White;
+            exitButton.ForeColor = Color.Black;
+
+            continueButton.BackColor = Color.Black;
+            continueButton.ForeColor = Color.White;
+        }
+
+        private void continueButton_Enter(object sender, EventArgs e)
+        {
+            exitButton.BackColor = Color.Black;
+            exitButton.ForeColor = Color.White;
+
+            continueButton.BackColor = Color.White;
+            continueButton.ForeColor = Color.Black;
+        }
     }
 }

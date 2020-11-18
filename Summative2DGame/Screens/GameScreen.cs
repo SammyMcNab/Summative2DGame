@@ -154,7 +154,7 @@ namespace Summative2DGame
 
             alienWidth = 60;
             alienHeight = 100;
-            alienSpeed = 8;
+            alienSpeed = 10;
 
             playerWidth = 60;
             playerHeight = 80;
@@ -219,7 +219,7 @@ namespace Summative2DGame
                     topSide.RemoveAt(0);
                 }
             }
-            if (counter % 15 == 0)
+            if (counter % 13 == 0)
             {
                 if (topSide.Count < 18)
                 {
@@ -298,7 +298,7 @@ namespace Summative2DGame
 
 
             #region Game Win
-            if (killCount > 60)
+            if (killCount > 44)
             {
                 GameWin();
             }
@@ -306,7 +306,7 @@ namespace Summative2DGame
 
             #region Game Over
             //change to if hero gets hit 3 times
-            if (playerHealth < 1 && healthImage == Properties.Resources.HealthNone)
+            if (playerHealth < 1)
             {
                 Refresh();
                 GameOver();
@@ -522,7 +522,7 @@ namespace Summative2DGame
             {
                 healthImage = Properties.Resources.HealthLow;
             }
-            else if (playerHealth <= 0)
+            else if (playerHealth < 1)
             {
                 healthImage = Properties.Resources.HealthNone;
             }
