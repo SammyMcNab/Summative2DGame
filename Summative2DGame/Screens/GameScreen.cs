@@ -49,6 +49,8 @@ namespace Summative2DGame
 
         //used for creating patterns
         int x, y;
+        int patternLength = 10;
+        int patternSpeed = 7;
 
         static Rectangle shipRec;
 
@@ -56,7 +58,7 @@ namespace Summative2DGame
         Image shipImage, alienImage, bulletImage, healthImage, laserImage;
 
         //alien specs
-        int alienWidth, alienHeight, alienSpeed, spawnX1, spawnX2, spawnX3, spawnY1, spawnY2;
+        int alienWidth, alienHeight, alienSpeed, spawnX1, spawnY1, spawnY2;
 
         //player specs
         static int playerWidth, playerHeight, playerHealth;
@@ -140,17 +142,6 @@ namespace Summative2DGame
                     escKeyDown = false;
                     break;
             }
-        }
-        public void MakeAlien()
-        {
-            for (int i = 0; i < 1; i++)
-            {
-                spawnX1 = randNum.Next(0, this.Width - 10);
-                spawnX2 = randNum.Next(0, this.Width - 10);
-                spawnX3 = randNum.Next(0, this.Width - 10);
-            }
-            Alien alienN1 = new Alien(spawnX1, 0, alienWidth, alienHeight, alienImage);
-            topSide.Add(alienN1);
         }
         public void AlienSideSpawn()
         {
@@ -423,6 +414,35 @@ namespace Summative2DGame
                 topSide.RemoveAt(i);
             }
         }
+        public void SpawnTop()
+        {
+            patternLength--;
+
+            if (patternLength == 0)
+            {
+                moveRight = !moveRight;
+
+                patternLength = randNum.Next(3, 9);
+                patternSpeed = randNum.Next(2, 25);
+            }
+
+            if (moveRight)
+            {
+                leftX += patternSpeed;
+            }
+            else
+            {
+                leftX -= patternSpeed;
+            }
+
+
+            //add box
+            Box newBox = new Box(leftX, 0, 20, c);
+            left.Add(newBox);
+
+            Box newBox2 = new Box(leftX + gap, 0, 20, c);
+            right.Add(newBox2);
+        }
         public void LeftSideAlien()
         {
             x = 0;
@@ -524,38 +544,6 @@ namespace Summative2DGame
             foreach (Bullet b in bulletList)
             {
                 e.Graphics.DrawImage(b.image, b.x, b.y, b.width, b.height);
-            }
-        }
-        public void SpawnTop()
-        {
-            if (topSide.Count() > 4)
-            {
-                x = topSide[topSide.Count() - 5].x;
-            }
-
-            if (x <= randNum.Next(2, 200) && counter % 4 == 0)
-            {
-
-                x += randNum.Next(10, 16);
-                y = 0;
-                for (int i = 0; i < 5; i++)
-                {
-                    Alien newAlien = new Alien(x, y, alienWidth, alienHeight, alienImage);
-                    topSide.Add(newAlien);
-                    x += 150;
-                }
-            }
-            else if (x < randNum.Next(this.Width - 200, this.Width - 1) && counter % 4 == 0)
-            {
-
-                x -= randNum.Next(10, 16);
-                y = 0;
-                for (int i = 0; i < 5; i++)
-                {
-                    Alien newAlien = new Alien(x, y, alienWidth, alienHeight, alienImage);
-                    topSide.Add(newAlien);
-                    x += 150;
-                }
             }
         }
     }
