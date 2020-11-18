@@ -18,10 +18,6 @@ namespace Summative2DGame
     {
         //alien list
         public static List<Alien> topSide = new List<Alien>();
-        public static List<Alien> topSide2 = new List<Alien>();
-        public static List<Alien> leftSide = new List<Alien>();
-        public static List<Alien> rightSide = new List<Alien>();
-
 
         //All bullets 
         public static List<Bullet> bulletList = new List<Bullet>();
@@ -29,7 +25,6 @@ namespace Summative2DGame
         public static List<Bullet> leftBulletList2 = new List<Bullet>();
         public static List<Bullet> rightBulletList1 = new List<Bullet>();
         public static List<Bullet> rightBulletList2 = new List<Bullet>();
-        public static List<Bullet> beamBullet = new List<Bullet>();
         public static List<Bullet> alienBullet = new List<Bullet>();
 
         //brushes
@@ -57,7 +52,9 @@ namespace Summative2DGame
         Image shipImage, alienImage, bulletImage, healthImage, laserImage;
 
         //alien specs
-        int alienWidth, alienHeight, alienSpeed, spawnX, spawnY1, spawnY2;
+        int alienWidth, alienHeight, alienSpeed, spawnX;
+
+        static int alienHealth = 3;
 
         //player specs
         static int playerWidth, playerHeight, playerHealth;
@@ -140,10 +137,6 @@ namespace Summative2DGame
                     break;
             }
         }
-        public void AlienSideSpawn()
-        {
-
-        }
         public void MakeBullet()
         {
             Bullet bullet = new Bullet(hero.x + 22, hero.y - 10, bulletWidth, bulletHeight, bulletImage);
@@ -153,14 +146,11 @@ namespace Summative2DGame
         {
             Refresh();
             topSide.Clear();
-            leftSide.Clear();
-            rightSide.Clear();
             bulletList.Clear();
             leftBulletList1.Clear();
             leftBulletList2.Clear();
             rightBulletList1.Clear();
-            rightBulletList1.Clear();
-            beamBullet.Clear();
+            rightBulletList1.Clear();  
 
             alienWidth = 60;
             alienHeight = 100;
@@ -225,14 +215,6 @@ namespace Summative2DGame
                 a.MoveAlien(alienSpeed);
             }
 
-            foreach (Alien a in leftSide)
-            {
-                a.MoveAlienRight(alienSpeed);
-            }
-            foreach (Alien a in rightSide)
-            {
-                a.MoveAlienLeft(alienSpeed);
-            }
             #endregion
 
             #region Moving player and shooting
@@ -430,20 +412,6 @@ namespace Summative2DGame
             Alien newAlien = new Alien(spawnX, 0, alienWidth, alienHeight, alienImage);
             topSide.Add(newAlien);
         }
-        public void LeftSideAlien()
-        {
-            x = 0;
-            y = this.Height / 2 - 60;
-            Alien row1 = new Alien(x, y, alienWidth, alienHeight, alienImage);
-            leftSide.Add(row1);
-        }
-        public void RightSideAlien()
-        {
-            x = this.Width;
-            y = this.Height / 2 - 120;
-            Alien row2 = new Alien(x, y, alienWidth, alienHeight, alienImage);
-            rightSide.Add(row2);
-        }
         public void Pause()
         {
             if (gameTimer.Enabled == true)
@@ -489,14 +457,6 @@ namespace Summative2DGame
         {
             //draw alien
             foreach (Alien a in topSide)
-            {
-                e.Graphics.DrawImage(a.image, a.x, a.y, a.width, a.height);
-            }
-            foreach (Alien a in leftSide)
-            {
-                e.Graphics.DrawImage(a.image, a.x, a.y, a.width, a.height);
-            }
-            foreach (Alien a in rightSide)
             {
                 e.Graphics.DrawImage(a.image, a.x, a.y, a.width, a.height);
             }
