@@ -31,9 +31,10 @@
             this.greenButton = new System.Windows.Forms.Button();
             this.playButton = new System.Windows.Forms.Button();
             this.purpleButton = new System.Windows.Forms.Button();
+            this.messageLabel = new System.Windows.Forms.Label();
             this.pictureBox2 = new System.Windows.Forms.PictureBox();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
-            this.messageLabel = new System.Windows.Forms.Label();
+            this.label1 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
@@ -77,28 +78,6 @@
             this.purpleButton.Click += new System.EventHandler(this.purpleButton_Click);
             this.purpleButton.Enter += new System.EventHandler(this.purpleButton_Enter);
             // 
-            // pictureBox2
-            // 
-            this.pictureBox2.BackgroundImage = global::Summative2DGame.Properties.Resources.GreenJetNeutral;
-            this.pictureBox2.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.pictureBox2.Location = new System.Drawing.Point(612, 261);
-            this.pictureBox2.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
-            this.pictureBox2.Name = "pictureBox2";
-            this.pictureBox2.Size = new System.Drawing.Size(316, 430);
-            this.pictureBox2.TabIndex = 2;
-            this.pictureBox2.TabStop = false;
-            // 
-            // pictureBox1
-            // 
-            this.pictureBox1.BackgroundImage = global::Summative2DGame.Properties.Resources.PurpleJetNeutral;
-            this.pictureBox1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.pictureBox1.Location = new System.Drawing.Point(140, 261);
-            this.pictureBox1.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
-            this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(316, 430);
-            this.pictureBox1.TabIndex = 1;
-            this.pictureBox1.TabStop = false;
-            // 
             // messageLabel
             // 
             this.messageLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 27.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -110,11 +89,42 @@
             this.messageLabel.TabIndex = 4;
             this.messageLabel.Text = "CHOOSE YOUR RIDE";
             // 
+            // pictureBox2
+            // 
+            this.pictureBox2.BackgroundImage = global::Summative2DGame.Properties.Resources.GreenJetNeutral;
+            this.pictureBox2.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.pictureBox2.Location = new System.Drawing.Point(612, 261);
+            this.pictureBox2.Margin = new System.Windows.Forms.Padding(4);
+            this.pictureBox2.Name = "pictureBox2";
+            this.pictureBox2.Size = new System.Drawing.Size(316, 430);
+            this.pictureBox2.TabIndex = 2;
+            this.pictureBox2.TabStop = false;
+            // 
+            // pictureBox1
+            // 
+            this.pictureBox1.BackgroundImage = global::Summative2DGame.Properties.Resources.PurpleJetNeutral;
+            this.pictureBox1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.pictureBox1.Location = new System.Drawing.Point(140, 261);
+            this.pictureBox1.Margin = new System.Windows.Forms.Padding(4);
+            this.pictureBox1.Name = "pictureBox1";
+            this.pictureBox1.Size = new System.Drawing.Size(316, 430);
+            this.pictureBox1.TabIndex = 1;
+            this.pictureBox1.TabStop = false;
+            // 
+            // label1
+            // 
+            this.label1.BackColor = System.Drawing.Color.White;
+            this.label1.Location = new System.Drawing.Point(102, 261);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(18, 430);
+            this.label1.TabIndex = 5;
+            // 
             // CharacterScreen
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(120F, 120F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Dpi;
             this.BackColor = System.Drawing.Color.Black;
+            this.Controls.Add(this.label1);
             this.Controls.Add(this.messageLabel);
             this.Controls.Add(this.purpleButton);
             this.Controls.Add(this.playButton);
@@ -138,5 +148,6 @@
         private System.Windows.Forms.Button playButton;
         private System.Windows.Forms.Button purpleButton;
         private System.Windows.Forms.Label messageLabel;
+        private System.Windows.Forms.Label label1;
     }
 }

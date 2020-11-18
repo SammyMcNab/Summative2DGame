@@ -47,48 +47,27 @@ namespace Summative2DGame
 
         private void purpleButton_Enter(object sender, EventArgs e)
         {
-            if (shipSelect == 2)
-            {
-                greenButton.BackColor = Color.Red;
-            }
-            else
-            {
-                greenButton.BackColor = Color.Black;
-                greenButton.ForeColor = Color.White;
-            }
-            if (shipSelect == 1)
-            {
-                purpleButton.BackColor = Color.Red;
-            }
-            else
-            {
-                purpleButton.BackColor = Color.White;
-                purpleButton.ForeColor = Color.Black;
-            }
+
+            greenButton.BackColor = Color.Black;
+            greenButton.ForeColor = Color.White;
+
+            purpleButton.BackColor = Color.White;
+            purpleButton.ForeColor = Color.Black;
+
             playButton.BackColor = Color.Black;
             playButton.ForeColor = Color.White;
         }
 
         private void greenButton_Enter(object sender, EventArgs e)
         {
-            if (shipSelect == 2)
-            {
-                greenButton.BackColor = Color.Red;
-            }
-            else
-            {
-                greenButton.BackColor = Color.Black;
-                greenButton.ForeColor = Color.White;
-            }
-            if (shipSelect == 1)
-            {
-                purpleButton.BackColor = Color.Red;
-            }
-            else
-            {
-                purpleButton.BackColor = Color.White;
-                purpleButton.ForeColor = Color.Black;
-            }
+
+
+            greenButton.BackColor = Color.Black;
+            greenButton.ForeColor = Color.White;
+
+            purpleButton.BackColor = Color.White;
+            purpleButton.ForeColor = Color.Black;
+
             playButton.BackColor = Color.Black;
             playButton.ForeColor = Color.White;
 
@@ -96,24 +75,13 @@ namespace Summative2DGame
 
         private void playButton_Enter(object sender, EventArgs e)
         {
-            if (shipSelect == 2)
-            {
-                greenButton.BackColor = Color.Red;
-            }
-            else
-            {
-                greenButton.BackColor = Color.Black;
-                greenButton.ForeColor = Color.White;
-            }
-            if (shipSelect == 1)
-            {
-                purpleButton.BackColor = Color.Red;
-            }
-            else
-            {
-                purpleButton.BackColor = Color.White;
-                purpleButton.ForeColor = Color.Black;
-            }
+
+            greenButton.BackColor = Color.Black;
+            greenButton.ForeColor = Color.White;
+
+            purpleButton.BackColor = Color.White;
+            purpleButton.ForeColor = Color.Black;
+
             greenButton.BackColor = Color.Black;
             greenButton.ForeColor = Color.White;
         }
