@@ -32,9 +32,9 @@
             this.playButton = new System.Windows.Forms.Button();
             this.purpleButton = new System.Windows.Forms.Button();
             this.messageLabel = new System.Windows.Forms.Label();
+            this.highlightLabel = new System.Windows.Forms.Label();
             this.pictureBox2 = new System.Windows.Forms.PictureBox();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
-            this.highlightLabel = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
@@ -73,7 +73,7 @@
             this.purpleButton.Name = "purpleButton";
             this.purpleButton.Size = new System.Drawing.Size(261, 68);
             this.purpleButton.TabIndex = 0;
-            this.purpleButton.Text = "PAIN AND LOVE";
+            this.purpleButton.Text = "PURPLE PAIN";
             this.purpleButton.UseVisualStyleBackColor = true;
             this.purpleButton.Click += new System.EventHandler(this.purpleButton_Click);
             this.purpleButton.Enter += new System.EventHandler(this.purpleButton_Enter);
@@ -88,6 +88,14 @@
             this.messageLabel.Size = new System.Drawing.Size(517, 61);
             this.messageLabel.TabIndex = 4;
             this.messageLabel.Text = "CHOOSE YOUR RIDE";
+            // 
+            // highlightLabel
+            // 
+            this.highlightLabel.BackColor = System.Drawing.Color.White;
+            this.highlightLabel.Location = new System.Drawing.Point(587, 261);
+            this.highlightLabel.Name = "highlightLabel";
+            this.highlightLabel.Size = new System.Drawing.Size(18, 430);
+            this.highlightLabel.TabIndex = 5;
             // 
             // pictureBox2
             // 
@@ -110,14 +118,6 @@
             this.pictureBox1.Size = new System.Drawing.Size(316, 430);
             this.pictureBox1.TabIndex = 1;
             this.pictureBox1.TabStop = false;
-            // 
-            // highlightLabel
-            // 
-            this.highlightLabel.BackColor = System.Drawing.Color.White;
-            this.highlightLabel.Location = new System.Drawing.Point(587, 261);
-            this.highlightLabel.Name = "highlightLabel";
-            this.highlightLabel.Size = new System.Drawing.Size(18, 430);
-            this.highlightLabel.TabIndex = 5;
             // 
             // CharacterScreen
             // 

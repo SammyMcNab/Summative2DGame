@@ -32,6 +32,7 @@
             this.gameTimer = new System.Windows.Forms.Timer(this.components);
             this.gameOverLabel = new System.Windows.Forms.Label();
             this.killLabel = new System.Windows.Forms.Label();
+            this.healthLabel = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // gameTimer
@@ -53,19 +54,32 @@
             // 
             // killLabel
             // 
-            this.killLabel.Font = new System.Drawing.Font("MS PGothic", 25.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.killLabel.Font = new System.Drawing.Font("Myanmar Text", 28.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.killLabel.ForeColor = System.Drawing.Color.Red;
-            this.killLabel.Location = new System.Drawing.Point(31, 815);
+            this.killLabel.Location = new System.Drawing.Point(120, 762);
             this.killLabel.Name = "killLabel";
-            this.killLabel.Size = new System.Drawing.Size(273, 44);
+            this.killLabel.Size = new System.Drawing.Size(301, 62);
             this.killLabel.TabIndex = 2;
             this.killLabel.Text = "KILLS:";
+            this.killLabel.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            // 
+            // healthLabel
+            // 
+            this.healthLabel.AutoSize = true;
+            this.healthLabel.Font = new System.Drawing.Font("Myanmar Text", 28.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.healthLabel.ForeColor = System.Drawing.Color.Lime;
+            this.healthLabel.Location = new System.Drawing.Point(477, 762);
+            this.healthLabel.Name = "healthLabel";
+            this.healthLabel.Size = new System.Drawing.Size(229, 85);
+            this.healthLabel.TabIndex = 3;
+            this.healthLabel.Text = "STATUS:";
             // 
             // GameScreen
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(120F, 120F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Dpi;
             this.BackColor = System.Drawing.Color.Black;
+            this.Controls.Add(this.healthLabel);
             this.Controls.Add(this.killLabel);
             this.Controls.Add(this.gameOverLabel);
             this.DoubleBuffered = true;
@@ -76,6 +90,7 @@
             this.KeyUp += new System.Windows.Forms.KeyEventHandler(this.GameScreen_KeyUp);
             this.PreviewKeyDown += new System.Windows.Forms.PreviewKeyDownEventHandler(this.GameScreen_PreviewKeyDown);
             this.ResumeLayout(false);
+            this.PerformLayout();
 
         }
 
@@ -84,5 +99,6 @@
         private System.Windows.Forms.Timer gameTimer;
         private System.Windows.Forms.Label gameOverLabel;
         private System.Windows.Forms.Label killLabel;
+        private System.Windows.Forms.Label healthLabel;
     }
 }

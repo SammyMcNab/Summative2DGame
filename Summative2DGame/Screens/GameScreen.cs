@@ -37,6 +37,7 @@ namespace Summative2DGame
         //brushes
         SolidBrush blackBrush = new SolidBrush(Color.Black);
         SolidBrush starBrush = new SolidBrush(Color.White);
+        SolidBrush healthBrush = new SolidBrush(Color.Lime);
 
         //sounds
         SoundPlayer laser = new SoundPlayer(Properties.Resources.laserShot);
@@ -49,7 +50,7 @@ namespace Summative2DGame
         //creating player
         Player hero;
 
-        Image shipImage, alienImage, bulletImage;
+        Image shipImage, alienImage, bulletImage, healthImage;
 
         //alien specs
         int alienWidth, alienHeight, alienSpeed;
@@ -227,7 +228,7 @@ namespace Summative2DGame
             {
                 hero.Move("up");
             }
-            if (downArrowDown == true && hero.y + playerHeight < this.Height - 130)
+            if (downArrowDown == true && hero.y + playerHeight < this.Height - 170)
             {
                 hero.Move("down");
             }
@@ -273,6 +274,14 @@ namespace Summative2DGame
             f.Controls.Remove(this);
             MainScreen ms = new MainScreen();
             f.Controls.Add(ms);
+
+        }
+        public void MakeLaser()
+        {
+
+        }
+        public void MakeMultiBullet()
+        {
 
         }
         public static void LaserBeamCollision()
@@ -369,16 +378,37 @@ namespace Summative2DGame
             }
 
             //draw UI line
-            e.Graphics.FillRectangle(starBrush, 0, this.Height - 120, this.Width, 12);
+            e.Graphics.FillRectangle(starBrush, 0, this.Height - 160, this.Width, 12);
+
+            //change health image
+            if (playerHealth == 3)
+            {
+                healthImage = Properties.Resources.HealthFull;
+            }
+            else if (playerHealth == 2)
+            {
+                healthImage = Properties.Resources.HealthHalf;
+            }
+            else if (playerHealth == 1)
+            {
+                healthImage = Properties.Resources.HealthLow;
+            }
+            else if (playerHealth <= 0)
+            {
+                healthImage = Properties.Resources.HealthNone;
+            }
+
+            //draw status image
+            e.Graphics.DrawImage(healthImage, this.Width - 194, 726, 90, 140);
 
             //drawhero
             e.Graphics.DrawImage(hero.image, hero.x, hero.y, hero.width, hero.height);
 
+            //draw bullet
             foreach (Bullet b in bulletList)
             {
                 e.Graphics.DrawImage(b.image, b.x, b.y, b.width, b.height);
             }
-
         }
     }
 }
